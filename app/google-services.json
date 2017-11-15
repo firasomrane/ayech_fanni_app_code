@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "354290169131",
+    "firebase_url": "https://ayech-fanni.firebaseio.com",
+    "project_id": "ayech-fanni",
+    "storage_bucket": "ayech-fanni.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:354290169131:android:89eb5d5ba1768ec4",
+        "android_client_info": {
+          "package_name": "com.example.android.ayech_fanni_copie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "354290169131-l8pcflod6mdv488h3o6pgiu0b46m6mld.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.ayech_fanni_copie",
+            "certificate_hash": "e5ed955efdd2f1274fb4e97446669985e934c9c1"
+          }
+        },
+        {
+          "client_id": "354290169131-0b0e5t6i5k0ghhda65l5gl2ic7ruj5f7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCWkqGXB1KFBlAeomYZwXpKJrs5vBk2Nw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "354290169131-0b0e5t6i5k0ghhda65l5gl2ic7ruj5f7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
