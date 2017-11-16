@@ -12,43 +12,47 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="1">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:orientation="horizontal"
-                    android:weightSum="100"
-                    android:padding="16dp">
+                    android:weightSum="100">
 
                     <ImageView
-                        android:id="@+id/search_explorer"
-                        android:layout_width="@dimen/account_icons"
-                        android:layout_height="@dimen/account_icons"
+                        android:id="@+id/m_icon"
+                        android:layout_width="30dp"
+                        android:layout_weight="15"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_user"
                         android:layout_marginTop="10dp"
-                        android:src="@drawable/ic_user" />
+                        android:layout_marginLeft="10dp"
+                        />
 
                     <TextView
-                        android:id="@+id/explore_toolbar_text"
-                        android:layout_width="0dp"
+                        android:id="@+id/the_text"
+                        android:layout_width="304dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="92"
-                        android:padding="16dp"
-                        android:text="Nom d'utilisateur"
-                        android:textSize="20dp" />
-
+                        android:textAppearance="?android:textAppearanceMedium"
+                        android:text="Modififer votre profil"
+                        android:textSize="35px"
+                        android:paddingLeft="30dp"
+                        android:paddingTop="27px"
+                        />
 
                 </LinearLayout>
 
                 <View
-                    android:id="@+id/separator"
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
                     android:background="@android:color/darker_gray" />
+
             </LinearLayout>
+
 
         </RelativeLayout>
 
@@ -57,7 +61,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/rel2"
-            android:layout_below="@+id/rel1">
+            android:layout_below="@+id/rel1"
+            android:layout_alignParentStart="true">
 
             <include
                 android:layout_width="match_parent"
