@@ -4,19 +4,34 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/explore_toolbar_text"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:text="Explorer"
-        android:textSize="20dp" />
+        android:orientation="horizontal"
+        android:weightSum="100">
 
+        <TextView
+            android:id="@+id/explore_toolbar_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="92"
+            android:padding="16dp"
+            android:text="Explorer"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_search"
+            android:id="@+id/search_explorer"/>
+    </LinearLayout>
     <View
         android:id="@+id/separator"
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="@android:color/darker_gray" />
+
     <ListView
         android:id="@+id/explore_fragment_list"
         android:layout_width="wrap_content"

@@ -5,6 +5,7 @@
     android:id="@+id/tab"
     android:textSize="@dimen/tab_label"
     android:fontFamily="@string/font_fontFamily_medium"
-    android:padding="2dp"/>
+    android:text="try"
+    />
 
 <!--android:textColor="@color/colorAccent"-->

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context="com.example.android.ayech_fanni_copie.Signup">
+    tools:context="com.example.android.ayech_fanni_copie.utilisateur.fragments_activity.sign_up_and_in.Signup">
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"

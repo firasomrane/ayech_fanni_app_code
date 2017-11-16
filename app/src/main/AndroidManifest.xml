@@ -8,10 +8,10 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/MyMaterialTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".utilisateur.fragments_activity.sign_up_and_in.MainActivity">
 
         </activity>
-        <activity android:name=".theEssentialActivity">
+        <activity android:name=".utilisateur.fragments_activity.fragments_activity.theEssentialActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -7,4 +7,5 @@
     <dimen name="tab_padding_bottom">16dp</dimen>
     <dimen name="tab_label">12sp</dimen>
     <dimen name="custom_tab_layout_height">72dp</dimen>
+    <dimen name="account_icons">35dp</dimen>
 </resources>

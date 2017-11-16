@@ -9,7 +9,7 @@
         android:paddingLeft="64dp"
         android:paddingRight="64dp"
         android:paddingTop="16dp"
-        tools:context="com.example.android.ayech_fanni_copie.MainActivity"
+        tools:context="com.example.android.ayech_fanni_copie.utilisateur.fragments_activity.sign_up_and_in.MainActivity"
         tools:layout_editor_absoluteY="8dp"
         tools:layout_editor_absoluteX="8dp">
 

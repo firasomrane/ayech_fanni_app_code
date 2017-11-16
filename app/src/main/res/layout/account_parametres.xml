@@ -7,37 +7,45 @@
     android:weightSum="1">
 
     <LinearLayout
-        android:layout_width="384dp"
-        android:layout_height="70dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:orientation="horizontal"
-        android:weightSum="1">
+        android:weightSum="100">
+
+        <ImageView
+            android:id="@+id/m_icon"
+            android:layout_width="30dp"
+            android:layout_weight="30"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_settings"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            />
 
         <TextView
-            android:id="@+id/nameTxt"
+            android:id="@+id/the_text"
             android:layout_width="304dp"
+            android:layout_weight="60"
             android:layout_height="match_parent"
             android:textAppearance="?android:textAppearanceMedium"
-            android:text="tajrib"
+            android:text="Paramètre"
             android:textSize="35px"
             android:paddingLeft="30dp"
-            android:paddingTop="70px"
+            android:paddingTop="27px"
             />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/m_fleche"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/ic_fleche_avant"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginTop="10dp" />
 
     </LinearLayout>
 
     <View
-        android:layout_width="350dp"
-        android:layout_height="1dp"
-        android:layout_marginLeft="17dp"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
         android:background="@android:color/darker_gray" />
 
 </LinearLayout>
-
