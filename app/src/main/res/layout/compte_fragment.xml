@@ -16,7 +16,8 @@
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:text="Accueil"
-            android:textSize="20dp" />
+            android:textSize="@dimen/toolbarTextSize"
+            android:background="@color/white"/>
 
         <View
             android:id="@+id/separator"

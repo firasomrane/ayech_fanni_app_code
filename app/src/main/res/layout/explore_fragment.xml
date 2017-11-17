@@ -8,6 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:background="@color/white"
         android:weightSum="100">
 
         <TextView
@@ -17,7 +18,8 @@
             android:layout_weight="92"
             android:padding="16dp"
             android:text="Explorer"
-            android:textSize="20dp" />
+            android:textSize="@dimen/toolbarTextSize"
+            android:background="@color/white"/>
 
         <ImageView
             android:layout_width="30dp"

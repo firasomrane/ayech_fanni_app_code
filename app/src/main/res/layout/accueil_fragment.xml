@@ -8,9 +8,10 @@
         android:id="@+id/accueil_toolbar_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:padding="16dp"
         android:text="Accueil"
-        android:textSize="20dp" />
+        android:textSize="@dimen/toolbarTextSize" />
 
     <View
         android:id="@+id/separator"

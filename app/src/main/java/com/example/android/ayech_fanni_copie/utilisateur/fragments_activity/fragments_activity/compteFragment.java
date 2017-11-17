@@ -32,6 +32,6 @@ public class compteFragment extends Fragment {
 
     @Override
     public String toString() {
-        return "compte";
+        return "layout_compte";
     }
 }
