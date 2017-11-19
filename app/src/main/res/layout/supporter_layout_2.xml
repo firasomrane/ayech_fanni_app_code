@@ -1,0 +1,88 @@
+
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/linearLay1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:weightSum="100">
+
+        <ImageView
+            android:id="@+id/m_icon"
+            android:layout_width="30dp"
+            android:layout_weight="10"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_fleche_arriere"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            />
+
+        <TextView
+            android:id="@+id/supporter_nom_createur"
+            android:layout_width="304dp"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:text="Supporter Nom du créateur"
+            android:textSize="@dimen/toolbarTextSize"
+            android:paddingLeft="18dp"
+            android:gravity="center_vertical"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/supporter_text_bg_grey"
+        android:layout_below="@+id/linearLay1"
+        android:layout_width="match_parent"
+        android:lines="2"
+        android:layout_height="118dp"
+        android:text="Choisir le montant que vous  \n voulez supporter avec"
+        android:gravity="center"
+        android:background="@color/cardview_shadow_start_color"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:id="@+id/supporter_montant"
+        android:layout_below="@+id/supporter_text_bg_grey">
+
+
+
+
+
+    </RelativeLayout>
+
+
+    <View
+        android:id="@+id/view"
+        android:layout_below="@+id/supporter_montant"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@android:color/darker_gray"
+        android:layout_marginTop="35dp"
+        />
+
+    <Button
+        android:id="@+id/supporter_button_layout_2"
+        android:layout_below="@+id/view"
+        android:layout_centerHorizontal="true"
+        android:layout_width="194dp"
+        android:layout_height="53dp"
+        android:text="Continuer"
+        android:textSize="@dimen/buttons_size"
+        android:textColor="@color/white"
+        android:background="@color/theMainColor"
+        android:layout_marginTop="@dimen/supporter_button_margin_top"
+        />
+
+
+
+
+</RelativeLayout>
