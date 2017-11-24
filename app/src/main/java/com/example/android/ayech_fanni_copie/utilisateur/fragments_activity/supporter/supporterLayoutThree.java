@@ -15,7 +15,7 @@ import com.example.android.ayech_fanni_copie.R;
 public class supporterLayoutThree extends supporterLayoutOne {
 
     private String donationtype;
-
+    private String montant;
     private static final String TAG = "supporterLayoutThree";
 
     @Override
@@ -37,6 +37,7 @@ public class supporterLayoutThree extends supporterLayoutOne {
 
         if(bundle !=null) {
 
+            //Handle the donation type
             donationtype = bundle.getString("donationType");
             Toast.makeText(supporterLayoutThree.this,
                      donationtype, Toast.LENGTH_SHORT).show();
@@ -45,6 +46,13 @@ public class supporterLayoutThree extends supporterLayoutOne {
             if(donationtype =="Un don par mois"){donation_type_text.setText("par mois");}
             else if (donationtype =="Un don chaque nouveau contenu"){donation_type_text.setText("par contenu");}
             else{donation_type_text.setText("seulement cette fois");}
+
+
+            //Handle the montant value
+
+            montant = bundle.getString("montant");
+            final TextView donationSum = (TextView) findViewById(R.id.supporter_donation_sum);
+            donationSum.setText(montant);
         }
         /*else {
             Toast.makeText(supporterLayoutThree.this,

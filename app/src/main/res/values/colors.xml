@@ -10,4 +10,5 @@
     <color name="navigationBarColor">#000000</color>
     <color name="theMainColor">#FC363B</color>
     <color name="blue">#0000FF</color>
+    <color name="trans">#00000000 </color>
 </resources>

@@ -33,9 +33,11 @@
             android:layout_width="match_parent">
 
             <include
-                android:layout_width="match_parent"
+                android:layout_width="368dp"
                 android:layout_height="wrap_content"
-                layout="@layout/user_account_elemnts" />/
+                layout="@layout/user_account_elemnts"
+                tools:layout_editor_absoluteY="25dp"
+                tools:layout_editor_absoluteX="8dp" />/
         </android.support.constraint.ConstraintLayout>
 
     </LinearLayout>

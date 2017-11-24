@@ -53,8 +53,56 @@
         android:id="@+id/supporter_montant"
         android:layout_below="@+id/supporter_text_bg_grey">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="DT"
+            android:paddingLeft="65dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/buttons_size"/>
+        
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerInParent="true"
+            android:weightSum="100"
+            >
+            <Button
+                android:id="@+id/supporter_montant_plus_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+"
+                android:textSize="@dimen/buttons_size"
+                android:background="@color/trans"
+                />
 
+            <EditText
+                android:id="@+id/supporter_montant_text"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="1.00 "
+                android:gravity="center"
+                android:textSize="@dimen/buttons_size"
+                android:maxLines="1"
+                android:inputType="numberDecimal"
+                android:layout_centerInParent="true"
+                android:paddingRight="40dp"
+                />
 
+            <Button
+                android:id="@+id/supporter_montant_minus_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:textSize="@dimen/buttons_size"
+                android:background="@color/trans"
+                />
+        </LinearLayout>
+        
+
+        
 
 
     </RelativeLayout>
@@ -81,8 +129,6 @@
         android:background="@color/theMainColor"
         android:layout_marginTop="@dimen/supporter_button_margin_top"
         />
-
-
 
 
 </RelativeLayout>
