@@ -1,46 +1,60 @@
 package com.example.android.ayech_fanni_copie.utilisateur.fragments_activity.accueil;
 
-import java.util.Date;
-
 /**
  * Created by ASUS on 23/11/2017.
  */
 
 public class Publication {
-    private String nomCreateur ,titreDuPoste ,Description ,publicationURL;
-    private Date date;
-    private int nombreCommentaire ,nombreJaime ;
-    private int mImageResourceId = NO_IMAGE_PROVIDED;
+    private String nomCreateur ,titreDuPoste , description,publicationURL;
+    private String date;
+    private int nombreCommentaire =10 ,nombreJaime = 100 ;
+    private int imagePublication = NO_IMAGE_PROVIDED;
+    private int imageCreateur = NO_IMAGE_PROVIDED;
 
     /** Constant value that represents no image was provided for this Publication */
     private static final int NO_IMAGE_PROVIDED = -1;
 
-    public Publication(String nomCreateur, String titreDuPoste, String description, String publicationURL, Date date, int nombreCommentaire, int nombreJaime, int mImageResourceId) {
+    public Publication(String nomCreateur, String titreDuPoste, String description, String publicationURL, String date, int nombreCommentaire, int nombreJaime, int imagePublication, int imageCreateur) {
         this.nomCreateur = nomCreateur;
         this.titreDuPoste = titreDuPoste;
-        Description = description;
+        this.description = description;
         this.publicationURL = publicationURL;
         this.date = date;
         this.nombreCommentaire = nombreCommentaire;
         this.nombreJaime = nombreJaime;
-        this.mImageResourceId = mImageResourceId;
+        this.imagePublication = imagePublication;
+        this.imageCreateur = imageCreateur;
     }
 
-    public Publication(String nomCreateur, String titreDuPoste, String description, String publicationURL, Date date, int nombreCommentaire, int nombreJaime) {
+    public Publication(String nomCreateur, String titreDuPoste, String description, String publicationURL, String date, int nombreCommentaire, int nombreJaime, int imageCreateur) {
         this.nomCreateur = nomCreateur;
         this.titreDuPoste = titreDuPoste;
-        Description = description;
+        this.description = description;
         this.publicationURL = publicationURL;
         this.date = date;
         this.nombreCommentaire = nombreCommentaire;
         this.nombreJaime = nombreJaime;
+        this.imageCreateur = imageCreateur;
     }
 
-    public Publication(String nomCreateur, String titreDuPoste, String description, Date date) {
+    public Publication(String nomCreateur, String titreDuPoste, String description,String publicationURL, String date, int imagePublication, int imageCreateur) {
         this.nomCreateur = nomCreateur;
         this.titreDuPoste = titreDuPoste;
-        Description = description;
+        this.description = description;
         this.date = date;
+        this.publicationURL = publicationURL;
+        this.imagePublication = imagePublication;
+        this.imageCreateur = imageCreateur;
+    }
+
+    //without postImage
+    public Publication(String nomCreateur, String titreDuPoste, String description,String publicationURL, String date, int imageCreateur) {
+        this.nomCreateur = nomCreateur;
+        this.titreDuPoste = titreDuPoste;
+        this.description = description;
+        this.date = date;
+        this.publicationURL = publicationURL;
+        this.imageCreateur = imageCreateur;
     }
 
     ///Getters and Setters
@@ -54,14 +68,14 @@ public class Publication {
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     public void setPublicationURL(String publicationURL) {
         this.publicationURL = publicationURL;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -73,8 +87,12 @@ public class Publication {
         this.nombreJaime = nombreJaime;
     }
 
-    public void setmImageResourceId(int mImageResourceId) {
-        this.mImageResourceId = mImageResourceId;
+    public void setImagePublication(int imagePublication) {
+        this.imagePublication = imagePublication;
+    }
+
+    public void setImageCreateur(int imageCreateur) {
+        this.imageCreateur = imageCreateur;
     }
 
     public String getNomCreateur() {
@@ -86,14 +104,14 @@ public class Publication {
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public String getPublicationURL() {
         return publicationURL;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -105,12 +123,16 @@ public class Publication {
         return nombreJaime;
     }
 
-    public int getmImageResourceId() {
-        return mImageResourceId;
+    public int getImagePublication() {
+        return imagePublication;
     }
 
-    public static int getNoImageProvided() {
-        return NO_IMAGE_PROVIDED;
+    public int getImageCreateur() {
+        return imageCreateur;
+    }
+
+    public boolean hasImage() {
+        return imagePublication != NO_IMAGE_PROVIDED;
     }
 
     @Override
@@ -118,12 +140,12 @@ public class Publication {
         return "Publication{" +
                 "nomCreateur='" + nomCreateur + '\'' +
                 ", titreDuPoste='" + titreDuPoste + '\'' +
-                ", Description='" + Description + '\'' +
+                ", description='" + description + '\'' +
                 ", publicationURL='" + publicationURL + '\'' +
                 ", date=" + date +
                 ", nombreCommentaire=" + nombreCommentaire +
                 ", nombreJaime=" + nombreJaime +
-                ", mImageResourceId=" + mImageResourceId +
-                '}';
+                ", imagePublication=" + imagePublication +
+                ", imagePublication=" + imageCreateur+'}';
     }
 }

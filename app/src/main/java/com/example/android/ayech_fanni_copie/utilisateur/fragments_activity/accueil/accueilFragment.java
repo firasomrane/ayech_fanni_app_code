@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.example.android.ayech_fanni_copie.R;
-import com.example.android.ayech_fanni_copie.utilisateur.fragments_activity.fragments_activity.elementExplore;
 
 import java.util.ArrayList;
 
@@ -40,22 +39,14 @@ public class accueilFragment extends Fragment {
 
     private ArrayList<Publication> getAccueilElements() {
         ArrayList<Publication> AccueilElements=new ArrayList<>();
-        Publication newElement=new Publication("Animation");
-        AccueilElements.add(newElement);
-        newElement=new elementExplore("Blog");
-        AccueilElements.add(newElement);
-        newElement=new elementExplore("Comédie");
-        AccueilElements.add(newElement);
-        newElement=new elementExplore("Dance");
-        AccueilElements.add(newElement);
-        newElement=new elementExplore("Education");
-        AccueilElements.add(newElement);
-        newElement=new elementExplore("Jeu Video");
-        AccueilElements.add(newElement);
-        newElement=new elementExplore("Musique");
-        AccueilElements.add(newElement);
-        newElement=new elementExplore("Podcasts");
-        AccueilElements.add(newElement);
+        Publication newPost=new Publication("Firas Omrane","New post title", "This is the description for the post", "Youtube.com", "24/11/2017", R.drawable.youtube_image,R.drawable.user_photo);
+        AccueilElements.add(newPost);
+        newPost=new Publication("Firas Omrane","New post title", "This is the description for the post", "Youtube.com", "24/11/2017",R.drawable.user_photo);
+        AccueilElements.add(newPost);
+        newPost=new Publication("Firas Omrane","New post title", "This is the description for the post", "Youtube.com", "24/11/2017" , R.drawable.youtube_image,R.drawable.user_photo);
+        AccueilElements.add(newPost);
+        newPost=new Publication("Firas Omrane","New post title", "This is the description for the post", "Youtube.com", "24/11/2017",R.drawable.youtube_image,R.drawable.user_photo);
+        AccueilElements.add(newPost);
         return AccueilElements;
 
     }

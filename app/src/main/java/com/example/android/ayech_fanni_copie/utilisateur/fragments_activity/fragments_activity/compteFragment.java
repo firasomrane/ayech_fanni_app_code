@@ -23,7 +23,7 @@ public class compteFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView: completed");
         View rootViewtTwO=inflater.inflate(R.layout.compte_fragment,container,false);
-        
+
         Log.d(TAG, "onCreateView: rootView");
         return rootViewtTwO;
     }

@@ -12,15 +12,15 @@
 
         </activity>
         <activity android:name=".utilisateur.fragments_activity.fragments_activity.theEssentialActivity">
-
-        </activity>
-
-        <activity android:name=".utilisateur.fragments_activity.supporter.supporterLayoutOne">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".utilisateur.fragments_activity.supporter.supporterLayoutOne">
+
         </activity>
 
         <activity android:name=".utilisateur.fragments_activity.supporter.supporterLayoutTwo">

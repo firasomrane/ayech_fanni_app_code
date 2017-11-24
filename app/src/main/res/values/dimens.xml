@@ -6,10 +6,10 @@
     <dimen name="tab_max_width">264dp</dimen>
     <dimen name="tab_padding_bottom">16dp</dimen>
     <dimen name="tab_label">12sp</dimen>
-    <dimen name="custom_tab_layout_height">72dp</dimen>
+    <dimen name="custom_tab_layout_height">60dp</dimen>
     <dimen name="account_icons">35dp</dimen>
     <dimen name="toolbarTextSize">20sp</dimen>
-    <dimen name="like_and_comment_text">15sp</dimen>
+
 
     <!--Supporter-->
     <dimen name="buttons_size">18sp</dimen>
@@ -17,6 +17,10 @@
     <dimen name="radio_button_margin_left">80dp</dimen>
     <dimen name="supporter_button_margin_top">60dp</dimen>
     <dimen name="supporter_privileges_margin">9dp</dimen>
+
+    <!--Publication-->
+    <dimen name="Publication_icons_width">30dp</dimen>
+    <dimen name="like_and_comment_text">14sp</dimen>
 
 
 </resources>

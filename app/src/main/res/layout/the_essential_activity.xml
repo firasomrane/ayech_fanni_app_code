@@ -60,4 +60,5 @@
 
         </android.support.design.widget.TabLayout>
     </RelativeLayout>
+
 </LinearLayout>

@@ -29,6 +29,7 @@ public class exploreFragment extends Fragment {
         lv.setAdapter(adapter);
         return rootView;
     }
+
     private ArrayList<elementExplore> getExploreElements() {
         ArrayList<elementExplore> explorerElements=new ArrayList<>();
         elementExplore newElement=new elementExplore("Animation");
