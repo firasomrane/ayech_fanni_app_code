@@ -129,8 +129,18 @@
                 android:textColor="@color/white"
                 android:text="Je suis créateur de contenu"
                 android:background="@color/theMainColor"
-                android:onClick=""
                 android:layout_centerInParent="true"/>
+
+            <Button
+                android:id="@+id/se_deconnecter_compte"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:textSize="15dp"
+                android:textColor="@color/white"
+                android:text="Se déconnecter"
+                android:background="@color/theMainColor"
+                android:layout_below="@+id/become_creator"/>
 
         </RelativeLayout>
 

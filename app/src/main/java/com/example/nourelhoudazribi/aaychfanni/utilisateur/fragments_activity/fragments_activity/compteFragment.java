@@ -28,7 +28,7 @@ public class compteFragment extends Fragment implements View.OnClickListener {
 
     private static final String TAG = "compteFragment";
 
-    private Button devenirCreateur, betterExperience;
+    private Button devenirCreateur, betterExperience,logOut;
     private RelativeLayout relativeLayoutForBetterExperience, relativeLayoutMain;
 
     //firebase
@@ -49,6 +49,10 @@ public class compteFragment extends Fragment implements View.OnClickListener {
 
         betterExperience = (Button) rootViewtTwO.findViewById(R.id.better_experience_button);
         betterExperience.setOnClickListener(this);
+
+        //set the log out button
+        logOut =(Button) rootViewtTwO.findViewById(R.id.se_deconnecter_compte);
+        logOut.setOnClickListener(this);
 
         //check if the user is logged in or not to choose which layout to show
         setupFirebaseAuth(rootViewtTwO);
@@ -75,6 +79,9 @@ public class compteFragment extends Fragment implements View.OnClickListener {
                 startActivity(intent2);
 
                 break;
+
+            case R.id.se_deconnecter_compte:
+                //code when log out
 
             default:
                 break;
