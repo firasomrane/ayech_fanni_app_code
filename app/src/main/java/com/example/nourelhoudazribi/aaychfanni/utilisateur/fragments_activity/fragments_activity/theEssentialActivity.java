@@ -51,17 +51,17 @@ public class theEssentialActivity extends AppCompatActivity implements TabLayout
 
         TextView tabTwo = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
         tabTwo.setText("EXPLORER");
-        tabTwo.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_home, 0, 0);
+        tabTwo.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_explore, 0, 0);
         tabLayout.getTabAt(1).setCustomView(tabTwo);
 
         TextView tabThree = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
         tabThree.setText("NOIFICATIONS");
-        tabThree.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_home, 0, 0);
+        tabThree.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_notifications, 0, 0);
         tabLayout.getTabAt(2).setCustomView(tabThree);
 
         TextView tabFour = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
         tabFour.setText("COMPTE");
-        tabFour.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_home, 0, 0);
+        tabFour.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_account, 0, 0);
         tabLayout.getTabAt(3).setCustomView(tabFour);
     }
 
