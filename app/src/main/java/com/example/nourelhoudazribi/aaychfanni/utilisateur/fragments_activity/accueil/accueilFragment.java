@@ -85,7 +85,7 @@ public class accueilFragment extends Fragment implements View.OnClickListener {
         AccueilElements.add(newPost);
         newPost=new Publication("Firas Omrane","New post title", "This is the description for the post", "Youtube.com", "24/11/2017" , R.drawable.youtube_image,R.drawable.user_photo);
         AccueilElements.add(newPost);
-        newPost=new Publication("Firas Omrane","New post title", "This is the description for the post", "Youtube.com", "24/11/2017",R.drawable.youtube_image,R.drawable.user_photo);
+        newPost=new Publication("Firas Omrane","New post title", "This is the description for the post", "Youtube.com", "24/11/2017" ,  R.drawable.youtube_image,R.drawable.user_photo);
         AccueilElements.add(newPost);
         return AccueilElements;
 
