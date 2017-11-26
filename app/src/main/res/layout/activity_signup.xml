@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context="com.example.android.ayech_fanni_copie.utilisateur.fragments_activity.sign_up_and_in.Signup">
+    tools:context="com.example.nourelhoudazribi.aaychfanni.Signup">
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
@@ -14,53 +14,60 @@
         app:srcCompat="@drawable/logo"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_above="@+id/nom"
-        android:layout_centerHorizontal="true" />
+        android:layout_above="@+id/button"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="153dp" />
 
     <EditText
         android:id="@+id/prenom"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:hint="Prénom"
-        android:layout_above="@+id/nom"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
-
     <EditText
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:hint="Nom"
         android:id="@+id/nom"
-        android:layout_above="@+id/user"
-        android:layout_alignStart="@+id/prenom"
-        android:layout_centerHorizontal="true"/>
+        android:layout_marginTop="41dp"
+        android:layout_alignTop="@+id/prenom"
+        android:layout_alignStart="@+id/prenom" />
     <EditText
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:hint="Nom d'utilisateur"
-        android:id="@+id/user"
-        android:layout_above="@+id/password"
-        android:layout_centerHorizontal="true"/>
-    <requestFocus/>
+        android:hint="Adresse email"
+        android:id="@+id/email"
+        android:inputType="textEmailAddress"
+        android:layout_below="@+id/nom"
+        android:layout_alignStart="@+id/nom" />
     <EditText
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:hint="Mot de passe"
+        android:inputType="textPassword"
         android:id="@+id/password"
-        android:layout_marginBottom="23dp"
-        android:layout_above="@+id/button"
-        android:layout_alignStart="@+id/user"
-        android:layout_centerHorizontal="true"/>
+        android:layout_below="@+id/email"
+        android:layout_alignStart="@+id/email" />
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint="Confirmer le mot de passe"
+        android:inputType="textPassword"
+        android:id="@+id/confpassword"
+        android:layout_below="@+id/password"
+        android:layout_alignStart="@+id/password" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttont"
         android:layout_width="126dp"
         android:layout_height="30dp"
         android:layout_gravity="center"
         android:background="@drawable/mybotton"
         android:text="Terminé !"
         android:textColor="@android:color/white"
-        android:layout_marginBottom="53dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/confpassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp" />
 
 </RelativeLayout>

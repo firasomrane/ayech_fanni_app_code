@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.android.ayech_fanni_copie">
+    package="com.example.nourelhoudazribi.aaychfanni">
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/MyMaterialTheme">
-        <activity android:name=".utilisateur.fragments_activity.sign_up_and_in.MainActivity">
-
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".Signup" />
+        <activity android:name=".cmc_fan" />
+        <activity android:name=".Compte_nour" />
+        <activity android:name=".devenir_createur">
         </activity>
+        <activity android:name=".profil_createur"></activity>
         <activity android:name=".utilisateur.fragments_activity.fragments_activity.theEssentialActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,9 +35,6 @@
         <activity android:name=".utilisateur.fragments_activity.supporter.supporterLayoutThree">
 
         </activity>
-
-
-
     </application>
 
 </manifest>

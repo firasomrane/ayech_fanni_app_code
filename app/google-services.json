@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "354290169131",
-    "firebase_url": "https://ayech-fanni.firebaseio.com",
-    "project_id": "ayech-fanni",
-    "storage_bucket": "ayech-fanni.appspot.com"
+    "project_number": "11571882694",
+    "firebase_url": "https://aych-fanni.firebaseio.com",
+    "project_id": "aych-fanni",
+    "storage_bucket": "aych-fanni.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:354290169131:android:89eb5d5ba1768ec4",
+        "mobilesdk_app_id": "1:11571882694:android:554695853c4c00d4",
         "android_client_info": {
-          "package_name": "com.example.android.ayech_fanni_copie"
+          "package_name": "com.example.nourelhoudazribi.aaychfanni"
         }
       },
       "oauth_client": [
         {
-          "client_id": "354290169131-l8pcflod6mdv488h3o6pgiu0b46m6mld.apps.googleusercontent.com",
+          "client_id": "11571882694-vp36g15n8ph7vkdk6lo6srhh412c34to.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.android.ayech_fanni_copie",
-            "certificate_hash": "e5ed955efdd2f1274fb4e97446669985e934c9c1"
+            "package_name": "com.example.nourelhoudazribi.aaychfanni",
+            "certificate_hash": "b45ab9c3bc574046243386e44d68f1becf7d3e93"
           }
         },
         {
-          "client_id": "354290169131-0b0e5t6i5k0ghhda65l5gl2ic7ruj5f7.apps.googleusercontent.com",
+          "client_id": "11571882694-9nkk7j14ljbmm2r2ijll4rufohvt9b08.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBCWkqGXB1KFBlAeomYZwXpKJrs5vBk2Nw"
+          "current_key": "AIzaSyArjljOLxo2OwpYsxEZiu8t-U3tJh4T_is"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "354290169131-0b0e5t6i5k0ghhda65l5gl2ic7ruj5f7.apps.googleusercontent.com",
+              "client_id": "11571882694-9nkk7j14ljbmm2r2ijll4rufohvt9b08.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
