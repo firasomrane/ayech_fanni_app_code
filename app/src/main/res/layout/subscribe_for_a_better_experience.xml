@@ -16,7 +16,7 @@
         />
 
     <Button
-        android:id="@+id/supporter_button_layout_2"
+        android:id="@+id/better_experience_button"
         android:layout_below="@+id/subscribe_for_a_better_experience"
         android:layout_centerHorizontal="true"
         android:layout_width="194dp"

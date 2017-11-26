@@ -1,5 +1,6 @@
 package com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.accueil;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -7,9 +8,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.nourelhoudazribi.aaychfanni.R;
+import com.example.nourelhoudazribi.aaychfanni.Signup;
 
 import java.util.ArrayList;
 
@@ -17,9 +20,10 @@ import java.util.ArrayList;
  * Created by ASUS on 13/11/2017.
  */
 
-public class accueilFragment extends Fragment {
+public class accueilFragment extends Fragment implements View.OnClickListener {
 
     private static final String TAG = "accueilFragment";
+    private Button betterExperience;
     
     @Nullable
     @Override
@@ -33,7 +37,29 @@ public class accueilFragment extends Fragment {
 
         lv.setAdapter(adapter);
 
+        //set the clickListener when the user is not logged in
+
+        betterExperience =(Button) rootView.findViewById(R.id.better_experience_button);
+        betterExperience.setOnClickListener(this);
+
         return rootView;
+    }
+
+    @Override
+    public void onClick(View v) {
+        // handling onClick Events
+        switch (v.getId()) {
+
+            case R.id.better_experience_button:
+                // code for button when user clicks devenir createur.
+                Intent intent = new Intent(getActivity(), Signup.class);
+                startActivity(intent);
+
+                break;
+
+            default:
+                break;
+        }
     }
 
 
