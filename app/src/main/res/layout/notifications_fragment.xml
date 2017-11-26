@@ -18,9 +18,21 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="@android:color/darker_gray" />
-    <ListView
-        android:id="@+id/notifications_fragment_list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/subscribe_for_a_better_experience"/>
+
+        <ListView
+            android:id="@+id/notifications_fragment_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            />
+    </RelativeLayout>
 </LinearLayout>

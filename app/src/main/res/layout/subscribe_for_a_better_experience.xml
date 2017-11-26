@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <TextView
+        android:id="@+id/subscribe_for_a_better_experience"
+        android:layout_below="@+id/linearLay1"
+        android:layout_width="match_parent"
+        android:lines="3"
+        android:layout_height="118dp"
+        android:text="Inscrivez vous pour avoir une meilleure \n expérience et exploitez plus de \n fonctionnalités dans notre application"
+        android:gravity="center"
+        android:background="@color/cardview_shadow_start_color"
+        />
+
+    <Button
+        android:id="@+id/supporter_button_layout_2"
+        android:layout_below="@+id/subscribe_for_a_better_experience"
+        android:layout_centerHorizontal="true"
+        android:layout_width="194dp"
+        android:layout_height="53dp"
+        android:text="S'inscrire"
+        android:textSize="@dimen/buttons_size"
+        android:textColor="@color/white"
+        android:background="@color/theMainColor"
+        android:layout_marginTop="@dimen/supporter_button_margin_top"
+        android:gravity="center"
+        />
+
+</RelativeLayout>
