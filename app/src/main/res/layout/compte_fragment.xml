@@ -34,21 +34,30 @@
                 android:layout_height="wrap_content"
                 layout="@layout/subscribe_for_a_better_experience"/>
 
-            <android.support.constraint.ConstraintLayout
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_height="match_parent"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:visibility="invisible">
+                android:layout_height="match_parent"
+                android:id="@+id/compte_fragment_relative_layout">
 
-                <include
-                    android:layout_width="368dp"
-                    android:layout_height="wrap_content"
-                    layout="@layout/user_account_elemnts"
-                    tools:layout_editor_absoluteY="25dp"
-                    tools:layout_editor_absoluteX="8dp" />/
-            </android.support.constraint.ConstraintLayout>
+                <android.support.constraint.ConstraintLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:visibility="invisible">
+
+                    <include
+                        android:layout_width="368dp"
+                        android:layout_height="wrap_content"
+                        layout="@layout/user_account_elemnts"
+                        tools:layout_editor_absoluteY="25dp"
+                        tools:layout_editor_absoluteX="8dp" />/
+                </android.support.constraint.ConstraintLayout>
+
+            </RelativeLayout>
+
+
 
         </RelativeLayout>
 

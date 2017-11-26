@@ -2,10 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/subscribe_for_a_better_experience"
     >
 
     <TextView
-        android:id="@+id/subscribe_for_a_better_experience"
+        android:id="@+id/subscribe_for_a_better_experience_text"
         android:layout_below="@+id/linearLay1"
         android:layout_width="match_parent"
         android:lines="3"
@@ -17,11 +18,11 @@
 
     <Button
         android:id="@+id/better_experience_button"
-        android:layout_below="@+id/subscribe_for_a_better_experience"
+        android:layout_below="@+id/subscribe_for_a_better_experience_text"
         android:layout_centerHorizontal="true"
         android:layout_width="194dp"
         android:layout_height="53dp"
-        android:text="S'inscrire"
+        android:text="Se connecter"
         android:textSize="@dimen/buttons_size"
         android:textColor="@color/white"
         android:background="@color/theMainColor"
