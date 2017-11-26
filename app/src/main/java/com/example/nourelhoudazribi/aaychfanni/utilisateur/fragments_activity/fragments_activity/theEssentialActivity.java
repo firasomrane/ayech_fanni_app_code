@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.TextView;
@@ -26,8 +25,8 @@ public class theEssentialActivity extends AppCompatActivity implements TabLayout
             Log.d(TAG,"created");
             super.onCreate(savedInstanceState);
             setContentView(R.layout.the_essential_activity);
-            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-            setSupportActionBar(toolbar);
+            //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            //setSupportActionBar(toolbar);
 
             //VIEWPAGER
             vp= (ViewPager) findViewById(R.id.viewPager);

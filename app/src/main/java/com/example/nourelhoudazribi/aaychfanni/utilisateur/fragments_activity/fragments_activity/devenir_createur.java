@@ -1,4 +1,4 @@
-package com.example.nourelhoudazribi.aaychfanni;
+package com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.fragments_activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.nourelhoudazribi.aaychfanni.R;
+import com.example.nourelhoudazribi.aaychfanni.profil_createur;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 
@@ -25,6 +27,7 @@ public class devenir_createur extends AppCompatActivity {
     private ProgressDialog progressDialog1;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
