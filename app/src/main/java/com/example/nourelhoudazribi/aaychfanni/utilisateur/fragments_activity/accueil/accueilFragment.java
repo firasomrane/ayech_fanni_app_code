@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.nourelhoudazribi.aaychfanni.MainActivity;
 import com.example.nourelhoudazribi.aaychfanni.R;
-import com.example.nourelhoudazribi.aaychfanni.Signup;
 
 import java.util.ArrayList;
 
@@ -52,7 +52,7 @@ public class accueilFragment extends Fragment implements View.OnClickListener {
 
             case R.id.better_experience_button:
                 // code for button when user clicks devenir createur.
-                Intent intent = new Intent(getActivity(), Signup.class);
+                Intent intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
 
                 break;

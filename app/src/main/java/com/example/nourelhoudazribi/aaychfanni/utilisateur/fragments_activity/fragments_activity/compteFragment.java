@@ -11,9 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.nourelhoudazribi.aaychfanni.MainActivity;
 import com.example.nourelhoudazribi.aaychfanni.R;
 import com.example.nourelhoudazribi.aaychfanni.devenir_createur;
-import com.example.nourelhoudazribi.aaychfanni.Signup;
 
 /**
  * Created by ASUS on 16/11/2017.
@@ -59,7 +59,7 @@ public class compteFragment extends Fragment implements View.OnClickListener {
 
             case R.id.better_experience_button:
                 // code for button when user clicks devenir createur.
-                Intent intent2 = new Intent(getActivity(), Signup.class);
+                Intent intent2 = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent2);
 
                 break;
