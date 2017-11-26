@@ -1,4 +1,4 @@
-package com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.fragments_activity;
+package com.example.nourelhoudazribi.aaychfanni;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -10,8 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.nourelhoudazribi.aaychfanni.R;
-import com.example.nourelhoudazribi.aaychfanni.profil_createur;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 

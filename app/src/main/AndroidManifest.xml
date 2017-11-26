@@ -13,7 +13,7 @@
         <activity android:name=".Signup" />
         <activity android:name=".cmc_fan" />
         <activity android:name=".Compte_nour" />
-        <activity android:name=".utilisateur.fragments_activity.fragments_activity.devenir_createur">
+        <activity android:name=".devenir_createur">
         </activity>
         <activity android:name=".profil_createur"></activity>
         <activity android:name=".utilisateur.fragments_activity.fragments_activity.theEssentialActivity">

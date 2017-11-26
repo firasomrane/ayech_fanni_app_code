@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.fragments_activity.devenir_createur">
+    tools:context="com.example.nourelhoudazribi.aaychfanni.devenir_createur">
 
     <EditText
         android:id="@+id/editText8"
