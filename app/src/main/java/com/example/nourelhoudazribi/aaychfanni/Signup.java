@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.fragments_activity.theEssentialActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -97,7 +98,7 @@ public class Signup extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
                                 Toast.makeText(Signup.this,"Enregistrement réussi",Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(),Compte_nour.class));
+                                startActivity(new Intent(getApplicationContext(),theEssentialActivity.class));
                                 finish();
                                 userinformation info = new userinformation(n,pr);
                                 FirebaseUser user = firebaseAuth.getCurrentUser();

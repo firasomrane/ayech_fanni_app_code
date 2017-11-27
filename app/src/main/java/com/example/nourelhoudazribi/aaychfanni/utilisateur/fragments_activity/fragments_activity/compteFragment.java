@@ -35,7 +35,6 @@ public class compteFragment extends Fragment implements View.OnClickListener {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -81,7 +80,8 @@ public class compteFragment extends Fragment implements View.OnClickListener {
                 break;
 
             case R.id.se_deconnecter_compte:
-                //code when log out
+                mAuth.signOut();
+                //getActivity().finish();
 
             default:
                 break;
@@ -148,6 +148,12 @@ public class compteFragment extends Fragment implements View.OnClickListener {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                     // toastMessage("Successfully signed out.");
+
+                    //if you want to change activity when the user is logged out
+                    /*Intent intent = new Intent(getActivity(), LoginActivity.class);
+                    //this is to clean the activities stack when the user clicks back arrow icon
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);*/
                 }
                 // ...
             }

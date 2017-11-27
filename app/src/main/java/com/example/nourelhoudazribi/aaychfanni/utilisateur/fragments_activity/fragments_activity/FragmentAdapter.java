@@ -30,7 +30,6 @@ public class FragmentAdapter extends FragmentPagerAdapter {
         fragmentManager = fm ;
     }
 
-
     @Override
     public Fragment getItem(int position) {
         return fragments.get(position);
