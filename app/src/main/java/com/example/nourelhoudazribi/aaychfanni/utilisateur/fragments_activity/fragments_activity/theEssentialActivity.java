@@ -4,9 +4,8 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.widget.TextView;
 
 import com.example.nourelhoudazribi.aaychfanni.R;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.accueil.accueilFragment;
@@ -16,73 +15,95 @@ import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.ac
  * Created by ASUS on 14/11/2017.
  */
 
-public class theEssentialActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
-        ViewPager vp;
-        TabLayout tabLayout;
-        private static final String TAG = "theEssentialActivity";
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            Log.d(TAG,"created");
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.the_essential_activity);
-            //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-            //setSupportActionBar(toolbar);
+public class theEssentialActivity extends AppCompatActivity {
+    TabLayout tabLayout ;
+    Toolbar toolbar;
+    ViewPager viewPager ;
+    private static final String TAG = "theEssentialActivity";
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        Log.d(TAG,"created");
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.the_essential_activity);
 
-            //VIEWPAGER
-            vp= (ViewPager) findViewById(R.id.viewPager);
-            this.addPages();
-            //TABLAYOUT
-            tabLayout= (TabLayout) findViewById(R.id.tablayout);
-            tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-            tabLayout.setupWithViewPager(vp);
-            //tabLayout.getTabAt(0).setIcon(R.drawable.ic_home);
-            tabLayout.addOnTabSelectedListener(this);
 
-            setupTabIcons();
-        }
+        //VIEWPAGER
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
+        //TABLAYOUT
+        tabLayout= (TabLayout) findViewById(R.id.tablayout);
+        FragmentAdapter fragmentAdapter = new FragmentAdapter(getSupportFragmentManager());
 
-        //to get the icons below the text in the tabLayout
-    private void setupTabIcons() {
+        fragmentAdapter.addFragments(new accueilFragment(),"ACCUEIL");
+        fragmentAdapter.addFragments(new exploreFragment(),"EXPLORER");
+        fragmentAdapter.addFragments(new notificationsFragment(),"notifications");
+        fragmentAdapter.addFragments(new compteFragment(),"compte");
 
-        TextView tabOne = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
-        tabOne.setText("ACCUEIL");
-        tabOne.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_home, 0, 0);
-        tabLayout.getTabAt(0).setCustomView(tabOne);
+        viewPager.setAdapter(fragmentAdapter);
+        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.getTabAt(0).setIcon(R.drawable.ic_accueil_red);
+        tabLayout.getTabAt(1).setIcon(R.drawable.ic_explore);
+        tabLayout.getTabAt(2).setIcon(R.drawable.ic_notifications);
+        tabLayout.getTabAt(3).setIcon(R.drawable.ic_account);
 
-        TextView tabTwo = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
-        tabTwo.setText("EXPLORER");
-        tabTwo.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_explore, 0, 0);
-        tabLayout.getTabAt(1).setCustomView(tabTwo);
+        tabLayout.addOnTabSelectedListener(listener(viewPager));
 
-        TextView tabThree = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
-        tabThree.setText("NOIFICATIONS");
-        tabThree.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_notifications, 0, 0);
-        tabLayout.getTabAt(2).setCustomView(tabThree);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+            @Override
+            public void onPageSelected(int position) {
+                switch (position){
+                    case 0:
+                        tabLayout.getTabAt(0).setIcon(R.drawable.ic_accueil_red);
+                        tabLayout.getTabAt(1).setIcon(R.drawable.ic_explore);
+                        tabLayout.getTabAt(2).setIcon(R.drawable.ic_notifications);
+                        tabLayout.getTabAt(3).setIcon(R.drawable.ic_account);
+                        break;
+                    case 1:
+                        tabLayout.getTabAt(0).setIcon(R.drawable.ic_home);
+                        tabLayout.getTabAt(1).setIcon(R.drawable.ic_explore_red);
+                        tabLayout.getTabAt(2).setIcon(R.drawable.ic_notifications);
+                        tabLayout.getTabAt(3).setIcon(R.drawable.ic_account);
+                        break;
+                    case 2:
+                        tabLayout.getTabAt(0).setIcon(R.drawable.ic_home);
+                        tabLayout.getTabAt(1).setIcon(R.drawable.ic_explore);
+                        tabLayout.getTabAt(2).setIcon(R.drawable.ic_notification_red);
+                        tabLayout.getTabAt(3).setIcon(R.drawable.ic_account);
+                        break;
+                    case 3:
+                        tabLayout.getTabAt(0).setIcon(R.drawable.ic_home);
+                        tabLayout.getTabAt(1).setIcon(R.drawable.ic_explore);
+                        tabLayout.getTabAt(2).setIcon(R.drawable.ic_notifications);
+                        tabLayout.getTabAt(3).setIcon(R.drawable.ic_compte_red);
+                        break;
+                }
+            }
+            @Override
+            public void onPageScrollStateChanged(int state) {
 
-        TextView tabFour = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
-        tabFour.setText("COMPTE");
-        tabFour.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_account, 0, 0);
-        tabLayout.getTabAt(3).setCustomView(tabFour);
+            }
+        });
     }
 
-        private void addPages()
-        {
-            MyPagerAdapter pagerAdapter=new MyPagerAdapter(this.getSupportFragmentManager());
-            pagerAdapter.addFragment(new accueilFragment());
-            pagerAdapter.addFragment(new exploreFragment());
-            pagerAdapter.addFragment(new notificationsFragment());
-            pagerAdapter.addFragment(new compteFragment());
-            //SET ADAPTER TO VP
-            vp.setAdapter(pagerAdapter);
-        }
-        public void onTabSelected(TabLayout.Tab tab) {
-            vp.setCurrentItem(tab.getPosition());
-        }
-        @Override
-        public void onTabUnselected(TabLayout.Tab tab) {
-        }
-        @Override
-        public void onTabReselected(TabLayout.Tab tab) {
-        }
+    public TabLayout.OnTabSelectedListener listener(final ViewPager pager){
+        return new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                pager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        };
+    }
 
 }
