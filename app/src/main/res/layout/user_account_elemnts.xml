@@ -38,11 +38,11 @@
                         />
 
                     <TextView
-                        android:id="@+id/the_text"
+                        android:id="@+id/compte_layout_name_field"
                         android:layout_width="304dp"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:textAppearanceMedium"
-                        android:text="Nom prenon"
+                        android:text=""
                         android:textSize="35px"
                         android:paddingLeft="30dp"
                         android:paddingTop="27px"
