@@ -16,6 +16,9 @@
         <activity android:name=".devenir_createur">
         </activity>
         <activity android:name=".profil_createur"></activity>
+
+
+
         <activity android:name=".utilisateur.fragments_activity.fragments_activity.theEssentialActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,6 +27,13 @@
             </intent-filter>
         </activity>
 
+        <!--Compte activities-->
+        <activity android:name=".utilisateur.fragments_activity.compte.modifierVotreProfil">
+
+        </activity>
+
+
+        <!--Support activities-->
         <activity android:name=".utilisateur.fragments_activity.supporter.supporterLayoutOne">
 
         </activity>
@@ -35,6 +45,8 @@
         <activity android:name=".utilisateur.fragments_activity.supporter.supporterLayoutThree">
 
         </activity>
+
+        <!---->
     </application>
 
 </manifest>
