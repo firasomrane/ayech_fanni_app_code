@@ -32,13 +32,14 @@
             <include
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                layout="@layout/subscribe_for_a_better_experience"/>
+                layout="@layout/subscribe_for_a_better_experience"
+                android:visibility="gone"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/compte_fragment_relative_layout"
-                android:visibility="invisible">
+                android:visibility="visible">
 
                 <android.support.constraint.ConstraintLayout
                     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -63,6 +64,14 @@
         </RelativeLayout>
 
     </LinearLayout>
+
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        layout="@layout/edit_icon_top_creator"
+        android:visibility="gone">
+
+    </include>
 
 </android.support.design.widget.CoordinatorLayout>
 

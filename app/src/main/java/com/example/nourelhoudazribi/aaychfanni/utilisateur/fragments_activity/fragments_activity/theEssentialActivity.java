@@ -8,8 +8,10 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 import com.example.nourelhoudazribi.aaychfanni.R;
+import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.Utils.UniversalImageLoader;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.accueil.accueilFragment;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.compte.compteFragment;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 
 /**
@@ -26,6 +28,9 @@ public class theEssentialActivity extends AppCompatActivity {
         Log.d(TAG,"created");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.the_essential_activity);
+
+        //this is for loading pictures purpose
+        initImageLoader();
 
 
         //VIEWPAGER
@@ -105,6 +110,11 @@ public class theEssentialActivity extends AppCompatActivity {
 
             }
         };
+    }
+
+    private void initImageLoader(){
+        UniversalImageLoader universalImageLoader = new UniversalImageLoader(theEssentialActivity.this);
+        ImageLoader.getInstance().init(universalImageLoader.getConfig());
     }
 
 }

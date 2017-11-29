@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +20,11 @@ import android.widget.Toast;
 import com.example.nourelhoudazribi.aaychfanni.MainActivity;
 import com.example.nourelhoudazribi.aaychfanni.R;
 import com.example.nourelhoudazribi.aaychfanni.devenir_createur;
+import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.Utils.FirebaseMethods;
+import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.Utils.UniversalImageLoader;
+import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.User;
+import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.UserAccountSettings;
+import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.UserSettings;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -35,8 +42,11 @@ public class compteFragment extends Fragment implements View.OnClickListener {
     private static final String TAG = "compteFragment";
 
     private Button devenirCreateur, betterExperience,logOut;
-    private RelativeLayout relativeLayoutForBetterExperience, relativeLayoutMain,modifierVotreProfil;
+    private RelativeLayout relativeLayoutForBetterExperience, relativeLayoutMain,modifierVotreProfil,createPost;
+    private RelativeLayout vosSupporteurs;
     private TextView compteLayoutNameField;
+    private ImageView mProfilePhoto;
+    private ProgressBar mProgressBar;
 
     //add Firebase Database stuff
     private FirebaseDatabase mFirebaseDatabase;
@@ -44,6 +54,9 @@ public class compteFragment extends Fragment implements View.OnClickListener {
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference myRef;
     private  String userID;
+    private FirebaseMethods mFirebaseMethods;
+
+
 
     @Nullable
     @Override
@@ -55,8 +68,10 @@ public class compteFragment extends Fragment implements View.OnClickListener {
         mAuth = FirebaseAuth.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         myRef = mFirebaseDatabase.getReference();
-        FirebaseUser user = mAuth.getCurrentUser();
-        userID = user.getUid();
+        if(mAuth.getCurrentUser() != null){
+            userID = mAuth.getCurrentUser().getUid();
+        }
+        mFirebaseMethods = new FirebaseMethods(getActivity());
 
         devenirCreateur = (Button) rootViewtTwO.findViewById(R.id.become_creator);
         devenirCreateur.setOnClickListener(this);
@@ -70,6 +85,10 @@ public class compteFragment extends Fragment implements View.OnClickListener {
         logOut =(Button) rootViewtTwO.findViewById(R.id.se_deconnecter_compte);
         logOut.setOnClickListener(this);
 
+        //set the progressbar
+        mProgressBar = (ProgressBar) rootViewtTwO.findViewById(R.id.profileProgressBar);
+        mProgressBar.setVisibility(View.GONE);
+
         //set the modifier votre profil clickListener
         modifierVotreProfil = (RelativeLayout) rootViewtTwO.findViewById(R.id.modifier_votre_profil_relative_layout) ;
         modifierVotreProfil.setOnClickListener(this);
@@ -80,9 +99,23 @@ public class compteFragment extends Fragment implements View.OnClickListener {
         //set the name text from the firebase
         compteLayoutNameField =(TextView) rootViewtTwO.findViewById(R.id.compte_layout_name_field) ;
 
+        //set the user profile image
+        mProfilePhoto = (ImageView) rootViewtTwO.findViewById(R.id.profile_photo);
+        ///setProfileImage();
+
+
+
         Log.d(TAG, "onCreateView: rootView");
         return rootViewtTwO;
     }
+
+    ////set the user profile photo
+    private void setProfileImage(){
+        Log.d(TAG, "setProfileImage: setting profile photo.");
+        String imgURL = "www.androidcentral.com/sites/androidcentral.com/files/styles/xlarge/public/article_images/2016/08/ac-lloyd.jpg?itok=bb72IeLf";
+        UniversalImageLoader.setImage(imgURL, mProfilePhoto, mProgressBar, "https://");
+    }
+
 
     @Override
     public void onClick(View v) {
@@ -132,7 +165,7 @@ public class compteFragment extends Fragment implements View.OnClickListener {
      *
      * @param user
      */
-    private void checkCurrentUser(FirebaseUser user, android.view.View rootView) {
+    private void checkCurrentUser(FirebaseUser user, final android.view.View rootView) {
         Log.d(TAG, "checkCurrentUser: checking if User is logged in.");
 
         relativeLayoutForBetterExperience = (RelativeLayout) rootView.findViewById(R.id.subscribe_for_a_better_experience);
@@ -151,12 +184,22 @@ public class compteFragment extends Fragment implements View.OnClickListener {
             relativeLayoutForBetterExperience.setVisibility(View.GONE);
             relativeLayoutMain.setVisibility(View.VISIBLE);
 
-            myRef.child("users").addValueEventListener(new ValueEventListener() {
+            //if the user is logged in fetch his profile informations
+            myRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    String lastname = dataSnapshot.child(userID).child("lastname").getValue(String.class);
-                    String username = dataSnapshot.child(userID).child("username").getValue(String.class);
-                    compteLayoutNameField.setText(username + " " +lastname);
+                    // This method is called once with the initial value and again
+                    // whenever data at this location is updated.
+                    // showData(dataSnapshot);
+
+                    //checks if he hese creator and show remaining parts
+                    setCreatorWidgets(mFirebaseMethods.getUserSettings(dataSnapshot),rootView);
+
+                    //retrieve user information from the database
+                    setProfileWidgets(mFirebaseMethods.getUserSettings(dataSnapshot));
+
+                    //retrieve images for the user in question
+
                 }
 
                 @Override
@@ -165,7 +208,49 @@ public class compteFragment extends Fragment implements View.OnClickListener {
                 }
             });
         }
+
     }
+
+    //set the apperance if the user is creator
+    private void setCreatorWidgets(UserSettings userSettings ,android.view.View rootView){
+        Log.d(TAG, "setProfileWidgets: setting widgets with data retrieving from firebase database: " + userSettings.toString());
+        Log.d(TAG, "setProfileWidgets: setting widgets with data retrieving from firebase database: " + userSettings.getUser().getEst_createur());
+
+        User user = userSettings.getUser();
+        //if the user is creator set the visivility of the remaining layout
+        if(user.getEst_createur()){
+
+            vosSupporteurs =(RelativeLayout) rootView.findViewById(R.id.vos_supporteurs_relative_layout);
+            createPost =(RelativeLayout) rootView.findViewById(R.id.create_post);
+            vosSupporteurs.setVisibility(View.VISIBLE);
+            createPost.setVisibility(View.VISIBLE);
+            devenirCreateur.setVisibility(View.GONE);
+        }
+
+    }
+
+
+        //set the general profile widgets
+    private void setProfileWidgets(UserSettings userSettings){
+        Log.d(TAG, "setProfileWidgets: setting widgets with data retrieving from firebase database: " + userSettings.toString());
+        Log.d(TAG, "setProfileWidgets: setting widgets with data retrieving from firebase database: " + userSettings.getSettings().getUsername());
+
+
+        //User user = userSettings.getUser();
+        UserAccountSettings settings = userSettings.getSettings();
+
+        UniversalImageLoader.setImage(settings.getProfile_photo(), mProfilePhoto, null, "");
+
+        //mDisplayName.setText(settings.getDisplay_name());
+        compteLayoutNameField.setText(settings.getUsername());
+        /*mWebsite.setText(settings.getWebsite());
+        mDescription.setText(settings.getDescription());
+        mPosts.setText(String.valueOf(settings.getPosts()));
+        mFollowing.setText(String.valueOf(settings.getFollowing()));
+        mFollowers.setText(String.valueOf(settings.getFollowers()));
+        mProgressBar.setVisibility(View.GONE);*/
+    }
+
 
     /**
      * Setup the firebase auth object

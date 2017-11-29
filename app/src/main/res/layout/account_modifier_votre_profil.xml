@@ -19,7 +19,7 @@
         android:weightSum="100">
 
         <ImageView
-            android:id="@+id/m_icon"
+            android:id="@+id/back_arrow"
             android:layout_width="30dp"
             android:layout_weight="10"
             android:layout_height="30dp"
@@ -41,7 +41,7 @@
             />
 
         <ImageView
-            android:id="@+id/m_fleche"
+            android:id="@+id/save_changes"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/ic_checkmark"

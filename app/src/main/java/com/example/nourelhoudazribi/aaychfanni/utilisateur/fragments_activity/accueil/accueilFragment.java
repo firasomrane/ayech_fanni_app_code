@@ -10,14 +10,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.nourelhoudazribi.aaychfanni.MainActivity;
 import com.example.nourelhoudazribi.aaychfanni.R;
+import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.Utils.FirebaseMethods;
+import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.User;
+import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.UserSettings;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -29,18 +38,32 @@ public class accueilFragment extends Fragment implements View.OnClickListener {
 
     private static final String TAG = "accueilFragment";
     private Button betterExperience;
-    private RelativeLayout relativeLayout;
+    private RelativeLayout relativeLayout,createPost;
     private ListView lv;
 
-    //firebase
+    //add Firebase Database stuff
+    private FirebaseDatabase mFirebaseDatabase;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private DatabaseReference myRef;
+    private  String userID;
+    private FirebaseMethods mFirebaseMethods;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView: created");
         View rootView=inflater.inflate(R.layout.accueil_fragment,container,false);
+
+        //set the user
+        mAuth = FirebaseAuth.getInstance();
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        myRef = mFirebaseDatabase.getReference();
+        if(mAuth.getCurrentUser() != null){
+            userID = mAuth.getCurrentUser().getUid();
+        }
+        mFirebaseMethods = new FirebaseMethods(getActivity());
+
 
         lv= (ListView) rootView.findViewById(R.id.accueil_fragment_list);
 
@@ -107,7 +130,7 @@ public class accueilFragment extends Fragment implements View.OnClickListener {
      * checks to see if the @param 'user' is logged in
      * @param user
      */
-    private void checkCurrentUser(FirebaseUser user,android.view.View rootView){
+    private void checkCurrentUser(FirebaseUser user, final android.view.View rootView){
         Log.d(TAG, "checkCurrentUser: checking if user is logged in.");
 
         relativeLayout = (RelativeLayout) rootView.findViewById(R.id.subscribe_for_a_better_experience) ;
@@ -126,7 +149,37 @@ public class accueilFragment extends Fragment implements View.OnClickListener {
         else{
             relativeLayout.setVisibility(View.GONE);
             lv.setVisibility(View.VISIBLE);
+
+            //if the user is logged in fetch his profile informations
+            myRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    //checks if he hese creator and show remaining parts
+                    setCreatorWidgets(mFirebaseMethods.getUserSettings(dataSnapshot),rootView);
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
         }
+    }
+
+    //set the apperance if the user is creator
+    private void setCreatorWidgets(UserSettings userSettings , android.view.View rootView){
+        Log.d(TAG, "setProfileWidgets: setting widgets with data retrieving from firebase database: " + userSettings.toString());
+        Log.d(TAG, "setProfileWidgets: setting widgets with data retrieving from firebase database: " + userSettings.getUser().getEst_createur());
+
+        User user = userSettings.getUser();
+        //if the user is creator set the visivility of the remaining layout
+        if(user.getEst_createur()){
+            createPost =(RelativeLayout) rootView.findViewById(R.id.create_post);
+            createPost.setVisibility(View.VISIBLE);
+        }
+
     }
 
     /**

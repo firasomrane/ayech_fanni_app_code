@@ -25,7 +25,7 @@
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         xmlns:app="http://schemas.android.com/apk/res-auto"
-                        android:id="@+id/m_icon"
+                        android:id="@+id/profile_photo"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:src="@drawable/user_photo"
@@ -83,7 +83,7 @@
             <include
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                layout="@layout/account_vos_createurs" />/
+                layout="@layout/account_vos_createurs_text" />/
         </RelativeLayout>
 
         <RelativeLayout
@@ -108,6 +108,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 layout="@layout/account_parametres" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/vos_supporteurs_relative_layout"
+            android:layout_below="@+id/parametres_relative_layout"
+            android:visibility="gone">
+
+            <include
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/account_vos_supporteurs_text" />
 
 
         </RelativeLayout>
@@ -147,6 +162,12 @@
 
 
     </RelativeLayout>
+    <ProgressBar
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/profileProgressBar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"/>
 
 
 </merge>

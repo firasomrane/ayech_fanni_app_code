@@ -1,23 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/accueil_toolbar_text"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:padding="16dp"
-        android:text="Accueil"
-        android:textSize="@dimen/toolbarTextSize" />
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/accueil_toolbar_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="16dp"
+            android:text="Accueil"
+            android:textSize="@dimen/toolbarTextSize" />
 
-    <View
-        android:id="@+id/separator"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@android:color/darker_gray" />
+        <View
+            android:id="@+id/separator"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@android:color/darker_gray" />
+
+        <include
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/edit_icon_top_creator"
+            android:visibility="gone">
+
+        </include>
+    </RelativeLayout>
+
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -26,13 +41,15 @@
         <include
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            layout="@layout/subscribe_for_a_better_experience"/>
+            layout="@layout/subscribe_for_a_better_experience"
+            android:visibility="gone"/>
 
         <ListView
             android:id="@+id/accueil_fragment_list"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:visibility="invisible"/>
+            android:visibility="visible"/>
 
     </RelativeLayout>
-</LinearLayout>
+
+    </LinearLayout>

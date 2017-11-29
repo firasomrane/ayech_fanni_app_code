@@ -43,9 +43,32 @@
 
     </LinearLayout>
 
-    <View
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="8dp"
-        android:background="@android:color/darker_gray" />
+        android:layout_height="wrap_content">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:background="@android:color/darker_gray" />
+
+        <TextView
+            android:id="@+id/supporter_text_bg_grey"
+            android:layout_below="@+id/linearLay1"
+            android:layout_width="match_parent"
+            android:lines="2"
+            android:layout_height="60dp"
+            android:text="Les créateurs que vous suivez"
+            android:gravity="center"
+            android:background="@color/cardview_shadow_start_color"
+            />
+
+    </RelativeLayout>
+
+
+    <ListView
+        android:id="@+id/vos_createurs_list_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
 
 </LinearLayout>
