@@ -25,6 +25,7 @@ import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.Ut
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.User;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.UserAccountSettings;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.UserSettings;
+import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.share.ShareOne;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -225,6 +226,14 @@ public class compteFragment extends Fragment implements View.OnClickListener {
             vosSupporteurs.setVisibility(View.VISIBLE);
             createPost.setVisibility(View.VISIBLE);
             devenirCreateur.setVisibility(View.GONE);
+
+            createPost.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity() , ShareOne.class);
+                    startActivity(intent);
+                }
+            });
         }
 
     }

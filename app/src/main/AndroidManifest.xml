@@ -56,6 +56,15 @@
         </activity>
 
         <!---->
+
+        <!--Share actvities-->
+        <activity android:name=".utilisateur.fragments_activity.share.ShareOne">
+
+        </activity>
+        <activity android:name=".utilisateur.fragments_activity.share.ShareTwo">
+
+        </activity>
+
     </application>
 
 </manifest>

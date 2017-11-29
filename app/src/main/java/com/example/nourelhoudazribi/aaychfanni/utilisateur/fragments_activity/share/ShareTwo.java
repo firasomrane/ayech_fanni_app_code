@@ -1,0 +1,19 @@
+package com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.share;
+
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+
+import com.example.nourelhoudazribi.aaychfanni.R;
+
+/**
+ * Created by ASUS on 29/11/2017.
+ */
+
+public class ShareTwo extends AppCompatActivity {
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.share_two_activity_layout);
+    }
+}

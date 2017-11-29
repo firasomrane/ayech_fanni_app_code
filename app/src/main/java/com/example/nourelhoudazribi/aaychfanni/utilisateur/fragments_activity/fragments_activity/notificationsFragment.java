@@ -19,6 +19,7 @@ import com.example.nourelhoudazribi.aaychfanni.R;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.Utils.FirebaseMethods;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.User;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.UserSettings;
+import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.share.ShareOne;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -165,6 +166,14 @@ public class notificationsFragment extends Fragment implements View.OnClickListe
         if(user.getEst_createur()){
             createPost =(RelativeLayout) rootView.findViewById(R.id.create_post);
             createPost.setVisibility(View.VISIBLE);
+
+            createPost.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity() , ShareOne.class);
+                    startActivity(intent);
+                }
+            });
         }
 
     }

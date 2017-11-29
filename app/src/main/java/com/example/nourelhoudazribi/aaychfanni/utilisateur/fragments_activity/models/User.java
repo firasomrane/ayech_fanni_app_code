@@ -14,14 +14,24 @@ public class User implements Parcelable {
     private String email;
     private String username;
     private Boolean est_createur;
+    private long argent;
 
-    public User(String user_id, long phone_number, String email, String username, Boolean est_createur) {
+    public User(String user_id, long phone_number, String email, String username, Boolean est_createur, long argent) {
         this.user_id = user_id;
         this.phone_number = phone_number;
         this.email = email;
         this.username = username;
         this.est_createur = est_createur;
+        this.argent = argent;
     }
+
+    /*public User(String user_id, long phone_number, String email, String username, Boolean est_createur) {
+        this.user_id = user_id;
+        this.phone_number = phone_number;
+        this.email = email;
+        this.username = username;
+        this.est_createur = est_createur;
+    }*/
 
 
     public User() {
@@ -89,6 +99,14 @@ public class User implements Parcelable {
         this.est_createur = est_createur;
     }
 
+    public long getArgent() {
+        return argent;
+    }
+
+    public void setArgent(long argent) {
+        this.argent = argent;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -97,6 +115,7 @@ public class User implements Parcelable {
                 ", email='" + email + '\'' +
                 ", username='" + username + '\'' +
                 ", est_createur='" + est_createur + '\'' +
+                ", argent='" + argent + '\'' +
                 '}';
     }
 

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linearLay1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/m_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_fleche_arriere"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/suivant"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:text="Suivant"
+                android:textSize="@dimen/toolbarTextSize"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:gravity="center_vertical"
+                />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/supporter_text_bg_grey"
+        android:layout_below="@+id/linearLay1"
+        android:layout_width="match_parent"
+        android:lines="2"
+        android:layout_height="70dp"
+        android:text="Qui peut voir cette publication ?"
+        android:gravity="center"
+        android:background="@color/cardview_shadow_start_color"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:id="@+id/radio_buttons"
+        android:layout_below="@+id/supporter_text_bg_grey">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/post_target_radio_group">
+
+            <RadioButton
+                android:id="@+id/tout_le_monde_radio_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tout le monde"
+                android:layout_marginLeft="@dimen/radio_button_margin_left"
+                android:layout_marginTop="35dp"
+                android:checked="true"
+                android:buttonTint="@color/theMainColor"
+                />
+
+            <RadioButton
+                android:id="@+id/les_supporteurs_radio_button"
+                android:layout_below="@+id/supporter_radioButton1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Seulement les supporteurs"
+                android:layout_marginLeft="@dimen/radio_button_margin_left"
+                android:layout_marginTop="20dp"
+                android:buttonTint="@color/theMainColor"
+                />
+
+        </RadioGroup>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

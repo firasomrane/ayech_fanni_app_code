@@ -21,6 +21,7 @@
     <!--Publication-->
     <dimen name="Publication_icons_width">30dp</dimen>
     <dimen name="like_and_comment_text">14sp</dimen>
+    <dimen name="new_post_icons">40dp</dimen>
 
 
 </resources>
