@@ -18,8 +18,9 @@ public class UserAccountSettings {
     private String website;
     private String user_id;
     private Double target_sum;
+    private String cover_photo;
 
-    public UserAccountSettings(String description, String display_name, long followers, long following, long posts, String profile_photo, String username, String website, String user_id, Double target_sum) {
+    public UserAccountSettings(String description, String display_name, long followers, long following, long posts, String profile_photo, String username, String website, String user_id, Double target_sum, String cover_photo) {
         this.description = description;
         this.display_name = display_name;
         this.followers = followers;
@@ -30,7 +31,21 @@ public class UserAccountSettings {
         this.website = website;
         this.user_id = user_id;
         this.target_sum = target_sum;
+        this.cover_photo = cover_photo;
     }
+
+    /*public UserAccountSettings(String description, String display_name, long followers, long following, long posts, String profile_photo, String username, String website, String user_id, Double target_sum) {
+        this.description = description;
+        this.display_name = display_name;
+        this.followers = followers;
+        this.following = following;
+        this.posts = posts;
+        this.profile_photo = profile_photo;
+        this.username = username;
+        this.website = website;
+        this.user_id = user_id;
+        this.target_sum = target_sum;
+    }*/
 
     /*public UserAccountSettings(String description, String display_name, long followers,
                                long following, long posts, String profile_photo, String username,
@@ -154,6 +169,14 @@ public class UserAccountSettings {
 
     public void setTarget_sum(Double target_sum) {
         this.target_sum = target_sum;
+    }
+
+    public String getCover_photo() {
+        return cover_photo;
+    }
+
+    public void setCover_photo(String cover_photo) {
+        this.cover_photo = cover_photo;
     }
 
     @Override
