@@ -54,6 +54,7 @@
     <string name="string_open_camera">Open Camera</string>
     <string name="string_next">Next</string>
     <string name="string_share">Share</string>
+    <string name="auth_failed">auth_failed</string>
 
 
 </resources>

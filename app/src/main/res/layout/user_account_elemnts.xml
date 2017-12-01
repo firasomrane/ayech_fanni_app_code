@@ -28,7 +28,6 @@
                         android:id="@+id/profile_photo"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:src="@drawable/user_photo"
                         app:civ_border_width="2dp"
                         app:civ_border_color="#FF000000"
                         android:layout_centerVertical="true"

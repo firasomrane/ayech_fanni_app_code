@@ -151,7 +151,7 @@ public class accueilFragment extends Fragment implements View.OnClickListener {
             lv.setVisibility(View.VISIBLE);
 
             //if the user is logged in fetch his profile informations
-            myRef.addValueEventListener(new ValueEventListener() {
+            myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
 
