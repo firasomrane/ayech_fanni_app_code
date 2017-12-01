@@ -16,8 +16,10 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -27,6 +29,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
+
+import static com.example.nourelhoudazribi.aaychfanni.R.string.photo;
 
 /**
  * Created by ASUS on 28/11/2017.
@@ -83,12 +87,35 @@ public class FirebaseMethods {
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Uri firebaseUrl = taskSnapshot.getDownloadUrl();
+                    final Uri firebaseUrl = taskSnapshot.getDownloadUrl();
 
                     Toast.makeText(mContext, "photo upload success", Toast.LENGTH_SHORT).show();
 
+
+
+
                     //add the new photo to 'photos' node and 'user_photos' node
-                    addPostToDatabase(urlEntered ,shareType,selectedTitle,selectedDescription, firebaseUrl.toString());
+                    myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+
+                            //retrieve user information from the database
+
+                            addPostToDatabase(urlEntered ,shareType,selectedTitle,selectedDescription, firebaseUrl.toString(),getUserSettings(dataSnapshot));
+
+                            //retrieve images for the user in question
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+
+
+
+                    //addPostToDatabase(urlEntered ,shareType,selectedTitle,selectedDescription, firebaseUrl.toString());
 
                     //navigate to the main feed so the user can see their photo
 
@@ -183,28 +210,41 @@ public class FirebaseMethods {
         return sdf.format(new Date());
     }
 
-    private void addPostToDatabase(String urlEntered, String shareType, String selectedTitle, String selectedDescription, String url){
+    ///Add post to the real time database
+
+    public void addPostToDatabase(String urlEntered, String shareType, String selectedTitle, String selectedDescription, String url ,UserSettings userSettings){
         Log.d(TAG, "addPhotoToDatabase: adding photo to database.");
 
-        String newPhotoKey = myRef.child(mContext.getString(R.string.dbname_posts)).push().getKey();
-        Post photo = new Post();
+        UserAccountSettings settings = userSettings.getSettings();
 
-        photo.setPost_url(urlEntered);
-        photo.setShare_type(shareType);
-        photo.setTitle(selectedTitle);
-        photo.setDescription(selectedDescription);
-        photo.setDate_created(getTimestamp());
-        photo.setImage_path(url);
-        photo.setUser_id(FirebaseAuth.getInstance().getCurrentUser().getUid());
-        photo.setPhoto_id(newPhotoKey);
+        String newPostKey = myRef.child(mContext.getString(R.string.dbname_posts)).push().getKey();
+        Post post = new Post();
+
+        post.setCategorie(settings.getCategorie());
+        post.setPost_url(urlEntered);
+        post.setShare_type(shareType);
+        post.setTitle(selectedTitle);
+        post.setDescription(selectedDescription);
+        post.setDate_created(getTimestamp());
+        post.setImage_path(url);
+        post.setUser_id(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        post.setPhoto_id(newPostKey);
+
+
+        ///we have to get the creator categorie from his user account settings
+
+
 
         //insert into database
+
+        Log.d(TAG, "addPostToDatabase: the post before add to database"+ post.toString());
         myRef.child(mContext.getString(R.string.dbname_user_posts))
                 .child(FirebaseAuth.getInstance().getCurrentUser()
-                        .getUid()).child(newPhotoKey).setValue(photo);
-        myRef.child(mContext.getString(R.string.dbname_posts)).child(newPhotoKey).setValue(photo);
+                        .getUid()).child(newPostKey).setValue(post);
+        myRef.child(mContext.getString(R.string.dbname_posts)).child(newPostKey).setValue(post);
 
     }
+
 
 
     public int getPostCount(DataSnapshot dataSnapshot){
@@ -335,6 +375,11 @@ public class FirebaseMethods {
                             ds.child(userID)
                                     .getValue(UserAccountSettings.class)
                                     .getFollowers()
+                    );
+                    settings.setCategorie(
+                            ds.child(userID)
+                                    .getValue(UserAccountSettings.class)
+                                    .getCategorie()
                     );
 
                     Log.d(TAG, "getUserAccountSettings: retrieved user_account_settings information: " + settings.toString());

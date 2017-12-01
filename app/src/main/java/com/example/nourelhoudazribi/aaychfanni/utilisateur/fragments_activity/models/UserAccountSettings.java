@@ -19,6 +19,7 @@ public class UserAccountSettings {
     private String user_id;
     private Double target_sum;
     private String cover_photo;
+    private String categorie;
 
     public UserAccountSettings(String description, String display_name, long followers, long following, long posts, String profile_photo, String username, String website, String user_id, Double target_sum, String cover_photo) {
         this.description = description;
@@ -32,6 +33,21 @@ public class UserAccountSettings {
         this.user_id = user_id;
         this.target_sum = target_sum;
         this.cover_photo = cover_photo;
+    }
+
+    public UserAccountSettings(String description, String display_name, long followers, long following, long posts, String profile_photo, String username, String website, String user_id, Double target_sum, String cover_photo, String categorie) {
+        this.description = description;
+        this.display_name = display_name;
+        this.followers = followers;
+        this.following = following;
+        this.posts = posts;
+        this.profile_photo = profile_photo;
+        this.username = username;
+        this.website = website;
+        this.user_id = user_id;
+        this.target_sum = target_sum;
+        this.cover_photo = cover_photo;
+        this.categorie = categorie;
     }
 
     /*public UserAccountSettings(String description, String display_name, long followers, long following, long posts, String profile_photo, String username, String website, String user_id, Double target_sum) {
@@ -179,6 +195,14 @@ public class UserAccountSettings {
         this.cover_photo = cover_photo;
     }
 
+    public String getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(String categorie) {
+        this.categorie = categorie;
+    }
+
     @Override
     public String toString() {
         return "UserAccountSettings{" +
@@ -191,6 +215,7 @@ public class UserAccountSettings {
                 ", username='" + username + '\'' +
                 ", website='" + website + '\'' +
                 ", target_sum='" + target_sum + '\'' +
+                ", categorie='" + categorie + '\'' +
                 '}';
     }
 

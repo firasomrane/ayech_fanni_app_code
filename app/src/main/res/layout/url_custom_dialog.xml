@@ -21,6 +21,8 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:hint="Ecrire ou copier un URL"
+        android:inputType="text"
+        android:maxLines="1"
         />
 
     <RelativeLayout

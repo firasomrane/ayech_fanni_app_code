@@ -124,7 +124,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:hint="Choisir un titre"
-        android:maxLines="1"/>
+        android:maxLines="1"
+        android:inputType="text"/>
 
     <View
         android:layout_width="match_parent"
@@ -144,6 +145,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:hint="La déscription"
-        android:maxLines="1"/>
+        android:maxLines="1"
+        android:inputType="text"/>
 
 </LinearLayout>

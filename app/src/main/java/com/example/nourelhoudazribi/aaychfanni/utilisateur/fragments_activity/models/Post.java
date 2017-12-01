@@ -19,8 +19,9 @@ public class Post {
     private String share_type;
     private List<Like> likes;
     private List<Comment> comments;
+    private String categorie;
 
-    public Post(String post_url, String date_created, String image_path, String photo_id, String user_id, String title, String description, List<Like> likes, List<Comment> comments ,String share_type) {
+    public Post(String post_url, String date_created, String image_path, String photo_id, String user_id, String title, String description, List<Like> likes, List<Comment> comments ,String share_type ,String categorie) {
         this.post_url = post_url;
         this.date_created = date_created;
         this.image_path = image_path;
@@ -31,12 +32,15 @@ public class Post {
         this.likes = likes;
         this.comments = comments;
         this.share_type =share_type;
+        this.categorie = categorie;
     }
+
+
 
     public Post() {
     }
 
-    public Post(String post_url, String date_created, String image_path, String photo_id, String user_id, String title, String description , String share_type) {
+    public Post(String post_url, String date_created, String image_path, String photo_id, String user_id, String title, String description , String share_type , String categorie) {
         this.post_url = post_url;
         this.date_created = date_created;
         this.image_path = image_path;
@@ -45,6 +49,7 @@ public class Post {
         this.title = title;
         this.description = description;
         this.share_type =share_type;
+        this.categorie = categorie;
     }
 
     public String getPost_url() {
@@ -127,6 +132,14 @@ public class Post {
         this.share_type = share_type;
     }
 
+    public String getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(String categorie) {
+        this.categorie = categorie;
+    }
+
     @Override
     public String toString() {
         return "Post{" +
@@ -138,6 +151,7 @@ public class Post {
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", share_type='" + share_type + '\'' +
+                ", categorie='" + categorie + '\'' +
                 '}';
     }
 }

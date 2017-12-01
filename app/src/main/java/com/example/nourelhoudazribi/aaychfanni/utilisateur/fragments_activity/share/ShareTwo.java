@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.nourelhoudazribi.aaychfanni.R;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.Utils.FirebaseMethods;
+import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.UserSettings;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -46,6 +47,7 @@ public class ShareTwo extends AppCompatActivity {
     //vars
     private String mAppend = "file:/" ,shareType,urlEntered,imageUrl ,selectedTitle ,selectedDescription;
     private int postCount = 0;
+    private UserSettings mUserSettings;
 
 
     @Override
@@ -81,19 +83,19 @@ public class ShareTwo extends AppCompatActivity {
         Bundle  bundle=this.getIntent().getExtras();
 
         if(bundle !=null) {
-            Log.d(TAG, "getBundlesFromOne: bundle not null");
+            //Log.d(TAG, "getBundlesFromOne: bundle not null");
 
             imageUrl = bundle.getString(getString(R.string.selected_image));
-            Log.d(TAG, "sendBundlesToShareTwo: selectedimage   "+imageUrl);
+            //Log.d(TAG, "sendBundlesToShareTwo: selectedimage   "+imageUrl);
 
             urlEntered = bundle.getString(getString(R.string.selected_url));
-            Log.d(TAG, "sendBundlesToShareTwo: selectedurl   "+urlEntered);
+            //Log.d(TAG, "sendBundlesToShareTwo: selectedurl   "+urlEntered);
 
             selectedTitle = bundle.getString(getString(R.string.selected_title));
-            Log.d(TAG, "sendBundlesToShareTwo: selectedtitle  "+selectedTitle);
+            //Log.d(TAG, "sendBundlesToShareTwo: selectedtitle  "+selectedTitle);
 
             selectedDescription = bundle.getString(getString(R.string.selected_description));
-            Log.d(TAG, "sendBundlesToShareTwo: selectedDescription   "+selectedDescription);
+            //Log.d(TAG, "sendBundlesToShareTwo: selectedDescription   "+selectedDescription);
         }
 
         else{
@@ -119,8 +121,21 @@ public class ShareTwo extends AppCompatActivity {
         //Toast.makeText(ShareTwo.this, shareType, Toast.LENGTH_SHORT).show();
 
         //upload the image to firebase
-        Toast.makeText(ShareTwo.this, "Attempting to upload new photo", Toast.LENGTH_SHORT).show();
-        mFirebaseMethods.uploadNewPhoto(getString(R.string.new_photo), urlEntered, shareType,selectedTitle,selectedDescription, postCount, imageUrl);
+        Toast.makeText(ShareTwo.this, "Attempting to upload new post", Toast.LENGTH_SHORT).show();
+        //Log.d(TAG, "sharePost:  selectedTitle " + selectedTitle);
+       // Log.d(TAG, "sharePost:  selectedDescription " + selectedDescription);
+
+        //if there is an image selected upload the new image
+        if(!imageUrl.equals ("")){
+            Log.d(TAG, "sharePost: image url not nul "+ imageUrl);
+            mFirebaseMethods.uploadNewPhoto(getString(R.string.new_photo), urlEntered, shareType,selectedTitle,selectedDescription, postCount, imageUrl);
+        }
+        else{
+
+            Log.d(TAG, "sharePost: image url empty "+ imageUrl);
+            mFirebaseMethods.addPostToDatabase(urlEntered ,shareType,selectedTitle,selectedDescription, imageUrl,mUserSettings);
+        }
+
     }
 
 
@@ -184,7 +199,7 @@ public class ShareTwo extends AppCompatActivity {
 
                 postCount = mFirebaseMethods.getPostCount(dataSnapshot);
                 postCount = mFirebaseMethods.getPostCount(dataSnapshot);
-                Log.d(TAG, "onDataChange: image count: " + postCount);
+                Log.d(TAG, "onDataChange: post count: " + postCount);
 
             }
 
@@ -193,6 +208,27 @@ public class ShareTwo extends AppCompatActivity {
 
             }
         });
+
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.d(TAG, "onDataChange: addListenerForSingleValueEvent       activated");
+
+                //retrieve user information from the database
+
+                mUserSettings = mFirebaseMethods.getUserSettings(dataSnapshot);
+
+                //retrieve images for the user in question
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
     }
 
 

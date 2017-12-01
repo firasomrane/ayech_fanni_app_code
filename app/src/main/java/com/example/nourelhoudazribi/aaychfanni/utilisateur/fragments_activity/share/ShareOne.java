@@ -37,7 +37,7 @@ public class ShareOne extends AppCompatActivity {
     private TextView suivant;
     private RelativeLayout cameraRelativeLayout ,phoneImageRelativeLayout ,UrlRelativeLayout;
     private EditText postTitle, postDescription;
-    private String urlEntered,imageUrl;
+    private String urlEntered,imageUrl ,selectedTitle ,selectedDescription;
     private ImageView postImage,poubelle;
     private Boolean imageSelected;
     private LinearLayout selectedImageLinearLayout;
@@ -71,6 +71,9 @@ public class ShareOne extends AppCompatActivity {
         postTitle = (EditText) findViewById(R.id.post_title);
         postDescription =(EditText) findViewById(R.id.post_description);
 
+
+        urlEntered="";
+        setImage();
         //when clicking on suivant
         suivant.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,7 +113,7 @@ public class ShareOne extends AppCompatActivity {
         });
 
         //set the image in the layout if a creator chooses to add an image to the new post
-        setImage();
+
     }
 
 
@@ -118,6 +121,10 @@ public class ShareOne extends AppCompatActivity {
     private void sendBundlesToShareTwo() {
 
         Log.d(TAG, "sendBundlesToShareTwo: activated");
+        selectedTitle = postTitle.getText().toString();
+        selectedDescription = postDescription.getText().toString();
+        Log.d(TAG, "sendBundlesToShareTwo: selectedtitle  "+selectedTitle);
+        Log.d(TAG, "sendBundlesToShareTwo: selectedDescription   "+selectedDescription);
 
         Intent intent = new Intent(ShareOne.this , ShareTwo.class);
         intent.putExtra(getString(R.string.selected_image), imageUrl);
@@ -126,11 +133,11 @@ public class ShareOne extends AppCompatActivity {
         intent.putExtra(getString(R.string.selected_url) ,urlEntered);
         Log.d(TAG, "sendBundlesToShareTwo: selectedurl   "+urlEntered);
 
-        intent.putExtra(getString(R.string.selected_title) ,postTitle.getText());
-        Log.d(TAG, "sendBundlesToShareTwo: selectedtitle  "+postTitle.getText());
+        intent.putExtra(getString(R.string.selected_title) ,selectedTitle);
+        Log.d(TAG, "sendBundlesToShareTwo: selectedtitle in bundle  "+selectedTitle);
 
-        intent.putExtra(getString(R.string.selected_description) ,postDescription.getText());
-        Log.d(TAG, "sendBundlesToShareTwo: selectedDescription   "+postDescription.getText());
+        intent.putExtra(getString(R.string.selected_description) ,selectedDescription);
+        Log.d(TAG, "sendBundlesToShareTwo: selectedDescription in bundle  "+selectedDescription);
 
         startActivity(intent);
 
@@ -169,7 +176,7 @@ public class ShareOne extends AppCompatActivity {
             });
         }
         else {
-            Log.d(TAG, "setImage: "+"vide ");
+            //Log.d(TAG, "setImage: "+"vide  image url is " + imageUrl);
             postImage.setVisibility(View.GONE);
             poubelle.setVisibility(View.GONE);
 
