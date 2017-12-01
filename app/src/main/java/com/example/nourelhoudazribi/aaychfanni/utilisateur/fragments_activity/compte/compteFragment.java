@@ -143,7 +143,7 @@ public class compteFragment extends Fragment implements View.OnClickListener {
                 break;
 
             case R.id.modifier_votre_profil_relative_layout:
-                Intent intent3 = new Intent(getActivity(), modifierVotreProfil.class);
+                Intent intent3 = new Intent(getActivity(), com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.compte.modifierVotreProfil.class);
                 startActivity(intent3);
                 break;
 

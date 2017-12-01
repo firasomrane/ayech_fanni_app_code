@@ -1,5 +1,6 @@
 package com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.compte;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -18,6 +19,7 @@ import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.Ut
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.User;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.UserAccountSettings;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.UserSettings;
+import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.share.TakePhoto;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -76,8 +78,9 @@ public class modifierVotreProfil extends AppCompatActivity {
         relativeLayoutPhoneNumber = (RelativeLayout) findViewById(R.id.relative_lay_phone_number);
         relativeLayoutWebsite = (RelativeLayout) findViewById(R.id.relative_lay_website);
 
-        //setProfileImage();
         setupFirebaseAuth();
+        getIncomingIntent();
+
 
 
         //back arrow for navigating back to "ProfileActivity"
@@ -90,6 +93,7 @@ public class modifierVotreProfil extends AppCompatActivity {
             }
         });
 
+        ///save chages
         ImageView checkmark = (ImageView) findViewById(R.id.save_changes);
         checkmark.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,15 +102,25 @@ public class modifierVotreProfil extends AppCompatActivity {
                 saveProfileSettings();
             }
         });
+
+
     }
 
-    /*private void setProfileImage(){
-        //to change default image go to Utils.UniversalImageLoader and change it
-        //video 15
-        Log.d(TAG, "setProfileImage: setting profile image.");
-        String imgURL = "www.androidcentral.com/sites/androidcentral.com/files/styles/xlarge/public/article_images/2016/08/ac-lloyd.jpg?itok=bb72IeLf";
-        UniversalImageLoader.setImage(imgURL, mProfilePhoto, null, "https://");
-    }*/
+    private void getIncomingIntent() {
+        Intent intent = getIntent();
+
+        //if there is an imageUrl attached as an extra, then it was chosen from the gallery/photo fragment
+        if (intent.hasExtra(getString(R.string.selected_image))) {
+            Log.d(TAG, "getIncomingIntent: New incoming imgUrl");
+            if (intent.getStringExtra(getString(R.string.return_to_fragment)).equals(getString(R.string.modifierVotreProfilActivity))) {
+
+                //set the new profile picture
+                FirebaseMethods firebaseMethods = new FirebaseMethods(modifierVotreProfil.this);
+                firebaseMethods.uploadNewPhoto(getString(R.string.profile_photo),"","","", null, 0,
+                        intent.getStringExtra(getString(R.string.selected_image)));
+            }
+        }
+    }
 
 
     /**
@@ -253,12 +267,18 @@ public class modifierVotreProfil extends AppCompatActivity {
             relativeLayoutPhoneNumber.setVisibility(VISIBLE);
 
         }
-        else{
+        /*else{
 
-
-
-
-        }
+        }*/        //change profile_photo
+        mChangeProfilePhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: changing profile photo");
+                Intent intent = new Intent(modifierVotreProfil.this, TakePhoto.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); //268435456
+                startActivity(intent);
+            }
+        });
 
 
 

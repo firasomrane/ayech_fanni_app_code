@@ -24,11 +24,11 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/suivant"
+                android:id="@+id/publier"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textAppearance="?android:textAppearanceMedium"
-                android:text="Suivant"
+                android:text="Publier"
                 android:textSize="@dimen/toolbarTextSize"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="20dp"

@@ -11,7 +11,7 @@
         android:background="@color/white">
 
         <ImageView
-            android:id="@+id/m_icon"
+            android:id="@+id/ivBackArrow"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/ic_fleche_arriere"
@@ -41,9 +41,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="70dp"
         android:orientation="horizontal"
-        android:weightSum="3">
+        android:weightSum="2">
 
         <RelativeLayout
             android:id="@+id/camera_relative_layout"
@@ -59,19 +59,6 @@
             />
         </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/phone_image_relative_layout"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent">
-            <ImageView
-                android:id="@+id/phone_image_icon"
-                android:layout_width="@dimen/new_post_icons"
-                android:layout_height="@dimen/new_post_icons"
-                android:src="@drawable/ic_phone_image_icon"
-                android:layout_centerInParent="true"
-            />
-        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/url_relative_layout"
@@ -95,20 +82,49 @@
         android:layout_height="2dp"
         android:background="@android:color/darker_gray" />
 
+<LinearLayout
+    android:id="@+id/selected_image_linear_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="horizontal"
+    >
+
+    <ImageView
+        android:id="@+id/post_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:visibility="gone"
+        />
+
+    <ImageView
+        android:id="@+id/poubelle"
+        android:layout_width="@dimen/new_post_icons"
+        android:layout_height="@dimen/new_post_icons"
+        android:src="@drawable/ic_poubelle"
+        android:layout_gravity="center"
+        android:layout_marginLeft="50dp"
+        android:visibility="gone"/>
+
+</LinearLayout>
+
+
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Titre de la publication"
         android:textSize="20sp"
-        android:layout_margin="16dp"/>
+        android:layout_margin="16dp"
+        />
 
     <EditText
         android:id="@+id/post_title"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:hint="Choisir un titre"/>
+        android:hint="Choisir un titre"
+        android:maxLines="1"/>
 
     <View
         android:layout_width="match_parent"
@@ -127,6 +143,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:hint="La déscription"/>
+        android:hint="La déscription"
+        android:maxLines="1"/>
 
 </LinearLayout>

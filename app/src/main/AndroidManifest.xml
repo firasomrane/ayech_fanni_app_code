@@ -64,6 +64,11 @@
         <activity android:name=".utilisateur.fragments_activity.share.ShareTwo">
 
         </activity>
+        <activity android:name=".utilisateur.fragments_activity.share.TakePhoto">
+
+        </activity>
+
+
 
     </application>
 
