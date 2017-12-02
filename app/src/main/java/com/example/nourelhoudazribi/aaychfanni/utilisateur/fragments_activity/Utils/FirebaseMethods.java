@@ -1,6 +1,7 @@
 package com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.Utils;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -8,10 +9,12 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.nourelhoudazribi.aaychfanni.R;
+import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.compte.modifierVotreProfil;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.Post;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.User;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.UserAccountSettings;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.UserSettings;
+import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.share.TakePhoto;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -32,8 +35,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
-
-import static com.example.nourelhoudazribi.aaychfanni.R.id.display_name;
 
 /**
  * Created by ASUS on 28/11/2017.
@@ -68,7 +69,7 @@ public class FirebaseMethods {
     }
 
 
-    public void uploadNewPhoto(String photoType, final String urlEntered, final String shareType, final String selectedTitle, final String selectedDescription, final int count, final String imgUrl){
+    public void uploadNewPhoto(String photoType, final String urlEntered, final String shareType, final String selectedTitle, final String selectedDescription, final int count, final String imgUrl,Bitmap bm){
         Log.d(TAG, "uploadNewPhoto: attempting to uplaod new photo.");
 
         FilePaths filePaths = new FilePaths();
@@ -81,7 +82,9 @@ public class FirebaseMethods {
                     .child(filePaths.FIREBASE_IMAGE_STORAGE + "/" + user_id + "/photo" + (count + 1));
 
             //convert image url to bitmap
-            Bitmap bm = ImageManager.getBitmap(imgUrl);
+            if(bm == null){
+                bm = ImageManager.getBitmap(imgUrl);
+            }
             byte[] bytes = ImageManager.getBytesFromBitmap(bm, 100);
 
             UploadTask uploadTask = null;
@@ -155,7 +158,9 @@ public class FirebaseMethods {
                     .child(filePaths.FIREBASE_IMAGE_STORAGE + "/" + user_id + "/profile_photo");
 
             //convert image url to bitmap
-            Bitmap bm = ImageManager.getBitmap(imgUrl);
+            if(bm == null){
+                bm = ImageManager.getBitmap(imgUrl);
+            }
             byte[] bytes = ImageManager.getBytesFromBitmap(bm, 100);
 
             UploadTask uploadTask = null;
@@ -170,6 +175,9 @@ public class FirebaseMethods {
 
                     //insert into 'user_account_settings' node
                     setProfilePhoto(firebaseUrl.toString());
+
+
+
 
 
                 }
@@ -513,6 +521,5 @@ public class FirebaseMethods {
                 .setValue(settings);
 
     }
-
 
 }

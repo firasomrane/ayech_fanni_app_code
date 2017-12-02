@@ -1,6 +1,7 @@
 package com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.share;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -48,6 +49,8 @@ public class ShareTwo extends AppCompatActivity {
     private String mAppend = "file:/" ,shareType,urlEntered,imageUrl ,selectedTitle ,selectedDescription;
     private int postCount = 0;
     private UserSettings mUserSettings;
+    private Intent intent;
+    private Bitmap bitmap;
 
 
     @Override
@@ -78,15 +81,21 @@ public class ShareTwo extends AppCompatActivity {
     private void getBundlesFromOne() {
         Log.d(TAG, "getBundlesFromOne: activated");
 
-        Intent intent = getIntent();
+        intent = getIntent();
         //get the bundle
         Bundle  bundle=this.getIntent().getExtras();
 
         if(bundle !=null) {
             //Log.d(TAG, "getBundlesFromOne: bundle not null");
 
-            imageUrl = bundle.getString(getString(R.string.selected_image));
-            //Log.d(TAG, "sendBundlesToShareTwo: selectedimage   "+imageUrl);
+            ///if a string is passes not a bitmap
+            if(intent.hasExtra(getString(R.string.selected_image))) {
+                imageUrl = bundle.getString(getString(R.string.selected_image));
+                //Log.d(TAG, "sendBundlesToShareTwo: selectedimage   "+imageUrl);
+            }
+            else if(intent.hasExtra(getString(R.string.selected_bitmap))){
+                Log.d(TAG, "getBundlesFromOne: bitmap selected");
+            }
 
             urlEntered = bundle.getString(getString(R.string.selected_url));
             //Log.d(TAG, "sendBundlesToShareTwo: selectedurl   "+urlEntered);
@@ -125,15 +134,24 @@ public class ShareTwo extends AppCompatActivity {
         //Log.d(TAG, "sharePost:  selectedTitle " + selectedTitle);
        // Log.d(TAG, "sharePost:  selectedDescription " + selectedDescription);
 
-        //if there is an image selected upload the new image
-        if(!imageUrl.equals ("")){
-            Log.d(TAG, "sharePost: image url not nul "+ imageUrl);
-            mFirebaseMethods.uploadNewPhoto(getString(R.string.new_photo), urlEntered, shareType,selectedTitle,selectedDescription, postCount, imageUrl);
-        }
-        else{
 
-            Log.d(TAG, "sharePost: image url empty "+ imageUrl);
-            mFirebaseMethods.addPostToDatabase(urlEntered ,shareType,selectedTitle,selectedDescription, imageUrl,mUserSettings);
+        if(intent.hasExtra(getString(R.string.selected_image))) {
+
+            //if there is an image selected upload the new image
+            if (!imageUrl.equals("")) {
+                Log.d(TAG, "sharePost: image url not nul " + imageUrl);
+                mFirebaseMethods.uploadNewPhoto(getString(R.string.new_photo), urlEntered, shareType, selectedTitle, selectedDescription, postCount, imageUrl, null);
+
+            } else {
+
+                Log.d(TAG, "sharePost: image url empty " + imageUrl);
+                mFirebaseMethods.addPostToDatabase(urlEntered, shareType, selectedTitle, selectedDescription, imageUrl, mUserSettings);
+            }
+        }
+        else if(intent.hasExtra(getString(R.string.selected_bitmap))){
+            bitmap = (Bitmap) intent.getParcelableExtra(getString(R.string.selected_bitmap));
+            mFirebaseMethods.uploadNewPhoto(getString(R.string.new_photo), urlEntered, shareType, selectedTitle, selectedDescription, postCount, null, bitmap);
+            mFirebaseMethods.addPostToDatabase(urlEntered, shareType, selectedTitle, selectedDescription, "", mUserSettings);
         }
 
     }

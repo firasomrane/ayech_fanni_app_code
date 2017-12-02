@@ -2,9 +2,7 @@ package com.example.nourelhoudazribi.aaychfanni;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -14,7 +12,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.Utils.FirebaseMethods;
-import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.fragments_activity.theEssentialActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -65,8 +62,9 @@ public class Signup extends AppCompatActivity {
         mRpswd = (EditText) findViewById(R.id.confpassword);
         termine = (Button) findViewById(R.id.buttont);
 
-        setupFirebaseAuth();
         init();
+        setupFirebaseAuth();
+
 
 
     }
@@ -87,6 +85,7 @@ public class Signup extends AppCompatActivity {
                     //loadingPleaseWait.setVisibility(View.VISIBLE);
                     if (rpswr.equals(pswr)) {
                         firebaseMethods.registerNewEmail(email, pswr, username);
+
                     } else {
                         Toast.makeText(mContext, "la confirmation du mot de passe est erroné.", Toast.LENGTH_SHORT).show();
                     }
@@ -104,6 +103,10 @@ public class Signup extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    private void killActivity() {
+        finish();
     }
 
 
@@ -145,15 +148,7 @@ public class Signup extends AppCompatActivity {
 
                             firebaseMethods.addNewUser(email, username, "", "","");
 
-                            Handler handler = new Handler();
-                            handler.postDelayed(new Runnable() {
-                                public void run() {
-                                    Intent intent = new Intent (Signup.this , theEssentialActivity.class);
-                                    startActivity(intent);
-                                }
-                            }, 1000);
-
-                            Toast.makeText(mContext, "Signup successful. Sending verification email.", Toast.LENGTH_SHORT).show();
+                            /*Toast.makeText(mContext, "Signup successful. Sending verification email.", Toast.LENGTH_SHORT).show();*/
                         }
 
                         @Override
@@ -170,6 +165,8 @@ public class Signup extends AppCompatActivity {
             }
         };
     }
+
+
 
     @Override
     public void onStart() {

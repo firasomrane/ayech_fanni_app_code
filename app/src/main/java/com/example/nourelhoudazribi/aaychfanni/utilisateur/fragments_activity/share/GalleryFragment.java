@@ -90,8 +90,9 @@ public class GalleryFragment extends Fragment {
                     intent.putExtra(getString(R.string.selected_image), mSelectedImage);
                     intent.putExtra(getString(R.string.return_to_fragment), getString(R.string.modifierVotreProfilActivity));
                     startActivity(intent);
+                    getActivity().finish();
                 }
-                getActivity().finish();
+
 
 
             }
