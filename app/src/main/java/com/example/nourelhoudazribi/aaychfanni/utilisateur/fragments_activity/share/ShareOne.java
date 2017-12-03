@@ -1,6 +1,7 @@
 package com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.share;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -51,6 +52,8 @@ public class ShareOne extends AppCompatActivity {
 
     //vars
     private String mAppend = "file:/";
+    private Intent intent;
+    private Bitmap bitmap;
 
     private static final int VERIFY_PERMISSIONS_REQUEST = 1;
     
@@ -123,23 +126,33 @@ public class ShareOne extends AppCompatActivity {
         Log.d(TAG, "sendBundlesToShareTwo: activated");
         selectedTitle = postTitle.getText().toString();
         selectedDescription = postDescription.getText().toString();
+
+
         Log.d(TAG, "sendBundlesToShareTwo: selectedtitle  "+selectedTitle);
         Log.d(TAG, "sendBundlesToShareTwo: selectedDescription   "+selectedDescription);
 
-        Intent intent = new Intent(ShareOne.this , ShareTwo.class);
-        intent.putExtra(getString(R.string.selected_image), imageUrl);
-        Log.d(TAG, "sendBundlesToShareTwo: selectedimage   "+imageUrl);
+        Intent intent2 = new Intent(ShareOne.this , ShareTwo.class);
 
-        intent.putExtra(getString(R.string.selected_url) ,urlEntered);
+        if(intent.hasExtra(getString(R.string.selected_image))) {
+
+            intent2.putExtra(getString(R.string.selected_image), imageUrl);
+            Log.d(TAG, "sendBundlesToShareTwo: selectedimage   " + imageUrl);
+        }
+        else if(intent.hasExtra(getString(R.string.selected_bitmap))){
+            intent2.putExtra(getString(R.string.selected_bitmap), bitmap);
+            Log.d(TAG, "sendBundlesToShareTwo: selected bitmap   " + bitmap.toString());
+        }
+
+        intent2.putExtra(getString(R.string.selected_url) ,urlEntered);
         Log.d(TAG, "sendBundlesToShareTwo: selectedurl   "+urlEntered);
 
-        intent.putExtra(getString(R.string.selected_title) ,selectedTitle);
+        intent2.putExtra(getString(R.string.selected_title) ,selectedTitle);
         Log.d(TAG, "sendBundlesToShareTwo: selectedtitle in bundle  "+selectedTitle);
 
-        intent.putExtra(getString(R.string.selected_description) ,selectedDescription);
+        intent2.putExtra(getString(R.string.selected_description) ,selectedDescription);
         Log.d(TAG, "sendBundlesToShareTwo: selectedDescription in bundle  "+selectedDescription);
 
-        startActivity(intent);
+        startActivity(intent2);
 
     }
 
@@ -148,22 +161,49 @@ public class ShareOne extends AppCompatActivity {
      */
     private void setImage(){
         imageUrl = "";
-        Intent intent = getIntent();
+        intent = getIntent();
         postImage = (ImageView) findViewById(R.id.post_image);
         poubelle =(ImageView) findViewById(R.id.poubelle);
 
-        //get the intent
-        Bundle  bundle=this.getIntent().getExtras();
-        //if(intent.getStringExtra(getString(R.string.selected_image)) !=""){
-        if(bundle !=null) {
-            Log.d(TAG, "setImage: "+bundle.getString(getString(R.string.selected_image)));
-            imageUrl = bundle.getString(getString(R.string.selected_image));
+        if(intent.hasExtra(getString(R.string.selected_image))){
 
-            UniversalImageLoader.setImage(imageUrl, postImage, null, mAppend);
+            //get the intent
+            Bundle  bundle=this.getIntent().getExtras();
+            //if(intent.getStringExtra(getString(R.string.selected_image)) !=""){
+            if(bundle !=null) {
+                Log.d(TAG, "setImage: "+bundle.getString(getString(R.string.selected_image)));
+                imageUrl = bundle.getString(getString(R.string.selected_image));
+
+                UniversalImageLoader.setImage(imageUrl, postImage, null, mAppend);
+                postImage.setVisibility(View.VISIBLE);
+                poubelle.setVisibility(View.VISIBLE);
+                imageSelected = true ;
+
+                poubelle.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        postImage.setVisibility(View.GONE);
+                        poubelle.setVisibility(View.GONE);
+                        imageUrl = "";
+                        Log.d(TAG, "setImage: imageUrl"+imageUrl);
+
+                    }
+                });
+            }
+            else {
+                //Log.d(TAG, "setImage: "+"vide  image url is " + imageUrl);
+                postImage.setVisibility(View.GONE);
+                poubelle.setVisibility(View.GONE);
+
+            }
+
+        }
+        else if(intent.hasExtra(getString(R.string.selected_bitmap))){
+            bitmap = (Bitmap) intent.getParcelableExtra(getString(R.string.selected_bitmap));
+            Log.d(TAG, "setImage: got new bitmap");
+            postImage.setImageBitmap(bitmap);
             postImage.setVisibility(View.VISIBLE);
             poubelle.setVisibility(View.VISIBLE);
-            imageSelected = true ;
-
             poubelle.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -175,12 +215,7 @@ public class ShareOne extends AppCompatActivity {
                 }
             });
         }
-        else {
-            //Log.d(TAG, "setImage: "+"vide  image url is " + imageUrl);
-            postImage.setVisibility(View.GONE);
-            poubelle.setVisibility(View.GONE);
 
-        }
 
 
         Log.d(TAG, "setImage: image Url is "+imageUrl );

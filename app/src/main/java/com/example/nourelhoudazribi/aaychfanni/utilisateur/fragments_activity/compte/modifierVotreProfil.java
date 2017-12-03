@@ -1,6 +1,7 @@
 package com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.compte;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -110,17 +111,29 @@ public class modifierVotreProfil extends AppCompatActivity {
         Intent intent = getIntent();
 
         //if there is an imageUrl attached as an extra, then it was chosen from the gallery/photo fragment
-        if (intent.hasExtra(getString(R.string.selected_image))) {
+        if (intent.hasExtra(getString(R.string.selected_image))
+                || intent.hasExtra(getString(R.string.selected_bitmap)) ){
+
+
             Log.d(TAG, "getIncomingIntent: New incoming imgUrl");
             if (intent.getStringExtra(getString(R.string.return_to_fragment)).equals(getString(R.string.modifierVotreProfilActivity))) {
 
-                //set the new profile picture
-                FirebaseMethods firebaseMethods = new FirebaseMethods(modifierVotreProfil.this);
-                firebaseMethods.uploadNewPhoto(getString(R.string.profile_photo),"","","", null, 0,
-                        intent.getStringExtra(getString(R.string.selected_image)));
+                if(intent.hasExtra(getString(R.string.selected_image))) {
+                    //set the new profile picture
+                    FirebaseMethods firebaseMethods = new FirebaseMethods(modifierVotreProfil.this);
+                    firebaseMethods.uploadNewPhoto(getString(R.string.profile_photo), "", "", "", null, 0,
+                            intent.getStringExtra(getString(R.string.selected_image)),null);
+                }
+                else if(intent.hasExtra(getString(R.string.selected_bitmap))){
+                    //set the new profile picture
+                    FirebaseMethods firebaseMethods = new FirebaseMethods(modifierVotreProfil.this);
+                    firebaseMethods.uploadNewPhoto(getString(R.string.profile_photo),"","" ,"",null, 0,null,
+                            (Bitmap) intent.getParcelableExtra(getString(R.string.selected_bitmap)));
+                }
             }
         }
-    }
+
+        }
 
 
     /**
@@ -277,6 +290,7 @@ public class modifierVotreProfil extends AppCompatActivity {
                 Intent intent = new Intent(modifierVotreProfil.this, TakePhoto.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); //268435456
                 startActivity(intent);
+                finish();
             }
         });
 
