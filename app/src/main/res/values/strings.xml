@@ -56,4 +56,14 @@
     <string name="string_share">Share</string>
 
 
+    <string-array name="catégorie">
+    <item>Animation</item>
+    <item>Blog</item>
+    <item>Comédie</item>
+    <item>Dance</item>
+    <item>Education</item>
+    <item>Jeu vidéo</item>
+    <item>Musique</item>
+    <item>Podcasts</item>
+    </string-array>
 </resources>

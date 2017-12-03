@@ -1,9 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.nourelhoudazribi.aaychfanni.demarrer_2">
 
-</android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vous avez du talent?"
+        android:textColor="@color/colorAccent"
+        tools:layout_editor_absoluteY="300dp"
+        tools:layout_editor_absoluteX="51dp"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:id="@+id/textView3"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Le manque d’argent vous entrave de partager vos talents? "
+        android:textColor="@color/black"
+        tools:layout_editor_absoluteY="320dp"
+        tools:layout_editor_absoluteX="42dp"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:id="@+id/textView4"
+        android:layout_marginTop="22dp"
+        android:layout_below="@+id/textView3"
+        android:layout_alignStart="@+id/textView3" />
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Ayech Fanni est crée pour vous !"
+        android:textColor="@color/colorAccent"
+        tools:layout_editor_absoluteY="396dp"
+        tools:layout_editor_absoluteX="42dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:id="@+id/textView4"
+        android:layout_above="@+id/textView11"
+        android:layout_alignStart="@+id/textView11"
+        android:layout_marginBottom="21dp" />
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Ici, vos fans découvrent votre travail et peuvent vous soutenir financièrement dans votre démarche."
+        android:textColor="@color/black"
+        tools:layout_editor_absoluteY="440dp"
+        tools:layout_editor_absoluteX="42dp"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:id="@+id/textView11"
+        android:layout_marginBottom="31dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/textView4" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/demarrer_2"
+        android:layout_above="@+id/textView3"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="30dp" />
+</RelativeLayout>
