@@ -24,6 +24,11 @@
         <activity android:name=".devenir_createur" />
         <activity android:name=".profil_createur" />
         <activity android:name=".utilisateur.fragments_activity.fragments_activity.theEssentialActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
 
@@ -47,11 +52,6 @@
         </activity>
         <activity android:name=".demerrer_3" />
         <activity android:name=".signup_createur2">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

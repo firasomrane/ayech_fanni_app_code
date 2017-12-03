@@ -87,7 +87,7 @@ public class Signup extends AppCompatActivity {
                         firebaseMethods.registerNewEmail(email, pswr, username);
 
                     } else {
-                        Toast.makeText(mContext, "la confirmation du mot de passe est erroné.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, "la confirmation du mot de passe est erronée.", Toast.LENGTH_SHORT).show();
                     }
 
 
@@ -99,7 +99,7 @@ public class Signup extends AppCompatActivity {
     private boolean checkInputs(String email, String username, String password) {
         Log.d(TAG, "checkInputs: checking inputs for null values.");
         if (email.equals("") || username.equals("") || password.equals("")) {
-            Toast.makeText(mContext, "All fields must be filled out.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "Des données sont manquantes !", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;

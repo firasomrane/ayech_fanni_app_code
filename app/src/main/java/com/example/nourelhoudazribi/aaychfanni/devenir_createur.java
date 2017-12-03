@@ -62,7 +62,7 @@ public class devenir_createur extends AppCompatActivity {
                 }
                 else
                 {
-                    Intent createur = new Intent(getApplicationContext(), profil_createur.class);
+                    Intent createur = new Intent(getApplicationContext(), signup_createur2.class);
                     startActivity(createur);
                 }
 
