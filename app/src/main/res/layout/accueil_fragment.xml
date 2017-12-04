@@ -45,10 +45,10 @@
             android:visibility="gone"/>
 
         <ListView
-            android:id="@+id/accueil_fragment_list"
+            android:id="@+id/listView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:visibility="visible"/>
+            android:visibility="visible" />
 
     </RelativeLayout>
 

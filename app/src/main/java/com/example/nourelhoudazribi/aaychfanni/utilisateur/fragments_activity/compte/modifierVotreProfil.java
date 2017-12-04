@@ -42,7 +42,7 @@ import static com.example.nourelhoudazribi.aaychfanni.R.id.website;
 public class modifierVotreProfil extends AppCompatActivity {
 
     //EditProfile Fragment widgets
-    private EditText mDisplayName, mUsername, mWebsite, mDescription, mEmail, mPhoneNumber;
+    private EditText  mUsername, mWebsite, mDescription, mEmail, mPhoneNumber;
     private TextView mChangeProfilePhoto;
     private CircleImageView mProfilePhoto;
     private Boolean toastAppered ;
@@ -67,7 +67,7 @@ public class modifierVotreProfil extends AppCompatActivity {
         setContentView(R.layout.account_modifier_votre_profil);
 
         mProfilePhoto = (CircleImageView) findViewById(R.id.profile_photo);
-        mDisplayName = (EditText) findViewById(R.id.display_name);
+       // mDisplayName = (EditText) findViewById(R.id.display_name);
         mUsername = (EditText) findViewById(R.id.username);
         mWebsite = (EditText) findViewById(website);
         mDescription = (EditText) findViewById(R.id.description);
@@ -141,7 +141,7 @@ public class modifierVotreProfil extends AppCompatActivity {
      * Before donig so it chekcs to make sure the username chosen is unqiue
      */
     private void saveProfileSettings(){
-        final String displayName = mDisplayName.getText().toString();
+        //final String displayName = mDisplayName.getText().toString();
         final String username = mUsername.getText().toString();
 
 
@@ -170,14 +170,14 @@ public class modifierVotreProfil extends AppCompatActivity {
                     final long phoneNumber = Long.parseLong(mPhoneNumber.getText().toString());
 
                     toastAppered = false;
-                    if (!mUserSettings.getSettings().getDisplay_name().equals(displayName)) {
+                    /*if (!mUserSettings.getSettings().getDisplay_name().equals(displayName)) {
                         //update displayname
                         mFirebaseMethods.updateUserAccountSettings(displayName, null, null, 0);
                         if (!toastAppered) {
                             Toast.makeText(modifierVotreProfil.this, "saved change.", Toast.LENGTH_SHORT).show();
                             toastAppered = true;
                         }
-                    }
+                    }*/
                     if (!mUserSettings.getSettings().getWebsite().equals(website)) {
                         //update website
                         mFirebaseMethods.updateUserAccountSettings(null, website, null, 0);
@@ -265,7 +265,7 @@ public class modifierVotreProfil extends AppCompatActivity {
 
         //set the common widgets
         UniversalImageLoader.setImage(settings.getProfile_photo(), mProfilePhoto, null, "");
-        mDisplayName.setText(settings.getDisplay_name());
+        //mDisplayName.setText(settings.getDisplay_name());
         mUsername.setText(settings.getUsername());
 
         //if the user is creator

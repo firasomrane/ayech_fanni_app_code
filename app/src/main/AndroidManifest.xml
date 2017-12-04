@@ -2,10 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.nourelhoudazribi.aaychfanni">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -15,44 +15,70 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!-- sign in and sign up activities -->
+        <!--sign in and sign up activities-->
 
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"></activity>
         <activity android:name=".Signup" />
+
         <activity android:name=".cmc_fan" />
         <activity android:name=".Compte_nour" />
-        <activity android:name=".devenir_createur" />
-        <activity android:name=".profil_createur" />
+        <activity android:name=".devenir_createur">
+        </activity>
+        <activity android:name=".profil_createur"></activity>
+
+
+
         <activity android:name=".utilisateur.fragments_activity.fragments_activity.theEssentialActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <!--Compte activities-->
+        <activity android:name=".utilisateur.fragments_activity.compte.modifierVotreProfil">
+
+        </activity>
+        <activity android:name=".utilisateur.fragments_activity.compte.profileActivity">
 
         </activity>
 
-        <!-- Compte activities -->
-        <activity android:name=".utilisateur.fragments_activity.compte.modifierVotreProfil" />
-
-        <!-- Support activities -->
-        <activity android:name=".utilisateur.fragments_activity.supporter.supporterLayoutOne" />
-        <activity android:name=".utilisateur.fragments_activity.supporter.supporterLayoutTwo" />
-        <activity android:name=".utilisateur.fragments_activity.supporter.supporterLayoutThree" />
-
-        <!--  -->
-
-
-        <!-- Share actvities -->
-        <activity android:name=".utilisateur.fragments_activity.share.ShareOne" />
-        <activity android:name=".utilisateur.fragments_activity.share.ShareTwo" />
-        <activity android:name=".utilisateur.fragments_activity.share.TakePhoto" />
         <activity android:name=".demarrer_1"></activity>
         <activity android:name=".demarrer_2">
         </activity>
         <activity android:name=".demerrer_3" />
         <activity android:name=".signup_createur2">
         </activity>
+
+        <!--Support activities-->
+        <activity android:name=".utilisateur.fragments_activity.supporter.supporterLayoutOne">
+
+        </activity>
+
+        <activity android:name=".utilisateur.fragments_activity.supporter.supporterLayoutTwo">
+
+        </activity>
+
+        <activity android:name=".utilisateur.fragments_activity.supporter.supporterLayoutThree">
+
+        </activity>
+
+        <!---->
+
+        <!--Share actvities-->
+        <activity android:name=".utilisateur.fragments_activity.share.ShareOne">
+
+        </activity>
+        <activity android:name=".utilisateur.fragments_activity.share.ShareTwo">
+
+        </activity>
+        <activity android:name=".utilisateur.fragments_activity.share.TakePhoto">
+
+        </activity>
+
+
+
     </application>
 
 </manifest>

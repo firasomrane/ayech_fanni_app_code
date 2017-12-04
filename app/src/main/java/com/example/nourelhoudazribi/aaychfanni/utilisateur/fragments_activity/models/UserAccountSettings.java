@@ -17,11 +17,11 @@ public class UserAccountSettings {
     private String username;
     private String website;
     private String user_id;
-    private Double target_sum;
+    private long target_sum;
     private String cover_photo;
     private String categorie;
 
-    public UserAccountSettings(String description, String display_name, long followers, long following, long posts, String profile_photo, String username, String website, String user_id, Double target_sum, String cover_photo) {
+    public UserAccountSettings(String description, String display_name, long followers, long following, long posts, String profile_photo, String username, String website, String user_id, long target_sum, String cover_photo) {
         this.description = description;
         this.display_name = display_name;
         this.followers = followers;
@@ -35,7 +35,7 @@ public class UserAccountSettings {
         this.cover_photo = cover_photo;
     }
 
-    public UserAccountSettings(String description, String display_name, long followers, long following, long posts, String profile_photo, String username, String website, String user_id, Double target_sum, String cover_photo, String categorie) {
+    public UserAccountSettings(String description, String display_name, long followers, long following, long posts, String profile_photo, String username, String website, String user_id, long target_sum, String cover_photo, String categorie) {
         this.description = description;
         this.display_name = display_name;
         this.followers = followers;
@@ -179,11 +179,11 @@ public class UserAccountSettings {
         this.website = website;
     }
 
-    public Double getTarget_sum() {
+    public long getTarget_sum() {
         return target_sum;
     }
 
-    public void setTarget_sum(Double target_sum) {
+    public void setTarget_sum(long target_sum) {
         this.target_sum = target_sum;
     }
 

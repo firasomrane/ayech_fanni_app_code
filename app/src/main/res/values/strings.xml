@@ -22,6 +22,7 @@
     <string name="field_tags">tags</string>
     <string name="field_image_path">image_path</string>
     <string name="field_comments">comments</string>
+    <string name="field_title">title</string>
 
     <!-- photo types -->
     <string name="new_photo">new_photo</string>
@@ -37,6 +38,7 @@
     <string name="selected_title">selected_title</string>
     <string name="selected_description">selected_description</string>
     <string name="modifierVotreProfilActivity">modifierVotreProfilActivity</string>
+    <string name="user_id">user_id</string>
 
     <!-- Bundle arg names -->
     <string name="activity_number">activity_number</string>
@@ -56,15 +58,16 @@
     <string name="string_share">Share</string>
     <string name="auth_failed">auth_failed</string>
 
-
     <string-array name="catégorie">
-    <item>Animation</item>
-    <item>Blog</item>
-    <item>Comédie</item>
-    <item>Dance</item>
-    <item>Education</item>
-    <item>Jeu vidéo</item>
-    <item>Musique</item>
-    <item>Podcasts</item>
+        <item>Animation</item>
+        <item>Blog</item>
+        <item>Comédie</item>
+        <item>Dance</item>
+        <item>Education</item>
+        <item>Jeu vidéo</item>
+        <item>Musique</item>
+        <item>Podcasts</item>
     </string-array>
+
+
 </resources>

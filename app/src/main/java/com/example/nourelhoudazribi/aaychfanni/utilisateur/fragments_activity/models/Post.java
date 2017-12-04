@@ -1,6 +1,8 @@
 package com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models;
 
-import org.w3c.dom.Comment;
+import android.os.Parcel;
+import android.os.Parcelable;
+
 
 import java.util.List;
 
@@ -8,7 +10,7 @@ import java.util.List;
  * Created by ASUS on 01/12/2017.
  */
 
-public class Post {
+public class Post implements Parcelable {
     private String post_url;
     private String date_created;
     private String image_path;
@@ -51,6 +53,66 @@ public class Post {
         this.share_type =share_type;
         this.categorie = categorie;
     }
+
+    public Post(String post_url, String title, String date_created, String image_path, String photo_id, String share_type, String categorie,
+                 String user_id, String description, List<Like> likes, List<Comment> comments) {
+
+        this.post_url = post_url;
+        this.title = title;
+        this.date_created = date_created;
+        this.image_path = image_path;
+        this.photo_id = photo_id;
+        this.user_id = user_id;
+        this.description = description;
+        this.likes = likes;
+        this.comments = comments;
+        this.share_type = share_type;
+        this.categorie = categorie;
+    }
+
+
+    protected Post(Parcel in) {
+        title = in.readString();
+        date_created = in.readString();
+        image_path = in.readString();
+        photo_id = in.readString();
+        user_id = in.readString();
+        description = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(title);
+        dest.writeString(date_created);
+        dest.writeString(image_path);
+        dest.writeString(photo_id);
+        dest.writeString(user_id);
+        dest.writeString(description);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Post> CREATOR = new Creator<Post>() {
+        @Override
+        public Post createFromParcel(Parcel in) {
+            return new Post(in);
+        }
+
+        @Override
+        public Post[] newArray(int size) {
+            return new Post[size];
+        }
+    };
+
+
+
+    public static Creator<Post> getCREATOR() {
+        return CREATOR;
+    }
+
 
     public String getPost_url() {
         return post_url;

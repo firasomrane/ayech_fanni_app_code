@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.nourelhoudazribi.aaychfanni.R;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.Utils.FirebaseMethods;
+import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.fragments_activity.theEssentialActivity;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.UserSettings;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -146,6 +147,7 @@ public class ShareTwo extends AppCompatActivity {
 
                 Log.d(TAG, "sharePost: image url empty " + imageUrl);
                 mFirebaseMethods.addPostToDatabase(urlEntered, shareType, selectedTitle, selectedDescription, imageUrl, mUserSettings);
+
             }
         }
         else if(intent.hasExtra(getString(R.string.selected_bitmap))){
@@ -153,6 +155,10 @@ public class ShareTwo extends AppCompatActivity {
             mFirebaseMethods.uploadNewPhoto(getString(R.string.new_photo), urlEntered, shareType, selectedTitle, selectedDescription, postCount, null, bitmap);
             mFirebaseMethods.addPostToDatabase(urlEntered, shareType, selectedTitle, selectedDescription, "", mUserSettings);
         }
+        //navigate to the main feed so the user can see their photo
+        Intent intent = new Intent(ShareTwo.this, theEssentialActivity.class);
+        finish();
+        startActivity(intent);
 
     }
 

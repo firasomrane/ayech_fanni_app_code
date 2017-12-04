@@ -26,7 +26,7 @@ public class Like {
 
     @Override
     public String toString() {
-        return "Like{" +
+        return "Heart{" +
                 "user_id='" + user_id + '\'' +
                 '}';
     }

@@ -1,7 +1,6 @@
 package com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.Utils;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -9,12 +8,10 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.nourelhoudazribi.aaychfanni.R;
-import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.compte.modifierVotreProfil;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.Post;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.User;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.UserAccountSettings;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.UserSettings;
-import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.share.TakePhoto;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -122,8 +119,6 @@ public class FirebaseMethods {
 
 
                     //addPostToDatabase(urlEntered ,shareType,selectedTitle,selectedDescription, firebaseUrl.toString());
-
-                    //navigate to the main feed so the user can see their photo
 
 
                 }
@@ -492,6 +487,112 @@ public class FirebaseMethods {
     }
 
 
+    public UserSettings getCreatorSettings(DataSnapshot dataSnapshot , String creator_user_id){
+        Log.d(TAG, "getCreatorSettings: created");
+
+        //retrieve user information from the database
+        UserAccountSettings Creatorsettings  = new UserAccountSettings();
+        User creatorUser = new User();
+
+        for(DataSnapshot ds: dataSnapshot.getChildren()){
+
+            // user_account_settings node
+            if(ds.getKey().equals(mContext.getString(R.string.dbname_user_account_settings))) {
+                Log.d(TAG, "getUserAccountSettings: user account settings node datasnapshot: " + ds);
+
+                try {
+
+                    Creatorsettings.setDisplay_name(
+                            ds.child(creator_user_id)
+                                    .getValue(UserAccountSettings.class)
+                                    .getDisplay_name()
+                    );
+                    Creatorsettings.setUsername(
+                            ds.child(creator_user_id)
+                                    .getValue(UserAccountSettings.class)
+                                    .getUsername()
+                    );
+                    Creatorsettings.setWebsite(
+                            ds.child(creator_user_id)
+                                    .getValue(UserAccountSettings.class)
+                                    .getWebsite()
+                    );
+                    Creatorsettings.setDescription(
+                            ds.child(creator_user_id)
+                                    .getValue(UserAccountSettings.class)
+                                    .getDescription()
+                    );
+                    Creatorsettings.setProfile_photo(
+                            ds.child(creator_user_id)
+                                    .getValue(UserAccountSettings.class)
+                                    .getProfile_photo()
+                    );
+                    Creatorsettings.setPosts(
+                            ds.child(creator_user_id)
+                                    .getValue(UserAccountSettings.class)
+                                    .getPosts()
+                    );
+                    Creatorsettings.setFollowing(
+                            ds.child(creator_user_id)
+                                    .getValue(UserAccountSettings.class)
+                                    .getFollowing()
+                    );
+                    Creatorsettings.setFollowers(
+                            ds.child(creator_user_id)
+                                    .getValue(UserAccountSettings.class)
+                                    .getFollowers()
+                    );
+                    Creatorsettings.setCategorie(
+                            ds.child(creator_user_id)
+                                    .getValue(UserAccountSettings.class)
+                                    .getCategorie()
+                    );
+
+                    Log.d(TAG, "getUserAccountSettings: retrieved user_account_settings information: " + Creatorsettings.toString());
+                } catch (NullPointerException e) {
+                    Log.e(TAG, "getUserAccountSettings: NullPointerException: " + e.getMessage());
+                }
+            }
+
+
+            // users node
+            Log.d(TAG, "getUserSettings: snapshot key: " + ds.getKey());
+            if(ds.getKey().equals(mContext.getString(R.string.dbname_users))) {
+                Log.d(TAG, "getUserAccountSettings: users node datasnapshot: " + ds);
+
+                creatorUser.setUsername(
+                        ds.child(creator_user_id)
+                                .getValue(User.class)
+                                .getUsername()
+                );
+                creatorUser.setEmail(
+                        ds.child(creator_user_id)
+                                .getValue(User.class)
+                                .getEmail()
+                );
+                creatorUser.setPhone_number(
+                        ds.child(creator_user_id)
+                                .getValue(User.class)
+                                .getPhone_number()
+                );
+                creatorUser.setUser_id(
+                        ds.child(creator_user_id)
+                                .getValue(User.class)
+                                .getUser_id()
+                );
+                creatorUser.setEst_createur(
+                        ds.child(creator_user_id)
+                                .getValue(User.class)
+                                .getEst_createur()
+                );
+
+                Log.d(TAG, "getUserAccountSettings: retrieved users information: " + creatorUser.toString());
+            }
+        }
+        return new UserSettings(creatorUser, Creatorsettings);
+    }
+
+
 
     public void addNewUser(String email, String username, String description, String website, String profile_photo){
         User user = new User( userID,  0,  email,  StringManipulation.condenseUsername(username) ,false,0);
@@ -511,7 +612,7 @@ public class FirebaseMethods {
                 username,
                 "",
                 userID,
-                0.0,
+                0,
                 "",
                 ""
         );

@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.example.nourelhoudazribi.aaychfanni.R;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.Utils.UniversalImageLoader;
+import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.accueil.MainfeedListAdapter;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.accueil.accueilFragment;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.compte.compteFragment;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -18,7 +19,19 @@ import com.nostra13.universalimageloader.core.ImageLoader;
  * Created by ASUS on 14/11/2017.
  */
 
-public class theEssentialActivity extends AppCompatActivity {
+public class theEssentialActivity extends AppCompatActivity implements
+        MainfeedListAdapter.OnLoadMoreItemsListener {
+
+    @Override
+    public void onLoadMoreItems() {
+        Log.d(TAG, "onLoadMoreItems: displaying more photos");
+        accueilFragment fragment = (accueilFragment) getSupportFragmentManager()
+                .findFragmentByTag("android:switcher:" + R.id.viewPager + ":" + viewPager.getCurrentItem());
+        if(fragment != null){
+            fragment.displayMorePhotos();
+        }
+    }
+
     TabLayout tabLayout ;
     Toolbar toolbar;
     ViewPager viewPager ;

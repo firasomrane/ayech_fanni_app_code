@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <ImageView
+            android:id="@+id/m_icon"
+            android:layout_width="0dp"
+            android:layout_weight="20"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_followers"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            />
+
+        <TextView
+            android:id="@+id/supporteurs_number"
+            android:layout_width="0dp"
+            android:layout_weight="20"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:text="1000"
+            android:textSize="@dimen/profil_text_size"
+            android:paddingLeft="20dp"
+            android:paddingTop="27px"
+            />
+
+        <TextView
+            android:id="@+id/the_text"
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:text="supporteurs"
+            android:textSize="@dimen/profil_text_size"
+            android:paddingTop="27px"
+            />
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

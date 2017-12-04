@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <ImageView
+            android:id="@+id/m_icon"
+            android:layout_width="0dp"
+            android:layout_weight="45"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_money"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            />
+
+        <TextView
+            android:id="@+id/money"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:text="100"
+            android:textSize="@dimen/profil_text_size"
+            android:paddingTop="27px"
+            android:paddingLeft="20dp"
+            />
+
+
+
+        <TextView
+            android:id="@+id/besoin_de"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:text=" DT besoin de "
+            android:textSize="@dimen/profil_text_size"
+            android:paddingTop="27px"
+            />
+
+        <TextView
+            android:id="@+id/target_sum"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:text="1000"
+            android:textSize="@dimen/profil_text_size"
+            android:gravity="left"
+            android:paddingTop="27px"
+            />
+
+        <TextView
+            android:id="@+id/the_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:text=" DT ."
+            android:textSize="@dimen/profil_text_size"
+
+            android:paddingTop="27px"
+            />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

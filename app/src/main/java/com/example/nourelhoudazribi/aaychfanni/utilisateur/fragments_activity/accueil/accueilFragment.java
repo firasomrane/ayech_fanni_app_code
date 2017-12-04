@@ -17,6 +17,8 @@ import android.widget.Toast;
 import com.example.nourelhoudazribi.aaychfanni.MainActivity;
 import com.example.nourelhoudazribi.aaychfanni.R;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.Utils.FirebaseMethods;
+import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.Comment;
+import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.Post;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.User;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.UserSettings;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.share.ShareOne;
@@ -26,9 +28,14 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by ASUS on 13/11/2017.
@@ -49,11 +56,27 @@ public class accueilFragment extends Fragment implements View.OnClickListener {
     private  String userID;
     private FirebaseMethods mFirebaseMethods;
 
+    //vars
+    private ArrayList<Post> mPhotos;
+    private ArrayList<Post> mPaginatedPhotos;
+    private ArrayList<String> mFollowing;
+    private ListView mListView;
+    private MainfeedListAdapter mAdapter;
+    private int mResults;
+    public Integer loadedPosts;
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView: created");
         View rootView=inflater.inflate(R.layout.accueil_fragment,container,false);
+
+        mListView = (ListView) rootView.findViewById(R.id.listView);
+        mFollowing = new ArrayList<>();
+        mPhotos = new ArrayList<>();
+
+
 
         //set the user
         mAuth = FirebaseAuth.getInstance();
@@ -65,12 +88,6 @@ public class accueilFragment extends Fragment implements View.OnClickListener {
         mFirebaseMethods = new FirebaseMethods(getActivity());
 
 
-        lv= (ListView) rootView.findViewById(R.id.accueil_fragment_list);
-
-        publicationAdapter adapter=new publicationAdapter(this.getActivity() ,getAccueilElements());
-
-        lv.setAdapter(adapter);
-
         //set the clickListener when the user is not logged in
 
         betterExperience =(Button) rootView.findViewById(R.id.better_experience_button);
@@ -81,6 +98,174 @@ public class accueilFragment extends Fragment implements View.OnClickListener {
 
         return rootView;
     }
+
+    private void getFollowing(){
+        Log.d(TAG, "getFollowing: searching for following");
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        Query query = reference
+                .child(getString(R.string.dbname_following))
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot singleSnapshot : dataSnapshot.getChildren()){
+                    Log.d(TAG, "onDataChange: found user: " +singleSnapshot.child("user_id").getValue().toString());
+
+                    //mFollowing.add(singleSnapshot.child(getString(R.string.field_user_id)).getValue().toString());
+                   mFollowing.add(singleSnapshot.child("user_id").getValue().toString());
+
+                }
+                mFollowing.add(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                mFollowing.add("zzzzzzzzzzzzzzzzzzzzzzzz");
+
+                //get the photos
+                getPhotos();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void getPhotos(){
+        Log.d(TAG, "getPhotos: getting photos");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+
+        for(int i = 0; i < mFollowing.size(); i++){
+
+            final int count = i;
+
+            Query query = reference
+                    .child(getString(R.string.dbname_user_posts))
+                    .child(mFollowing.get(i))
+                    .orderByChild(getString(R.string.field_user_id))
+                    .equalTo(mFollowing.get(i));
+            query.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+
+                    for(DataSnapshot singleSnapshot : dataSnapshot.getChildren()){
+
+                        Post post = new Post();
+                        Map<String, Object> objectMap = (HashMap<String, Object>) singleSnapshot.getValue();
+                        Log.d(TAG, "onDataChange: the hash map" +objectMap);
+
+                        //if the following is deferent from the lastone who is zzzzzzzzzzzzzzzzzz
+                        if( count < mFollowing.size()-1){
+                            //Log.d(TAG, "onDataChange: count <mFollowing.size()-1  et count =  " + count);
+                            post.setTitle(objectMap.get(getString(R.string.field_title)).toString());
+                            post.setPost_url(objectMap.get("post_url").toString());
+                            post.setDescription(objectMap.get(getString(R.string.field_description)).toString());
+                            post.setPhoto_id(objectMap.get(getString(R.string.field_photo_id)).toString());
+                            post.setUser_id(objectMap.get(getString(R.string.field_user_id)).toString());
+                            post.setCategorie(objectMap.get("categorie").toString());
+                            post.setDate_created(objectMap.get(getString(R.string.field_date_created)).toString());
+                            post.setShare_type(objectMap.get("share_type").toString());
+                            post.setImage_path(objectMap.get(getString(R.string.field_image_path)).toString());
+
+                            ArrayList<Comment> comments = new ArrayList<Comment>();
+                                /*for (DataSnapshot dSnapshot : singleSnapshot
+                                        .child(getString(R.string.field_comments)).getChildren()){
+                                    Comment comment = new Comment();
+                                    comment.setUser_id(dSnapshot.getValue(Comment.class).getUser_id());
+                                    comment.setComment(dSnapshot.getValue(Comment.class).getComment());
+                                    comment.setDate_created(dSnapshot.getValue(Comment.class).getDate_created());
+                                    comments.add(comment);
+                                }*/
+
+                            post.setComments(comments);
+                            mPhotos.add(post);
+
+                        }
+                    }
+
+
+                    if(count == mFollowing.size() -1 ){
+                        //display our photos
+                        Log.d(TAG, "onDataChange: mFollowing.size - 1  == count " + (mFollowing.size()-1));
+                        Log.d(TAG, "onDataChange:mFollowing.size the posts table" + mPhotos);
+                        displayPhotos();
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
+    }
+
+    private void displayPhotos(){
+        mPaginatedPhotos = new ArrayList<>();
+        if(mPhotos != null){
+            try{
+                Collections.sort(mPhotos, new Comparator<Post>() {
+                    @Override
+                    public int compare(Post o1, Post o2) {
+                        return o2.getDate_created().compareTo(o1.getDate_created());
+                    }
+                });
+
+                int iterations = mPhotos.size();
+
+                if(iterations > 10){
+                    iterations = 10;
+                }
+
+                mResults = 10;
+                for(int i = 0; i < iterations; i++){
+                    mPaginatedPhotos.add(mPhotos.get(i));
+                }
+               Log.d(TAG, "onDataChange:mFollowing.size the mPaginatedPhotos     " + mPaginatedPhotos);
+
+                mAdapter = new MainfeedListAdapter(getActivity(), R.layout.accueil_element, mPaginatedPhotos);
+                mListView.setAdapter(mAdapter);
+
+            }catch (NullPointerException e){
+                Log.e(TAG, "displayPhotos: NullPointerException: " + e.getMessage() );
+            }catch (IndexOutOfBoundsException e){
+                Log.e(TAG, "displayPhotos: IndexOutOfBoundsException: " + e.getMessage() );
+            }
+        }
+
+    }
+
+    public void displayMorePhotos(){
+        Log.d(TAG, "displayMorePhotos: displaying more photos");
+
+        try{
+
+            if(mPhotos.size() > mResults && mPhotos.size() > 0){
+
+                int iterations;
+                if(mPhotos.size() > (mResults + 10)){
+                    Log.d(TAG, "displayMorePhotos: there are greater than 10 more photos");
+                    iterations = 10;
+                }else{
+                    Log.d(TAG, "displayMorePhotos: there is less than 10 more photos");
+                    iterations = mPhotos.size() - mResults;
+                }
+
+                //add the new photos to the paginated results
+                for(int i = mResults; i < mResults + iterations; i++){
+                    mPaginatedPhotos.add(mPhotos.get(i));
+                }
+                mResults = mResults + iterations;
+                mAdapter.notifyDataSetChanged();
+            }
+        }catch (NullPointerException e){
+            Log.e(TAG, "displayPhotos: NullPointerException: " + e.getMessage() );
+        }catch (IndexOutOfBoundsException e){
+            Log.e(TAG, "displayPhotos: IndexOutOfBoundsException: " + e.getMessage() );
+        }
+    }
+
 
     @Override
     public void onClick(View v) {
@@ -100,7 +285,7 @@ public class accueilFragment extends Fragment implements View.OnClickListener {
     }
 
 
-    private ArrayList<Publication> getAccueilElements() {
+    /*private ArrayList<Publication> getAccueilElements() {
         ArrayList<Publication> AccueilElements=new ArrayList<>();
         Publication newPost=new Publication("Firas Omrane","New post title", "This is the description for the post", "Youtube.com", "24/11/2017", R.drawable.youtube_image,R.drawable.user_photo);
         AccueilElements.add(newPost);
@@ -112,7 +297,7 @@ public class accueilFragment extends Fragment implements View.OnClickListener {
         AccueilElements.add(newPost);
         return AccueilElements;
 
-    }
+    }*/
 
 
     @Override
@@ -134,7 +319,7 @@ public class accueilFragment extends Fragment implements View.OnClickListener {
         Log.d(TAG, "checkCurrentUser: checking if user is logged in.");
 
         relativeLayout = (RelativeLayout) rootView.findViewById(R.id.subscribe_for_a_better_experience) ;
-        lv= (ListView) rootView.findViewById(R.id.accueil_fragment_list);
+        /*lv= (ListView) rootView.findViewById(R.id.accueil_fragment_list);*/
 
         if(user == null){
             //this is used to change the activity if the user is not logged in
@@ -144,11 +329,11 @@ public class accueilFragment extends Fragment implements View.OnClickListener {
             //If the user is not logged in we will choose to set the visibility in the layout
 
             relativeLayout.setVisibility(View.VISIBLE);
-            lv.setVisibility(View.GONE);
+            mListView.setVisibility(View.GONE);
         }
         else{
             relativeLayout.setVisibility(View.GONE);
-            lv.setVisibility(View.VISIBLE);
+            mListView.setVisibility(View.VISIBLE);
 
             //if the user is logged in fetch his profile informations
             myRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -191,6 +376,25 @@ public class accueilFragment extends Fragment implements View.OnClickListener {
 
     }
 
+
+
+    /*public void onCommentThreadSelected(Post photo, String callingActivity){
+        Log.d(TAG, "onCommentThreadSelected: selected a coemment thread");
+
+        ViewCommentsFragment fragment  = new ViewCommentsFragment();
+        Bundle args = new Bundle();
+        args.putParcelable(getString(R.string.photo), photo);
+        args.putString(getString(R.string.home_activity), getString(R.string.home_activity));
+        fragment.setArguments(args);
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.addToBackStack(getString(R.string.view_comments_fragment));
+        transaction.commit();
+
+    }*/
+
+
     /**
      * Setup the firebase auth object
      */
@@ -210,6 +414,7 @@ public class accueilFragment extends Fragment implements View.OnClickListener {
 
                 if (user != null) {
                     // User is signed in
+                    getFollowing();
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                     //toastMessage("Successfully signed in with: " + user.getEmail());
                 } else {
@@ -239,5 +444,6 @@ public class accueilFragment extends Fragment implements View.OnClickListener {
     private void toastMessage(String message){
         Toast.makeText(this.getActivity(),message,Toast.LENGTH_SHORT).show();
     }
+
 
 }
