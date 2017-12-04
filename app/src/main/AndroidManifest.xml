@@ -77,6 +77,10 @@
 
         </activity>
 
+        <!--Explorer actvities-->
+        <activity android:name=".utilisateur.fragments_activity.explorer.ExploreCategoryActivity">
+
+        </activity>
 
 
     </application>

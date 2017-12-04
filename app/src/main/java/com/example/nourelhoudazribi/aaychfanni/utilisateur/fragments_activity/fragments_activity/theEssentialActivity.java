@@ -12,6 +12,7 @@ import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.Ut
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.accueil.MainfeedListAdapter;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.accueil.accueilFragment;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.compte.compteFragment;
+import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.explorer.exploreFragment;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 

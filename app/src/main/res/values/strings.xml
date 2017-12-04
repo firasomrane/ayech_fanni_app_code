@@ -44,6 +44,7 @@
     <string name="activity_number">activity_number</string>
     <string name="bundle_photo">bundle_photo</string>
     <string name="bundle_user_account_settings">bundle_user_account_settings</string>
+    <string name="categorie">categorie</string>
 
     <!-- activity names -->
     <string name="profile_activity">Profile Activity</string>
