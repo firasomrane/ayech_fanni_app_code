@@ -27,28 +27,62 @@ public class theEssentialActivity extends AppCompatActivity implements
     public void onLoadMoreItems() {
         Log.d(TAG, "onLoadMoreItems: displaying more photos");
         accueilFragment fragment = (accueilFragment) getSupportFragmentManager()
-                .findFragmentByTag("android:switcher:" + R.id.viewPager + ":" + viewPager.getCurrentItem());
+                .findFragmentByTag("android:switcher:" + viewPager + ":" + viewPager.getCurrentItem());
         if(fragment != null){
             fragment.displayMorePhotos();
         }
     }
 
+
+
+    private static final String TAG = "theEssentialActivity";
+
     TabLayout tabLayout ;
     Toolbar toolbar;
     ViewPager viewPager ;
-    private static final String TAG = "theEssentialActivity";
+
+    public final String one="one" , two = "two" ,three = "three" ,four="four" ,nul = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG,"created");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.the_essential_activity);
 
+        //VIEWPAGER
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
+
+        //to get the fragment explorer when returnin from explorer
+        Bundle bundle=getIntent().getExtras();
+        if (bundle!=null){
+            String intentFragment = getIntent().getExtras().getString("frgToLoad");
+            switch (intentFragment){
+                case one:
+                    // Load corresponding fragment
+                    viewPager.setCurrentItem(0);
+                    break;
+                case two:
+                    // Load corresponding fragment
+                    viewPager.setCurrentItem(1);
+                    break;
+                case three:
+                    // Load corresponding fragment
+                    viewPager.setCurrentItem(2);
+                    break;
+                case four:
+                    // Load corresponding fragment
+                    viewPager.setCurrentItem(3);
+                    break;
+                default:
+                    viewPager.setCurrentItem(0);
+            }
+        }
+
+
         //this is for loading pictures purpose
         initImageLoader();
 
 
-        //VIEWPAGER
-        viewPager = (ViewPager) findViewById(R.id.viewPager);
+
         //TABLAYOUT
         tabLayout= (TabLayout) findViewById(R.id.tablayout);
         FragmentAdapter fragmentAdapter = new FragmentAdapter(getSupportFragmentManager());

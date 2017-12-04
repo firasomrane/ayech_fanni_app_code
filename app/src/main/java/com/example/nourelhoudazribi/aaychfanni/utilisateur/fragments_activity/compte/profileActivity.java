@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.example.nourelhoudazribi.aaychfanni.R;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.Utils.FirebaseMethods;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.Utils.UniversalImageLoader;
+import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.fragments_activity.theEssentialActivity;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.User;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.UserAccountSettings;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.UserSettings;
@@ -40,7 +41,7 @@ public class profileActivity extends AppCompatActivity {
     private Button abonner ,supporter,dejaAbonne;
     private TextView username,description,nbreSupporteurs,targetSum,creatorSum,privileges;
     private ListView listView;
-    private ImageView mProfilePhoto;
+    private ImageView mProfilePhoto,mBackArrow;
     private ProgressBar progressBar;
 
     private UserSettings mCreatorUserSettings,mUserSettings;
@@ -77,8 +78,21 @@ public class profileActivity extends AppCompatActivity {
         privileges = (TextView) findViewById(R.id.privileges);
         listView = (ListView) findViewById(R.id.listView);
         mProfilePhoto = (ImageView) findViewById(R.id.profile_photo);
+        mBackArrow = (ImageView) findViewById(R.id.back_arrow) ;
 
-        getIncomingIntent();
+        mBackArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(profileActivity.this , theEssentialActivity.class);
+                Bundle bundleToThree = new Bundle();
+                bundleToThree.putString("frgToLoad", "one");
+                intent.putExtras(bundleToThree);
+                finish();
+                startActivity(intent);
+            }
+        });
+
+
         setupFirebaseAuth();
 
 
@@ -241,10 +255,12 @@ public class profileActivity extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                userID = user.getUid();
+
                // Log.d(TAG, "onAuthStateChanged: auth user is " + userID);
 
                 if (user != null) {
+                    userID = user.getUid();
+                    getIncomingIntent();
                     // User is signed in
                    // Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {

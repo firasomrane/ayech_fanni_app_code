@@ -109,6 +109,9 @@ public class ExploreCategoryActivity extends AppCompatActivity implements
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ExploreCategoryActivity.this , theEssentialActivity.class);
+                Bundle bundleToThree = new Bundle();
+                bundleToThree.putString("frgToLoad", "two");
+                intent.putExtras(bundleToThree);
                 finish();
                 startActivity(intent);
             }
