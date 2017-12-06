@@ -147,9 +147,9 @@ public class profileActivity extends AppCompatActivity {
 
         nbreSupporteurs.setText(Long.toString(creatorUserAccountSettings.getFollowers()));
         targetSum.setText(Long.toString(creatorUserAccountSettings.getTarget_sum()));
-        creatorSum.setText(Long.toString(creatorUser.getArgent()));
+        creatorSum.setText(Long.toString(creatorUserAccountSettings.getDon_sum()));
         Long pr;
-        pr = creatorUserAccountSettings.getTarget_sum() /creatorUser.getArgent();
+        pr = creatorUserAccountSettings.getDon_sum() /creatorUserAccountSettings.getTarget_sum();
 
         progressBar.setProgress(pr.intValue());
 

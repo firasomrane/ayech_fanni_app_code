@@ -113,7 +113,6 @@ public class notificationsFragment extends Fragment implements View.OnClickListe
 
 
 
-    /************************FIREBASE**********************/
     /**
      * checks to see if the @param 'user' is logged in
      * @param user

@@ -61,35 +61,33 @@
             android:layout_height="50dp"
             android:layout_below="@+id/relLayout1"
             android:background="@drawable/grey_border_bottom"
-            android:id="@+id/relLayout0"
+            android:id="@+id/relLayout_argent"
             android:layout_marginTop="15dp">
 
             <ImageView
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:src="@drawable/ic_web"
+                android:src="@drawable/ic_money"
                 android:layout_centerVertical="true"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/argent_test"
+                android:id="@+id/argent_text"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="40dp"
                 android:background="@null"
-                android:inputType="textNoSuggestions"
-                android:hint="Votre argent"/>
+                android:text="Votre argent"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/argent"
+                android:id="@+id/argent_sum"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="45dp"
                 android:layout_alignParentRight="true"
                 android:background="@null"
-                android:inputType="textNoSuggestions"
-                android:hint="50"/>
+                android:text="50"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -99,45 +97,43 @@
                 android:layout_marginRight="20dp"
                 android:layout_alignParentRight="true"
                 android:background="@null"
-                android:inputType="textNoSuggestions"
-                android:hint="Dt"/>
+                android:text="Dt"/>
 
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_below="@+id/relLayout0"
+            android:layout_below="@+id/relLayout_argent"
             android:background="@drawable/grey_border_bottom"
-            android:id="@+id/relative_lay_website"
-            android:layout_marginTop="15dp">
+            android:id="@+id/relative_lay_vos_dons"
+            android:layout_marginTop="15dp"
+            android:visibility="gone">
 
             <ImageView
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:src="@drawable/ic_web"
+                android:src="@drawable/ic_money"
                 android:layout_centerVertical="true"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/argent_test"
+                android:id="@+id/vos_dons"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="40dp"
                 android:background="@null"
-                android:inputType="textNoSuggestions"
-                android:hint="Votre argent"/>
+                android:text="Vos dons"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/argent2"
+                android:id="@+id/dons_sum"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="45dp"
                 android:layout_alignParentRight="true"
                 android:background="@null"
-                android:inputType="textNoSuggestions"
-                android:hint="50"/>
+                android:text="50"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -147,8 +143,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_alignParentRight="true"
                 android:background="@null"
-                android:inputType="textNoSuggestions"
-                android:hint="Dt"/>
+                android:text="Dt"/>
 
         </RelativeLayout>
 
@@ -157,26 +152,25 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_below="@+id/relative_lay_website"
+            android:layout_below="@+id/relative_lay_vos_dons"
             android:background="@drawable/grey_border_bottom"
-            android:id="@+id/relative_lay_description"
+            android:id="@+id/relative_lay_log_out"
             android:layout_marginTop="15dp">
 
             <ImageView
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:src="@drawable/ic_description"
+                android:src="@drawable/ic_sgn_out"
                 android:layout_centerVertical="true"/>
 
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/description"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="40dp"
                 android:background="@null"
-                android:inputType="textNoSuggestions"
-                android:hint="Description"/>
+                android:text="Déconnecter"/>
 
         </RelativeLayout>
 

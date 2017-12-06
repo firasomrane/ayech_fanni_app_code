@@ -18,10 +18,11 @@ public class UserAccountSettings {
     private String website;
     private String user_id;
     private long target_sum;
+    private long don_sum;
     private String cover_photo;
     private String categorie;
 
-    public UserAccountSettings(String description, String display_name, long followers, long following, long posts, String profile_photo, String username, String website, String user_id, long target_sum, String cover_photo) {
+    public UserAccountSettings(String description, String display_name, long followers, long following, long posts, String profile_photo, String username, String website, String user_id, long target_sum, String cover_photo,long don_sum) {
         this.description = description;
         this.display_name = display_name;
         this.followers = followers;
@@ -33,9 +34,10 @@ public class UserAccountSettings {
         this.user_id = user_id;
         this.target_sum = target_sum;
         this.cover_photo = cover_photo;
+        this.don_sum =don_sum;
     }
 
-    public UserAccountSettings(String description, String display_name, long followers, long following, long posts, String profile_photo, String username, String website, String user_id, long target_sum, String cover_photo, String categorie) {
+    public UserAccountSettings(String description, String display_name, long followers, long following, long posts, String profile_photo, String username, String website, String user_id, long target_sum, String cover_photo, String categorie,long don_sum) {
         this.description = description;
         this.display_name = display_name;
         this.followers = followers;
@@ -48,6 +50,7 @@ public class UserAccountSettings {
         this.target_sum = target_sum;
         this.cover_photo = cover_photo;
         this.categorie = categorie;
+        this.don_sum =don_sum;
     }
 
     /*public UserAccountSettings(String description, String display_name, long followers, long following, long posts, String profile_photo, String username, String website, String user_id, Double target_sum) {
@@ -203,6 +206,14 @@ public class UserAccountSettings {
         this.categorie = categorie;
     }
 
+    public long getDon_sum() {
+        return don_sum;
+    }
+
+    public void setDon_sum(long don_sum) {
+        this.don_sum = don_sum;
+    }
+
     @Override
     public String toString() {
         return "UserAccountSettings{" +
@@ -216,6 +227,7 @@ public class UserAccountSettings {
                 ", website='" + website + '\'' +
                 ", target_sum='" + target_sum + '\'' +
                 ", categorie='" + categorie + '\'' +
+                ", don_sum='" + don_sum + '\'' +
                 '}';
     }
 

@@ -328,9 +328,9 @@ public class FirebaseMethods {
     ///update the argent
     public void updateArgent(String creator_user_id ,String userID , Long newCreatorArgent , Long newUserArgentLong ){
         Log.d(TAG, "updateArgent: ");
-        myRef.child(mContext.getString(R.string.dbname_users))
+        myRef.child(mContext.getString(R.string.dbname_user_account_settings))
                 .child(creator_user_id)
-                .child("argent")
+                .child("don_sum")
                 .setValue(newCreatorArgent);
 
         myRef.child(mContext.getString(R.string.dbname_users))
@@ -463,6 +463,11 @@ public class FirebaseMethods {
                                     .getValue(UserAccountSettings.class)
                                     .getTarget_sum()
                     );
+                    settings.setDon_sum(
+                            ds.child(userID)
+                                    .getValue(UserAccountSettings.class)
+                                    .getDon_sum()
+                    );
 
 
                     Log.d(TAG, "getUserAccountSettings: retrieved user_account_settings information: " + settings.toString());
@@ -581,6 +586,11 @@ public class FirebaseMethods {
                                     .getValue(UserAccountSettings.class)
                                     .getTarget_sum()
                     );
+                    Creatorsettings.setDon_sum(
+                            ds.child(creator_user_id)
+                                    .getValue(UserAccountSettings.class)
+                                    .getDon_sum()
+                    );
 
 
                     Log.d(TAG, "getUserAccountSettings: retrieved user_account_settings information: " + Creatorsettings.toString());
@@ -654,7 +664,8 @@ public class FirebaseMethods {
                 userID,
                 0,
                 "",
-                ""
+                "",
+                0
         );
 
         myRef.child(mContext.getString(R.string.dbname_user_account_settings))

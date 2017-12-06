@@ -161,7 +161,7 @@ public class supporterLayoutThree extends supporterLayoutOne {
     private  void setTheNewArgent(){
         Log.d(TAG, "setTheNewArgent: created");
 
-        currentCreatorArgent = mCreatorUserSettings.getUser().getArgent();
+        currentCreatorArgent = mCreatorUserSettings.getSettings().getDon_sum();
         currentUserArgent = mCurrentUserSettings.getUser().getArgent();
 
         Log.d(TAG, "setTheNewArgent: money for currentCreatorArgent " +currentCreatorArgent);

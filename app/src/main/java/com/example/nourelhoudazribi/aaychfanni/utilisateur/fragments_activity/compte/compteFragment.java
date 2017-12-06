@@ -43,7 +43,8 @@ public class compteFragment extends Fragment implements View.OnClickListener {
     private static final String TAG = "compteFragment";
 
     private Button devenirCreateur, betterExperience,logOut;
-    private RelativeLayout relativeLayoutForBetterExperience, relativeLayoutMain,modifierVotreProfil,createPost;
+    private RelativeLayout relativeLayoutForBetterExperience, relativeLayoutMain,modifierVotreProfil,createPost,relativeLayoutParametres;
+
     private RelativeLayout vosSupporteurs;
     private TextView compteLayoutNameField;
     private ImageView mProfilePhoto;
@@ -82,9 +83,9 @@ public class compteFragment extends Fragment implements View.OnClickListener {
         betterExperience = (Button) rootViewtTwO.findViewById(R.id.better_experience_button);
         betterExperience.setOnClickListener(this);
 
-        //set the log out button
+        /*//set the log out button
         logOut =(Button) rootViewtTwO.findViewById(R.id.se_deconnecter_compte);
-        logOut.setOnClickListener(this);
+        logOut.setOnClickListener(this);*/
 
         //set the progressbar
         mProgressBar = (ProgressBar) rootViewtTwO.findViewById(R.id.profileProgressBar);
@@ -93,6 +94,10 @@ public class compteFragment extends Fragment implements View.OnClickListener {
         //set the modifier votre profil clickListener
         modifierVotreProfil = (RelativeLayout) rootViewtTwO.findViewById(R.id.modifier_votre_profil_relative_layout) ;
         modifierVotreProfil.setOnClickListener(this);
+
+        //set the parametres relative layout
+        relativeLayoutParametres = (RelativeLayout)  rootViewtTwO.findViewById(R.id.parametres_relative_layout);
+        relativeLayoutParametres.setOnClickListener(this);
 
         //check if the User is logged in or not to choose which layout to show
         setupFirebaseAuth(rootViewtTwO);
@@ -136,15 +141,14 @@ public class compteFragment extends Fragment implements View.OnClickListener {
                 startActivity(intent2);
 
                 break;
-
-            case R.id.se_deconnecter_compte:
-                mAuth.signOut();
-                //getActivity().finish();
+            case R.id.modifier_votre_profil_relative_layout:
+                Intent intent3 = new Intent(getActivity(), modifierVotreProfil.class);
+                startActivity(intent3);
                 break;
 
-            case R.id.modifier_votre_profil_relative_layout:
-                Intent intent3 = new Intent(getActivity(), com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.compte.modifierVotreProfil.class);
-                startActivity(intent3);
+            case R.id.parametres_relative_layout:
+                Intent intent4 = new Intent(getActivity(), Parametres.class);
+                startActivity(intent4);
                 break;
 
             default:

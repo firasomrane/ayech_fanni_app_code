@@ -41,7 +41,7 @@ public class devenir_createur extends AppCompatActivity {
         continuer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-/// Create Intent for SignUpActivity abd Start The Activity
+        /// Create Intent for SignUpActivity abd Start The Activity
                 String des=descri.getText().toString().trim();
                 String e=empl.getText().toString().trim();
                 String fb=faceb.getText().toString().trim();
