@@ -25,12 +25,20 @@ public class supporterLayoutOne extends AppCompatActivity {
     private Button continuerButtonSupporterOne;
 
     private static final String TAG = "supporterLayoutOne";
+    public String creator_user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "created");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.supporter_layout_1);
+
+        creator_user_id="";
+
+        Intent intent = getIntent();
+        creator_user_id = intent.getStringExtra(getString(R.string.user_id));
+        Log.d(TAG, "setDonationDescription: creator user id is  "+creator_user_id);
+
 
         //handle the selected radio buttons from here https://www.mkyong.com/android/android-radio-buttons-example/
         addListenerOnButton();
@@ -90,11 +98,13 @@ public class supporterLayoutOne extends AppCompatActivity {
                 //Create the bundle
                 Bundle bundle = new Bundle();
 
+
                 //Add your data to bundle
                 bundle.putString("donationType",donationtype.toString() );
 
                 //Add the bundle to the intent
                 intent.putExtras(bundle);
+                intent.putExtra(getString(R.string.user_id), creator_user_id);
 
                 startActivity(intent);
 

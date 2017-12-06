@@ -8,6 +8,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.nourelhoudazribi.aaychfanni.R;
+import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.Don;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.Post;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.User;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.UserAccountSettings;
@@ -265,6 +266,9 @@ public class FirebaseMethods {
     }
 
 
+
+
+
     /**
      * Update 'user_account_settings' node for the current user
      * @param displayName
@@ -320,6 +324,20 @@ public class FirebaseMethods {
                 .setValue(username);
     }
 
+
+    ///update the argent
+    public void updateArgent(String creator_user_id ,String userID , Long newCreatorArgent , Long newUserArgentLong ){
+        Log.d(TAG, "updateArgent: ");
+        myRef.child(mContext.getString(R.string.dbname_users))
+                .child(creator_user_id)
+                .child("argent")
+                .setValue(newCreatorArgent);
+
+        myRef.child(mContext.getString(R.string.dbname_users))
+                .child(userID)
+                .child("argent")
+                .setValue(newUserArgentLong);
+    }
 
     public boolean checkIfUsernameExists(String username, DataSnapshot datasnapshot){
         Log.d(TAG, "checkIfUsernameExists: checking if " + username + " already exists.");
@@ -440,6 +458,12 @@ public class FirebaseMethods {
                                     .getValue(UserAccountSettings.class)
                                     .getCategorie()
                     );
+                    settings.setTarget_sum(
+                            ds.child(userID)
+                                    .getValue(UserAccountSettings.class)
+                                    .getTarget_sum()
+                    );
+
 
                     Log.d(TAG, "getUserAccountSettings: retrieved user_account_settings information: " + settings.toString());
                 } catch (NullPointerException e) {
@@ -477,6 +501,11 @@ public class FirebaseMethods {
                         ds.child(userID)
                                 .getValue(User.class)
                                 .getEst_createur()
+                );
+                user.setArgent(
+                        ds.child(userID)
+                                .getValue(User.class)
+                                .getArgent()
                 );
 
                 Log.d(TAG, "getUserAccountSettings: retrieved users information: " + user.toString());
@@ -547,6 +576,12 @@ public class FirebaseMethods {
                                     .getValue(UserAccountSettings.class)
                                     .getCategorie()
                     );
+                    Creatorsettings.setTarget_sum(
+                            ds.child(creator_user_id)
+                                    .getValue(UserAccountSettings.class)
+                                    .getTarget_sum()
+                    );
+
 
                     Log.d(TAG, "getUserAccountSettings: retrieved user_account_settings information: " + Creatorsettings.toString());
                 } catch (NullPointerException e) {
@@ -585,6 +620,11 @@ public class FirebaseMethods {
                                 .getValue(User.class)
                                 .getEst_createur()
                 );
+                creatorUser.setArgent(
+                        ds.child(creator_user_id)
+                                .getValue(User.class)
+                                .getArgent()
+                );
 
                 Log.d(TAG, "getUserAccountSettings: retrieved users information: " + creatorUser.toString());
             }
@@ -622,5 +662,28 @@ public class FirebaseMethods {
                 .setValue(settings);
 
     }
+
+    public void ajouterNouveauDon(String creator_user_id, String simple_user_id,long trasaction_sum){
+        Log.d(TAG, "ajouterNouveauDo: created");
+
+        Don don = new Don();
+
+        don.setCreator_user_id(creator_user_id);
+        don.setSimple_user_id(simple_user_id);
+        don.setDate_created(getTimestamp());
+        don.setTrasaction_sum(trasaction_sum);
+
+
+        ///we have to get the creator categorie from his user account settings
+
+
+
+        //insert into database
+
+        Log.d(TAG, "addDonToDatabase: the don before add to database"+ don.toString());
+        myRef.child(mContext.getString(R.string.don))
+               .setValue(don);
+
+           }
 
 }

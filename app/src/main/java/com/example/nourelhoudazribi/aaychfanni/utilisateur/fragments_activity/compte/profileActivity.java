@@ -92,6 +92,7 @@ public class profileActivity extends AppCompatActivity {
             }
         });
 
+        getIncomingIntent();
 
         setupFirebaseAuth();
 
@@ -116,7 +117,7 @@ public class profileActivity extends AppCompatActivity {
         Log.d(TAG, "getCreatorProfileWidgets: created");
 
         Log.d(TAG, "setProfileWidgets: setting widgets with data retrieving from firebase database: " + userSettings.toString());
-        Log.d(TAG, "setProfileWidgets: setting widgets with data retrieving from firebase database: " + userSettings.getSettings().getCover_photo());
+        Log.d(TAG, "setProfileWidgets: setting widgets with data retrieving from firebase database: " + userSettings.getSettings().getTarget_sum());
         //Log.d(TAG, "setProfileWidgets: setting widgets with data retrieving from firebase database: " + userSettings.getUser().getPhone_number());
 
         mCreatorUserSettings = userSettings;
@@ -127,18 +128,30 @@ public class profileActivity extends AppCompatActivity {
         UniversalImageLoader.setImage(creatorUserAccountSettings.getProfile_photo(), mProfilePhoto, null, "");
         username.setText(creatorUserAccountSettings.getUsername());
         description.setText(creatorUserAccountSettings.getDescription());
-        setTheAbonnerButton();
-        supporter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(profileActivity.this , supporterLayoutOne.class);
-                intent.putExtra(getString(R.string.user_id), creator_user_id);
-                startActivity(intent);
-            }
-        });
+
+
+        if(userID !=null){
+            setTheAbonnerButton();
+            supporter.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(profileActivity.this , supporterLayoutOne.class);
+                    intent.putExtra(getString(R.string.user_id), creator_user_id);
+                    startActivity(intent);
+                }
+            });
+
+        }
+
+
+
         nbreSupporteurs.setText(Long.toString(creatorUserAccountSettings.getFollowers()));
-        targetSum.setText(Double.toString(creatorUserAccountSettings.getTarget_sum()));
+        targetSum.setText(Long.toString(creatorUserAccountSettings.getTarget_sum()));
         creatorSum.setText(Long.toString(creatorUser.getArgent()));
+        Long pr;
+        pr = creatorUserAccountSettings.getTarget_sum() /creatorUser.getArgent();
+
+        progressBar.setProgress(pr.intValue());
 
         //setTheProfileListView();
 
@@ -225,7 +238,7 @@ public class profileActivity extends AppCompatActivity {
 
                 //retrieve creator  informations from the database
                 mCreatorUserSettings = mFirebaseMethods.getCreatorSettings(dataSnapshot ,creator_user_id);
-                setCreatorProfileWidgets(mFirebaseMethods.getCreatorSettings(dataSnapshot ,creator_user_id));
+                setCreatorProfileWidgets(mCreatorUserSettings);
 
                 //retrieve images for the user in question
 

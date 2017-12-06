@@ -82,11 +82,11 @@
                 android:id="@+id/supporter_montant_text"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="1.00 "
+                android:text="1 "
                 android:gravity="center"
                 android:textSize="@dimen/buttons_size"
                 android:maxLines="1"
-                android:inputType="numberDecimal"
+                android:inputType="number"
                 android:layout_centerInParent="true"
                 android:paddingRight="40dp"
                 />

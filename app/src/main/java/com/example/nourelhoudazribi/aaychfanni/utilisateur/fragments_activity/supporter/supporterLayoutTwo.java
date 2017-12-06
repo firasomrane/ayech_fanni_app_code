@@ -26,15 +26,24 @@ public class supporterLayoutTwo extends AppCompatActivity {
     private Button supporterMontantMinusButton;
     private String montant;
     private TextView montantText;
-    private Double montantDouble;
+    private long montantLong;
+    public String creator_user_id;
+
 
     private static final String TAG = "supporterLayoutTwo";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "created");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.supporter_layout_2);
+
+        //get the intent
+        creator_user_id="";
+        Intent intent = getIntent();
+        creator_user_id = intent.getStringExtra(getString(R.string.user_id));
+        Log.d(TAG, "setDonationDescription: creator user id is  "+creator_user_id);
 
         addListenerOnButton();
 
@@ -53,11 +62,14 @@ public class supporterLayoutTwo extends AppCompatActivity {
         supporterMontantPlusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 montant = montantText.getText().toString();
-                montantDouble = Double.parseDouble(montant);
-                montantDouble++;
-                montantText.setText(String.valueOf(round(montantDouble,2)));
+                montant = montant.replace(" ","");
+                montant = montant.split("\\.")[0];
+                Log.d(TAG, "onClick: montant est "+montant.getClass().getName());
+                Log.d(TAG, "onClick: the type of  Long.valueOf(montant) is  "+ Long.valueOf(montant).getClass().getName());
+                montantLong = Long.parseLong(montant);
+                montantLong++;
+                montantText.setText(String.valueOf(montantLong));
             }
         });
 
@@ -65,13 +77,13 @@ public class supporterLayoutTwo extends AppCompatActivity {
         supporterMontantMinusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                montant = montantText.getText().toString();
-                montantDouble = Double.parseDouble(montant);
-                if(montantDouble>=2){
-                    montantDouble--;
+                montant = montantText.getText().toString().split("\\.")[0];
+                montantLong = Long.parseLong(montant);
+                if(montantLong >=2){
+                    montantLong--;
                 }
 
-                montantText.setText(String.valueOf(round(montantDouble,2)));
+                montantText.setText(String.valueOf(montantLong));
             }
         });
 
@@ -100,6 +112,7 @@ public class supporterLayoutTwo extends AppCompatActivity {
                 Bundle bundleToThree = new Bundle();
                 bundleToThree.putString("donationType", donationtype);
                 bundleToThree.putString("montant", montant);
+                intent.putExtra(getString(R.string.user_id), creator_user_id);
                 intent.putExtras(bundleToThree);
 
                 startActivity(intent);

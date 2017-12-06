@@ -106,7 +106,7 @@
             <include
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                layout="@layout/account_parametres" />
+                layout="@layout/account_parametres_text" />
 
 
         </RelativeLayout>

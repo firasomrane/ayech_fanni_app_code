@@ -1,51 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
-    android:layout_width="wrap_content"
-    android:orientation="vertical"
-    android:weightSum="1">
+    android:layout_width="wrap_content">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:weightSum="100">
+        android:id="@+id/edit_profile_top"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="1">
 
-        <ImageView
-            android:id="@+id/m_icon"
-            android:layout_width="30dp"
-            android:layout_weight="30"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_settings"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
 
-        <TextView
-            android:id="@+id/the_text"
-            android:layout_width="304dp"
-            android:layout_weight="60"
-            android:layout_height="match_parent"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:text="Paramètre"
-            android:textSize="35px"
-            android:paddingLeft="30dp"
-            android:paddingTop="27px"
-            />
+            <ImageView
+                android:id="@+id/back_arrow"
+                android:layout_width="30dp"
+                android:layout_weight="10"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_backarrow"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                />
 
-        <ImageView
-            android:id="@+id/m_fleche"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_fleche_avant"
-            android:layout_marginTop="10dp" />
+            <TextView
+                android:id="@+id/the_text"
+                android:layout_width="0dp"
+                android:layout_weight="80"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:text="Modifier votre profil"
+                android:textSize="35px"
+                android:paddingLeft="30dp"
+                android:paddingTop="27px"
+                />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:background="@android:color/darker_gray" />
 
     </LinearLayout>
 
-    <View
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="8dp"
-        android:background="@android:color/darker_gray" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_profile_top">
 
-</LinearLayout>
+        <!-- website section -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/relLayout1"
+            android:background="@drawable/grey_border_bottom"
+            android:id="@+id/relLayout0"
+            android:layout_marginTop="15dp">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_web"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/argent_test"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="40dp"
+                android:background="@null"
+                android:inputType="textNoSuggestions"
+                android:hint="Votre argent"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/argent"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="45dp"
+                android:layout_alignParentRight="true"
+                android:background="@null"
+                android:inputType="textNoSuggestions"
+                android:hint="50"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dt1"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_alignParentRight="true"
+                android:background="@null"
+                android:inputType="textNoSuggestions"
+                android:hint="Dt"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/relLayout0"
+            android:background="@drawable/grey_border_bottom"
+            android:id="@+id/relative_lay_website"
+            android:layout_marginTop="15dp">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_web"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/argent_test"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="40dp"
+                android:background="@null"
+                android:inputType="textNoSuggestions"
+                android:hint="Votre argent"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/argent2"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="45dp"
+                android:layout_alignParentRight="true"
+                android:background="@null"
+                android:inputType="textNoSuggestions"
+                android:hint="50"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dt2"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_alignParentRight="true"
+                android:background="@null"
+                android:inputType="textNoSuggestions"
+                android:hint="Dt"/>
+
+        </RelativeLayout>
+
+
+        <!-- description section -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/relative_lay_website"
+            android:background="@drawable/grey_border_bottom"
+            android:id="@+id/relative_lay_description"
+            android:layout_marginTop="15dp">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_description"
+                android:layout_centerVertical="true"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/description"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="40dp"
+                android:background="@null"
+                android:inputType="textNoSuggestions"
+                android:hint="Description"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

@@ -74,6 +74,7 @@ public class ExploreCategoryActivity extends AppCompatActivity implements
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        Log.d(TAG, "onCreate: created");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.explore_category_activity_layout);
         mListView = (ListView) findViewById(R.id.listView);
@@ -84,9 +85,9 @@ public class ExploreCategoryActivity extends AppCompatActivity implements
         mAuth = FirebaseAuth.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         myRef = mFirebaseDatabase.getReference();
-        if(mAuth.getCurrentUser() != null){
-            userID = mAuth.getCurrentUser().getUid();
-        }
+        /*if(mAuth.getCurrentUser() != null){
+
+        }*/
         mFirebaseMethods = new FirebaseMethods(ExploreCategoryActivity.this);
 
         categoryTextView = (TextView) findViewById(R.id.category_name) ;
@@ -121,9 +122,10 @@ public class ExploreCategoryActivity extends AppCompatActivity implements
 
     ///get the posts that have the chosen category
     private void getCategoryPosts(){
-        Log.d(TAG, "getCategoryPosts: activated for category  " +category);
+       // Log.d(TAG, "getCategoryPosts: activated for category  " +category);
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        //Log.d(TAG, "getCategoryPosts: reference" + reference);
 
         mCategories = new ArrayList<>();
         mPosts = new ArrayList<>();
@@ -141,16 +143,18 @@ public class ExploreCategoryActivity extends AppCompatActivity implements
                     .child(getString(R.string.dbname_posts))
                     .orderByChild(getString(R.string.categorie))
                     .equalTo(mCategories.get(i));
+            //Log.d(TAG, "getCategoryPosts: query  " + query);
             query.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-
+                    Log.d(TAG, "onDataChange: activated with snapshot " +dataSnapshot);
 
                     for(DataSnapshot singleSnapshot : dataSnapshot.getChildren()){
 
                         Post post = new Post();
                         Map<String, Object> objectMap = (HashMap<String, Object>) singleSnapshot.getValue();
-                        Log.d(TAG, "onDataChange: the hash map for explore" +objectMap);
+                       // Log.d(TAG, "onDataChange: the hash map for explore" +objectMap);
+                       // Log.d(TAG, "onDataChange: the snapshot for explore" +singleSnapshot.getValue());
 
                         //if the following is deferent from the lastone who is zzzzzzzzzzzzzzzzzz
                         if( count < mCategories.size()-1){
@@ -177,16 +181,17 @@ public class ExploreCategoryActivity extends AppCompatActivity implements
 
                             post.setComments(comments);
                             mPosts.add(post);
-                            Log.d(TAG, "onDataChange: the mPosts for explore" +mPosts);
+                           // Log.d(TAG, "onDataChange:  for count =  " +count +"  the mPosts for explore" +mPosts );
 
                         }
+                        //Log.d(TAG, "onDataChange: the mPosts for explore" +mPosts);
                     }
 
-
-                    if(count == mCategories.size() -1 ){
+                    Log.d(TAG, "onDataChange:  for count =  " +count +"  the mPosts for explore" +mPosts );
+                    if((count == mCategories.size() -1 )||(notEmpty(mPosts) &&count ==0) ){
                         //display our photos
-                        Log.d(TAG, "onDataChange: mCategories.size - 1  == count " + (mCategories.size()-1));
-                        Log.d(TAG, "onDataChange:mFollowing.size the posts table" + mPosts);
+                        //Log.d(TAG, "onDataChange: mCategories.size - 1  == count " + (mCategories.size()-1));
+                        //Log.d(TAG, "onDataChange:mFollowing.size the posts table" + mPosts);
                         displayPosts();
                     }
 
@@ -198,6 +203,10 @@ public class ExploreCategoryActivity extends AppCompatActivity implements
                 }
             });
         }
+    }
+
+    public boolean notEmpty(ArrayList a) {
+        return !a.isEmpty();
     }
 
 
@@ -289,16 +298,18 @@ public class ExploreCategoryActivity extends AppCompatActivity implements
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
-
                 //check if the user is logged in
 
                 if (user != null) {
                     // User is signed in
+                    userID = mAuth.getCurrentUser().getUid();
                     getCategoryPosts();
+
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                     //toastMessage("Successfully signed in with: " + user.getEmail());
                 } else {
                     // User is signed out
+                    getCategoryPosts();
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                     // toastMessage("Successfully signed out.");
                 }
