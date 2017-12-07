@@ -34,6 +34,8 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
+import static com.example.nourelhoudazribi.aaychfanni.R.id.website;
+
 /**
  * Created by ASUS on 28/11/2017.
  */
@@ -263,6 +265,53 @@ public class FirebaseMethods {
             count++;
         }
         return count;
+    }
+
+
+
+   ///when a user becomes a creator his accountSettings are updated
+    public void devenirCreateur(String categorie, String description, long target_sum, String website,long new_argent){
+
+        Log.d(TAG, "updateUserAccountSettings: updating user account settings.");
+
+        myRef.child(mContext.getString(R.string.dbname_users))
+                .child(userID)
+                .child("est_createur")
+                .setValue(true);
+
+        myRef.child(mContext.getString(R.string.dbname_users))
+                .child(userID)
+                .child("argent")
+                .setValue(new_argent);
+
+        if(categorie != null){
+            myRef.child(mContext.getString(R.string.dbname_user_account_settings))
+                    .child(userID)
+                    .child("categorie")
+                    .setValue(categorie);
+        }
+
+
+        if(description != null) {
+            myRef.child(mContext.getString(R.string.dbname_user_account_settings))
+                    .child(userID)
+                    .child("description")
+                    .setValue(description);
+        }
+
+        if(target_sum != 0) {
+            myRef.child(mContext.getString(R.string.dbname_user_account_settings))
+                    .child(userID)
+                    .child("target_sum")
+                    .setValue(target_sum);
+        }
+
+        if(website != null) {
+            myRef.child(mContext.getString(R.string.dbname_user_account_settings))
+                    .child(userID)
+                    .child(mContext.getString(R.string.field_website))
+                    .setValue(website);
+        }
     }
 
 

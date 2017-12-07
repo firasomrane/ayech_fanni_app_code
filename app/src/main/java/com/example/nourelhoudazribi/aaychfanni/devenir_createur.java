@@ -1,9 +1,8 @@
 package com.example.nourelhoudazribi.aaychfanni;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 
 public class devenir_createur extends AppCompatActivity {
+    private static final String TAG = "devenir_createur";
 
     Button continuer;
     private EditText descri;
@@ -22,7 +22,6 @@ public class devenir_createur extends AppCompatActivity {
     private EditText youtube;
     private EditText twitter;
     private EditText twitcher;
-    private ProgressDialog progressDialog1;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
 
@@ -42,28 +41,35 @@ public class devenir_createur extends AppCompatActivity {
             @Override
             public void onClick(View v) {
         /// Create Intent for SignUpActivity abd Start The Activity
-                String des=descri.getText().toString().trim();
-                String e=empl.getText().toString().trim();
-                String fb=faceb.getText().toString().trim();
-                String you=youtube.getText().toString().trim();
-                String t=twitter.getText().toString().trim();
-                String tw=twitcher.getText().toString().trim();
-                if((TextUtils.isEmpty(des)))
+                String descriptionText=descri.getText().toString();
+                String emplacementText=empl.getText().toString();
+                String facebookText=faceb.getText().toString();
+                String youtubeText=youtube.getText().toString();
+                String twitterText=twitter.getText().toString();
+                String twitcherText=twitcher.getText().toString();
+                if((TextUtils.isEmpty(descriptionText)))
                 {
                     Toast.makeText(devenir_createur.this, "il faut indiquer une description", Toast.LENGTH_LONG).show();
                 }
-                else if((TextUtils.isEmpty(e)))
+                else if((TextUtils.isEmpty(emplacementText)))
                 {
                     Toast.makeText(devenir_createur.this, "il faut indiquer votre emplacement", Toast.LENGTH_LONG).show();
                 }
-                else if((TextUtils.isEmpty(fb))&&(TextUtils.isEmpty(you))&&(TextUtils.isEmpty(t))&&(TextUtils.isEmpty(tw)))
+                else if((TextUtils.isEmpty(facebookText))&&(TextUtils.isEmpty(youtubeText))
+                        &&(TextUtils.isEmpty(twitcherText))&&(TextUtils.isEmpty(twitterText)))
                 {
                     Toast.makeText(devenir_createur.this, "Il faut indiquer au moins un lien", Toast.LENGTH_LONG).show();
                 }
                 else
                 {
-                    Intent createur = new Intent(getApplicationContext(), signup_createur2.class);
-                    startActivity(createur);
+                    Intent intent = new Intent(devenir_createur.this, signup_createur2.class);
+                    intent.putExtra("description", descriptionText);
+                    intent.putExtra("emplacement", emplacementText);
+                    intent.putExtra("facebook_url_selected", facebookText);
+                    intent.putExtra("youtube_url_selected", youtubeText);
+                    intent.putExtra("twitter_url_selected", twitterText);
+                    intent.putExtra("twitcher_url_selected", twitcherText);
+                    startActivity(intent);
                 }
 
             }
