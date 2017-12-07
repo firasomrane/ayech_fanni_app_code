@@ -173,7 +173,7 @@ public class profileActivity extends AppCompatActivity {
         Query query = reference
                 .child(getString(R.string.dbname_following))
                 .child(userID);
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
+        query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
@@ -184,7 +184,11 @@ public class profileActivity extends AppCompatActivity {
                         isFollower =true;
                         Log.d(TAG, "onDataChange: isFollwer or not?     " + isFollower.toString());
                         setTheFollowButton();
+                        handleTheFollowClick();
 
+                    }
+                    else{
+                        handleTheFollowClick();
                     }
 
                 }
@@ -222,6 +226,43 @@ public class profileActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
+                }
+            });
+        }
+    }
+
+
+    private void handleTheFollowClick(){
+        Log.d(TAG, "handleTheFollowClick: created");
+
+        if(isFollower){
+
+            dejaAbonne.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    myRef.child(getString(R.string.dbname_following))
+                            .child(userID)
+                            .child(creator_user_id)
+                            .removeValue();
+
+                    isFollower = false;
+                    setTheFollowButton();
+                }
+            });
+
+        }
+        else{
+            abonner.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    myRef.child(getString(R.string.dbname_following))
+                    .child(userID)
+                            .child(creator_user_id)
+                            .child("user_id")
+                            .setValue(creator_user_id);
+
+                    isFollower = true;
+                    setTheFollowButton();
                 }
             });
         }
