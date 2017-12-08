@@ -7,10 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.nourelhoudazribi.aaychfanni.R;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.fragments_activity.elementExplore;
+
 import java.util.ArrayList;
 
 import static com.example.nourelhoudazribi.aaychfanni.R.id.nameTxt;
@@ -55,7 +55,6 @@ public class CustomAdapter extends BaseAdapter {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(c,name,Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(c,ExploreCategoryActivity.class);
                 intent.putExtra(c.getString(R.string.categorie), name);
                 c.startActivity(intent);

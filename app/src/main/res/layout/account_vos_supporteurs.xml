@@ -28,7 +28,7 @@
             android:layout_weight="60"
             android:layout_height="match_parent"
             android:textAppearance="?android:textAppearanceMedium"
-            android:text="Vos créateurs"
+            android:text="Vos supporteurs"
             android:textSize="35px"
             android:paddingLeft="30dp"
             android:paddingTop="27px"
@@ -52,7 +52,7 @@
             android:layout_width="match_parent"
             android:lines="2"
             android:layout_height="60dp"
-            android:text="Les créateurs que vous suivez"
+            android:text="Les supporteurs qui vous ont aidé"
             android:gravity="center"
             android:background="@color/cardview_shadow_start_color"
             />
@@ -61,7 +61,7 @@
 
 
     <ListView
-        android:id="@+id/vos_createurs_list_view"
+        android:id="@+id/vos_supporteurs_list_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />

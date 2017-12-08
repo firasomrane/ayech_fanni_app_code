@@ -50,6 +50,7 @@
                     android:layout_marginTop="6dp"
                     android:layout_marginLeft="20dp"
                     android:id="@+id/post_nom_createur"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     />
 
@@ -57,7 +58,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="10sp"
-                    android:text="28/12/2017"
                     android:layout_toRightOf="@+id/profile_photo"
                     android:layout_marginLeft="30dp"
                     android:layout_centerVertical="true"
@@ -88,8 +88,10 @@
                     android:layout_height="wrap_content"
                     android:text="titre du poste"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:id="@+id/post_title"/>
+                    android:textSize="20sp"
+                    android:id="@+id/post_title"
+                    android:textStyle="bold"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"

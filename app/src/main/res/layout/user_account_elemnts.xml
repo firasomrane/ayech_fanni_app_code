@@ -133,17 +133,17 @@
             android:layout_below="@+id/parametres_relative_layout">
 
             <Button
-                android:id="@+id/become_creator"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="false"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:textSize="15dp"
-                android:textColor="@color/white"
-                android:text="Je suis créateur de contenu"
-                android:background="@color/theMainColor"
-                android:layout_centerInParent="true"/>
+            android:id="@+id/become_creator"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:textSize="15dp"
+            android:textColor="@color/white"
+            android:text="Je suis créateur de contenu"
+            android:background="@color/theMainColor"
+            android:layout_centerInParent="true"/>
 
         </RelativeLayout>
 

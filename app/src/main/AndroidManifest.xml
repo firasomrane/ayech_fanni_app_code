@@ -47,6 +47,26 @@
 
         </activity>
 
+        <activity android:name=".utilisateur.fragments_activity.compte.VosCreateurs">
+
+        </activity>
+
+        <activity android:name=".utilisateur.fragments_activity.compte.VosSupporteurs">
+
+        </activity>
+
+        <activity android:name=".utilisateur.fragments_activity.compte.RechargerVotreSolde">
+
+        </activity>
+
+        <activity android:name=".utilisateur.fragments_activity.compte.GenererLesCodes">
+
+        </activity>
+        <activity android:name=".utilisateur.fragments_activity.compte.ConsulterLesCodes">
+
+        </activity>
+
+
         <!--Demarrer-->
 
         <activity android:name=".demarrer_1"></activity>

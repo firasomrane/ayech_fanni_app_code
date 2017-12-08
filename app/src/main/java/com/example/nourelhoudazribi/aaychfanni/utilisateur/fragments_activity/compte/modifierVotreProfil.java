@@ -101,6 +101,7 @@ public class modifierVotreProfil extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d(TAG, "onClick: attempting to save changes.");
                 saveProfileSettings();
+                finish();
             }
         });
 

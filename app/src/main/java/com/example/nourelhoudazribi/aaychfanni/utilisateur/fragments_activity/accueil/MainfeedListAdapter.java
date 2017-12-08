@@ -149,9 +149,9 @@ public class MainfeedListAdapter extends ArrayAdapter<Post> {
         //set the time it was posted
         String timestampDifference = getTimestampDifference(getItem(position));
         if(!timestampDifference.equals("0")){
-            holder.timeDetla.setText(timestampDifference + " DAYS AGO");
+            holder.timeDetla.setText("IL Y A "+timestampDifference + " JOURS");
         }else{
-            holder.timeDetla.setText("TODAY");
+            holder.timeDetla.setText("AUJOURD'HUI");
         }
 
 

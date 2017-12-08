@@ -34,6 +34,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import static com.example.nourelhoudazribi.aaychfanni.R.id.vos_createurs_relative_layout;
+import static com.example.nourelhoudazribi.aaychfanni.R.id.vos_supporteurs_relative_layout;
+
 /**
  * Created by ASUS on 16/11/2017.
  */
@@ -42,8 +45,9 @@ public class compteFragment extends Fragment implements View.OnClickListener {
 
     private static final String TAG = "compteFragment";
 
-    private Button devenirCreateur, betterExperience,logOut;
-    private RelativeLayout relativeLayoutForBetterExperience, relativeLayoutMain,modifierVotreProfil,createPost,relativeLayoutParametres;
+    private Button devenirCreateur, betterExperience,rechargerVotreSolde;
+    private RelativeLayout relativeLayoutForBetterExperience, relativeLayoutMain,modifierVotreProfil,createPost,
+            relativeLayoutParametres,relativeLayoutVosCreateurs;
 
     private RelativeLayout vosSupporteurs;
     private TextView compteLayoutNameField;
@@ -78,6 +82,7 @@ public class compteFragment extends Fragment implements View.OnClickListener {
         devenirCreateur = (Button) rootViewtTwO.findViewById(R.id.become_creator);
         devenirCreateur.setOnClickListener(this);
 
+
         //set the clickListener when the User is not logged in
 
         betterExperience = (Button) rootViewtTwO.findViewById(R.id.better_experience_button);
@@ -98,6 +103,15 @@ public class compteFragment extends Fragment implements View.OnClickListener {
         //set the parametres relative layout
         relativeLayoutParametres = (RelativeLayout)  rootViewtTwO.findViewById(R.id.parametres_relative_layout);
         relativeLayoutParametres.setOnClickListener(this);
+
+        //set the vos createurs relative layout
+        relativeLayoutVosCreateurs = (RelativeLayout)  rootViewtTwO.findViewById(vos_createurs_relative_layout);
+        relativeLayoutVosCreateurs.setOnClickListener(this);
+
+
+        //set the vos supporteurs relative layout
+        relativeLayoutVosCreateurs = (RelativeLayout)  rootViewtTwO.findViewById(vos_supporteurs_relative_layout);
+        relativeLayoutVosCreateurs.setOnClickListener(this);
 
         //check if the User is logged in or not to choose which layout to show
         setupFirebaseAuth(rootViewtTwO);
@@ -150,6 +164,17 @@ public class compteFragment extends Fragment implements View.OnClickListener {
                 Intent intent4 = new Intent(getActivity(), Parametres.class);
                 startActivity(intent4);
                 break;
+
+            case R.id.vos_createurs_relative_layout:
+                Intent intent5 = new Intent(getActivity(), VosCreateurs.class);
+                startActivity(intent5);
+                break;
+
+            case R.id.vos_supporteurs_relative_layout:
+            Intent intent6 = new Intent(getActivity(), VosSupporteurs.class);
+            startActivity(intent6);
+            break;
+
 
             default:
                 break;
@@ -225,7 +250,7 @@ public class compteFragment extends Fragment implements View.OnClickListener {
         //if the user is creator set the visivility of the remaining layout
         if(user.getEst_createur()){
 
-            vosSupporteurs =(RelativeLayout) rootView.findViewById(R.id.vos_supporteurs_relative_layout);
+            vosSupporteurs =(RelativeLayout) rootView.findViewById(vos_supporteurs_relative_layout);
             createPost =(RelativeLayout) rootView.findViewById(R.id.create_post);
             vosSupporteurs.setVisibility(View.VISIBLE);
             createPost.setVisibility(View.VISIBLE);

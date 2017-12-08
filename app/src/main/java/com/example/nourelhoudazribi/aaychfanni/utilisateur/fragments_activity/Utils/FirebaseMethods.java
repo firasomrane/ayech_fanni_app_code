@@ -375,17 +375,29 @@ public class FirebaseMethods {
 
 
     ///update the argent
-    public void updateArgent(String creator_user_id ,String userID , Long newCreatorArgent , Long newUserArgentLong ){
+    public void updateArgent(String creator_user_id ,String userID , long newCreatorArgent , long newUserArgentLong ,long newCreatorFollowers ){
         Log.d(TAG, "updateArgent: ");
         myRef.child(mContext.getString(R.string.dbname_user_account_settings))
                 .child(creator_user_id)
                 .child("don_sum")
                 .setValue(newCreatorArgent);
 
+        myRef.child(mContext.getString(R.string.dbname_user_account_settings))
+                .child(creator_user_id)
+                .child("followers")
+                .setValue(newCreatorFollowers);
+
         myRef.child(mContext.getString(R.string.dbname_users))
                 .child(userID)
                 .child("argent")
                 .setValue(newUserArgentLong);
+
+        myRef.child(mContext.getString(R.string.dbname_supporting))
+                .child(creator_user_id)
+                .child(userID)
+                .child("user_id")
+                .setValue(userID);
+
     }
 
     public boolean checkIfUsernameExists(String username, DataSnapshot datasnapshot){

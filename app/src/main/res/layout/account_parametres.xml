@@ -51,6 +51,7 @@
     </LinearLayout>
 
     <RelativeLayout
+        android:id="@+id/settings_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/edit_profile_top">
@@ -175,4 +176,58 @@
         </RelativeLayout>
 
     </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/settings_text">
+
+
+        <Button
+            android:id="@+id/recharger_votre_solde"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentStart="true"
+            android:textSize="15dp"
+            android:textColor="@color/white"
+            android:text="Recharger votre solde"
+            android:background="@color/theMainColor"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="40dp"/>
+
+        <Button
+            android:id="@+id/generer_les_codes"
+            android:layout_below="@+id/recharger_votre_solde"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentStart="true"
+            android:textSize="15dp"
+            android:textColor="@color/white"
+            android:text="Genérer des codes"
+            android:background="@color/theMainColor"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="40dp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/consulter_les_codes"
+            android:layout_below="@+id/generer_les_codes"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentStart="true"
+            android:textSize="15dp"
+            android:textColor="@color/white"
+            android:text="Genérer des codes"
+            android:background="@color/theMainColor"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="40dp"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+
+
 </RelativeLayout>

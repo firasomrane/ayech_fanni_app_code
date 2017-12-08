@@ -96,6 +96,41 @@ public class profileActivity extends AppCompatActivity {
 
         setupFirebaseAuth();
 
+        abonner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!userID.equals(creator_user_id)){
+                    Log.d(TAG, "onClick: abonner clicked");
+                    handleTheFollowClick();
+                    myRef.child(getString(R.string.dbname_following))
+                            .child(userID)
+                            .child(creator_user_id)
+                            .child("user_id")
+                            .setValue(creator_user_id);
+
+                    isFollower = true;
+                    setTheFollowButton();
+                }
+
+
+            }
+        });
+
+        dejaAbonne.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: dejaAbonnee clicked");
+                handleTheFollowClick();
+                myRef.child(getString(R.string.dbname_following))
+                        .child(userID)
+                        .child(creator_user_id)
+                        .removeValue();
+
+                isFollower = false;
+                setTheFollowButton();
+            }
+        });
+
 
         //progressBar.setProgress(40);
     }
@@ -135,9 +170,11 @@ public class profileActivity extends AppCompatActivity {
             supporter.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(profileActivity.this , supporterLayoutOne.class);
-                    intent.putExtra(getString(R.string.user_id), creator_user_id);
-                    startActivity(intent);
+                    if(!userID.equals(creator_user_id)) {
+                        Intent intent = new Intent(profileActivity.this, supporterLayoutOne.class);
+                        intent.putExtra(getString(R.string.user_id), creator_user_id);
+                        startActivity(intent);
+                    }
                 }
             });
 
@@ -188,7 +225,6 @@ public class profileActivity extends AppCompatActivity {
 
                     }
                     else{
-                        handleTheFollowClick();
                     }
 
                 }
@@ -215,7 +251,14 @@ public class profileActivity extends AppCompatActivity {
             dejaAbonne.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    handleTheFollowClick();
+                    myRef.child(getString(R.string.dbname_following))
+                            .child(userID)
+                            .child(creator_user_id)
+                            .removeValue();
 
+                    isFollower = false;
+                    setTheFollowButton();
                 }
             });
         }
@@ -225,6 +268,18 @@ public class profileActivity extends AppCompatActivity {
             abonner.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if(!userID.equals(creator_user_id)){
+                        Log.d(TAG, "onClick: abonner clicked");
+                        handleTheFollowClick();
+                        myRef.child(getString(R.string.dbname_following))
+                                .child(userID)
+                                .child(creator_user_id)
+                                .child("user_id")
+                                .setValue(creator_user_id);
+
+                        isFollower = true;
+                        setTheFollowButton();
+                    }
 
                 }
             });
@@ -235,38 +290,15 @@ public class profileActivity extends AppCompatActivity {
     private void handleTheFollowClick(){
         Log.d(TAG, "handleTheFollowClick: created");
 
-        if(isFollower){
-
-            dejaAbonne.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    myRef.child(getString(R.string.dbname_following))
-                            .child(userID)
-                            .child(creator_user_id)
-                            .removeValue();
-
-                    isFollower = false;
-                    setTheFollowButton();
-                }
-            });
+        if(isFollower) {
 
         }
         else{
-            abonner.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    myRef.child(getString(R.string.dbname_following))
-                    .child(userID)
-                            .child(creator_user_id)
-                            .child("user_id")
-                            .setValue(creator_user_id);
 
-                    isFollower = true;
-                    setTheFollowButton();
+
                 }
-            });
+
         }
-    }
 
 
 

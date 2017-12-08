@@ -7,6 +7,9 @@
     <string name="dbname_posts">posts</string>
     <string name="dbname_user_posts">user_posts</string>
     <string name="dbname_following">following</string>
+    <string name="dbname_supporting">supporting</string>
+    <string name="dbname_codes">codes</string>
+    <string name="dbname_code_id">code_id</string>
     <string name="dbname_followers">followers</string>
     <string name="field_username">username</string>
     <string name="field_email">email</string>

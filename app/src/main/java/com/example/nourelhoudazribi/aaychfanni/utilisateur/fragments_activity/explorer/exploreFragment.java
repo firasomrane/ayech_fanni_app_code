@@ -43,7 +43,7 @@ public class exploreFragment extends Fragment {
         explorerElements.add(newElement);
         newElement=new elementExplore("Education");
         explorerElements.add(newElement);
-        newElement=new elementExplore("Jeu Video");
+        newElement=new elementExplore("Jeu vidéo");
         explorerElements.add(newElement);
         newElement=new elementExplore("Musique");
         explorerElements.add(newElement);

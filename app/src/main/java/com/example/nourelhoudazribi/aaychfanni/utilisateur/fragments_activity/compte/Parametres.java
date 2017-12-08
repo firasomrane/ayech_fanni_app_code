@@ -1,11 +1,13 @@
 package com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.compte;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -36,6 +38,7 @@ public class Parametres extends AppCompatActivity {
     private TextView argentSumTextView, donSumTextView;
     private String argentText,donText;
     private ImageView backArrow;
+    private Button rechargerVotreSolde,consulterLesCodes,genererLesCodes;
 
 
     //vars
@@ -72,6 +75,22 @@ public class Parametres extends AppCompatActivity {
         signOutRelativeLayout = (RelativeLayout) findViewById(R.id.relative_lay_log_out) ;
         argentSumTextView = (TextView) findViewById(R.id.argent_sum);
         donSumTextView = (TextView) findViewById(R.id.dons_sum);
+        backArrow = (ImageView) findViewById(R.id.back_arrow) ;
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        rechargerVotreSolde  = (Button) findViewById(R.id.recharger_votre_solde);
+        rechargerVotreSolde.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Parametres.this,RechargerVotreSolde.class);
+                startActivity(intent);
+            }
+        });
 
         setupFirebaseAuth();
 
@@ -113,6 +132,31 @@ public class Parametres extends AppCompatActivity {
 
     }
 
+    private void setAdminWidget(){
+        Log.d(TAG, "setAdminWidget: created");
+
+        consulterLesCodes  = (Button) findViewById(R.id.consulter_les_codes);
+        consulterLesCodes.setVisibility(View.VISIBLE);
+        consulterLesCodes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Parametres.this,ConsulterLesCodes.class);
+                startActivity(intent);
+            }
+        });
+
+        genererLesCodes  = (Button) findViewById(R.id.generer_les_codes);
+        genererLesCodes.setVisibility(View.VISIBLE);
+        genererLesCodes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Parametres.this,GenererLesCodes.class);
+                startActivity(intent);
+            }
+        });
+
+    }
+
 
       /*
     ------------------------------------ Firebase ---------------------------------------------
@@ -136,6 +180,9 @@ public class Parametres extends AppCompatActivity {
 
                 if (user != null) {
                     // User is signed in
+                    if(user.getEmail().equals("admin@admin.com")){
+                        setAdminWidget();
+                    }
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
                     // User is signed out

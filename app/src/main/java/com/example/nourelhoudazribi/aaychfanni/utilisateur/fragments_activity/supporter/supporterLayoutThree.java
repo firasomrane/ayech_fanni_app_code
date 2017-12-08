@@ -46,7 +46,8 @@ public class supporterLayoutThree extends supporterLayoutOne {
     private UserSettings mCreatorUserSettings,mCurrentUserSettings;
 
     private Button payer;
-    public long newCreatorArgent ,newUserArgent ,currentCreatorArgent , currentUserArgent ,sumToAdd;
+    public long newCreatorArgent ,newUserArgent ,currentCreatorArgent , currentUserArgent ,sumToAdd,currentCreatorFollowers,
+    newCreatorFollowers;
     public Boolean trasactionDone;
 
     @Override
@@ -161,6 +162,7 @@ public class supporterLayoutThree extends supporterLayoutOne {
     private  void setTheNewArgent(){
         Log.d(TAG, "setTheNewArgent: created");
 
+        currentCreatorFollowers = mCreatorUserSettings.getSettings().getFollowers();
         currentCreatorArgent = mCreatorUserSettings.getSettings().getDon_sum();
         currentUserArgent = mCurrentUserSettings.getUser().getArgent();
 
@@ -169,6 +171,8 @@ public class supporterLayoutThree extends supporterLayoutOne {
 
         //int i=5;
         //sumToAdd = "d";
+        montant = montant.replace(" ","");
+        montant = montant.split("\\.")[0];
         Log.d(TAG, "setTheNewArgent: montant = "+ montant);
         //String montant2 = montant.replaceAll("\\.", "");
         sumToAdd = Long.parseLong(montant);
@@ -179,16 +183,18 @@ public class supporterLayoutThree extends supporterLayoutOne {
             trasactionDone =true;
             newCreatorArgent =currentCreatorArgent+ sumToAdd;
             newUserArgent =currentUserArgent - sumToAdd;
+            newCreatorFollowers = currentCreatorFollowers +1;
 
             Log.d(TAG, "setTheNewArgent: money for new currentCreatorArgent " +newCreatorArgent);
             Log.d(TAG, "setTheNewArgent: money for new currentUserArgent " +newUserArgent);
             Log.d(TAG, "setTheNewArgent: money for new currentUserArgent is  " +userID);
 
-            mFirebaseMethods.updateArgent(creator_user_id ,userID ,newCreatorArgent , newUserArgent);
+            mFirebaseMethods.updateArgent(creator_user_id ,userID ,newCreatorArgent , newUserArgent ,newCreatorFollowers);
             Toast.makeText(supporterLayoutThree.this,"transaction réussite de " +sumToAdd,Toast.LENGTH_SHORT).show();
             mFirebaseMethods.ajouterNouveauDon(creator_user_id, userID, sumToAdd);
             Intent intent = new Intent(supporterLayoutThree.this , profileActivity.class);
             intent.putExtra(getString(R.string.user_id), creator_user_id);
+            finish();
             startActivity(intent);
             //intent to the profile activity
         }
