@@ -51,6 +51,9 @@ public class MainfeedListAdapter extends ArrayAdapter<Post> {
     }
     OnLoadMoreItemsListener mOnLoadMoreItemsListener;
 
+
+
+
     private static final String TAG = "MainfeedListAdapter";
 
     private LayoutInflater mInflater;
@@ -60,13 +63,15 @@ public class MainfeedListAdapter extends ArrayAdapter<Post> {
     private String currentUsername = "";
     private FirebaseMethods mFirebaseMethods;
     public UserAccountSettings settings;
+    private String incommingFragment;
 
-    public MainfeedListAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<Post> objects) {
+    public MainfeedListAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<Post> objects,String commingFragment) {
         super(context, resource, objects);
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mLayoutResource = resource;
         this.mContext = context;
         mReference = FirebaseDatabase.getInstance().getReference();
+        incommingFragment = commingFragment;
     }
 
     static class ViewHolder{
@@ -75,6 +80,7 @@ public class MainfeedListAdapter extends ArrayAdapter<Post> {
         TextView username, timeDetla, caption, likes, comments,description,post_url;
         ImageView image;
         ImageView heartRed, heartWhite, comment,share;
+
 
 
         User user  = new User();
@@ -199,7 +205,7 @@ public class MainfeedListAdapter extends ArrayAdapter<Post> {
 
                             Intent intent = new Intent(mContext, profileActivity.class);
                             intent.putExtra(mContext.getString(R.string.calling_activity),
-                                    mContext.getString(R.string.home_activity));
+                                    incommingFragment);
                             intent.putExtra(mContext.getString(R.string.user_id), holder.user.getUser_id());
                             mContext.startActivity(intent);
                         }
@@ -246,7 +252,8 @@ public class MainfeedListAdapter extends ArrayAdapter<Post> {
 
                                             Intent intent = new Intent(mContext, profileActivity.class);
                                             intent.putExtra(mContext.getString(R.string.calling_activity),
-                                                    mContext.getString(R.string.home_activity));
+                                                    incommingFragment);
+                                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                             intent.putExtra(mContext.getString(R.string.user_id), holder.user.getUser_id());
                                             mContext.startActivity(intent);
                                         }

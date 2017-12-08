@@ -53,7 +53,7 @@ public class profileActivity extends AppCompatActivity {
     private DatabaseReference myRef;
     private FirebaseMethods mFirebaseMethods;
     private String userID;
-    public String creator_user_id;
+    public String creator_user_id,commingFragment;
     public Boolean isFollower;
 
     @Override
@@ -83,12 +83,18 @@ public class profileActivity extends AppCompatActivity {
         mBackArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(profileActivity.this , theEssentialActivity.class);
-                Bundle bundleToThree = new Bundle();
-                bundleToThree.putString("frgToLoad", "one");
-                intent.putExtras(bundleToThree);
-                finish();
-                startActivity(intent);
+                if(commingFragment.equals("vos_createurs")){
+                    Intent intent = new Intent(profileActivity.this , VosCreateurs.class);
+                    finish();
+                    startActivity(intent);
+                }
+                else{
+                    Intent intent = new Intent(profileActivity.this , theEssentialActivity.class);
+                    intent.putExtra(getString(R.string.calling_activity),commingFragment);
+                    finish();
+                    startActivity(intent);
+                }
+
             }
         });
 
@@ -141,6 +147,15 @@ public class profileActivity extends AppCompatActivity {
        // Log.d(TAG, "setProfileWidgets: created");
 
         Intent intent = getIntent();
+
+        //ge the comming fragment
+        Bundle bundle=getIntent().getExtras();
+        if (bundle!=null) {
+            commingFragment = intent.getStringExtra(getString(R.string.calling_activity));
+            Log.d(TAG, "getIncomingIntent: commingFragment "+commingFragment);
+        }
+
+        //get the creator id
         creator_user_id = "";
         creator_user_id = intent.getStringExtra(getString(R.string.user_id));
         Log.d(TAG, "getIncomingIntent: creator user id " +creator_user_id );

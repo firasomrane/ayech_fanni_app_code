@@ -190,9 +190,9 @@
             android:layout_alignParentBottom="false"
             android:layout_alignParentStart="true"
             android:textSize="15dp"
-            android:textColor="@color/white"
             android:text="Recharger votre solde"
-            android:background="@color/theMainColor"
+            android:textColor="@android:color/white"
+            android:background="@drawable/mybotton"
             android:layout_marginTop="50dp"
             android:layout_marginLeft="40dp"/>
 
@@ -204,9 +204,9 @@
             android:layout_alignParentBottom="false"
             android:layout_alignParentStart="true"
             android:textSize="15dp"
-            android:textColor="@color/white"
             android:text="Genérer des codes"
-            android:background="@color/theMainColor"
+            android:textColor="@android:color/white"
+            android:background="@drawable/mybotton"
             android:layout_marginTop="50dp"
             android:layout_marginLeft="40dp"
             android:visibility="gone" />
@@ -219,9 +219,9 @@
             android:layout_alignParentBottom="false"
             android:layout_alignParentStart="true"
             android:textSize="15dp"
-            android:textColor="@color/white"
             android:text="Consulter les codes"
-            android:background="@color/theMainColor"
+            android:textColor="@android:color/white"
+            android:background="@drawable/mybotton"
             android:layout_marginTop="50dp"
             android:layout_marginLeft="40dp"
             android:visibility="gone" />

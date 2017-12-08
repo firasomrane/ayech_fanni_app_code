@@ -51,31 +51,6 @@ public class theEssentialActivity extends AppCompatActivity implements
         //VIEWPAGER
         viewPager = (ViewPager) findViewById(R.id.viewPager);
 
-        //to get the fragment explorer when returnin from explorer
-        Bundle bundle=getIntent().getExtras();
-        if (bundle!=null){
-            String intentFragment = getIntent().getExtras().getString("frgToLoad");
-            switch (intentFragment){
-                case one:
-                    // Load corresponding fragment
-                    viewPager.setCurrentItem(0);
-                    break;
-                case two:
-                    // Load corresponding fragment
-                    viewPager.setCurrentItem(1);
-                    break;
-                case three:
-                    // Load corresponding fragment
-                    viewPager.setCurrentItem(2);
-                    break;
-                case four:
-                    // Load corresponding fragment
-                    viewPager.setCurrentItem(3);
-                    break;
-                default:
-                    viewPager.setCurrentItem(0);
-            }
-        }
 
 
         //this is for loading pictures purpose
@@ -139,6 +114,34 @@ public class theEssentialActivity extends AppCompatActivity implements
 
             }
         });
+
+        //to get the fragment explorer when returnin from explorer
+        Bundle bundle=getIntent().getExtras();
+        if (bundle!=null){
+            String intentFragment = getIntent().getExtras().getString(getString(R.string.calling_activity));
+            switch (intentFragment){
+                case "one":
+                    // Load corresponding fragment
+                    viewPager.setCurrentItem(0);
+                    break;
+                case "two":
+                    // Load corresponding fragment
+                    viewPager.setCurrentItem(1);
+                    break;
+                case "three":
+                    // Load corresponding fragment
+                    viewPager.setCurrentItem(2);
+                    break;
+                case "four":
+                    // Load corresponding fragment
+                    viewPager.setCurrentItem(3);
+                    break;
+                default:
+                    viewPager.setCurrentItem(0);
+            }
+        }
+
+
     }
 
     public TabLayout.OnTabSelectedListener listener(final ViewPager pager){

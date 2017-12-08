@@ -155,9 +155,15 @@ public class accueilFragment extends Fragment implements View.OnClickListener {
                         Log.d(TAG, "onDataChange: the hash map" +objectMap);
 
                         //if the following is deferent from the lastone who is zzzzzzzzzzzzzzzzzz
-                        if( count < mFollowing.size()-1){
-                            //Log.d(TAG, "onDataChange: count <mFollowing.size()-1  et count =  " + count);
-                            post.setTitle(objectMap.get(getString(R.string.field_title)).toString());
+                        if ((count < mFollowing.size()-1) && (!objectMap.isEmpty()) ) {
+                            //Log.d(TAG, "onDataChange: count <mFollowing.size()-1  et count =  " +
+                            //count);
+
+                            if(objectMap.get(getString(R.string.field_title)) != null){
+                                post.setTitle(objectMap.get(getString(R.string.field_title)).toString());
+                            }
+
+
                             post.setPost_url(objectMap.get("post_url").toString());
                             post.setDescription(objectMap.get(getString(R.string.field_description)).toString());
                             post.setPhoto_id(objectMap.get(getString(R.string.field_photo_id)).toString());
@@ -224,7 +230,7 @@ public class accueilFragment extends Fragment implements View.OnClickListener {
                 }
                Log.d(TAG, "onDataChange:mFollowing.size the mPaginatedPhotos     " + mPaginatedPhotos);
 
-                mAdapter = new MainfeedListAdapter(getActivity(), R.layout.accueil_element, mPaginatedPhotos);
+                mAdapter = new MainfeedListAdapter(getActivity(), R.layout.accueil_element, mPaginatedPhotos,"one");
                 mListView.setAdapter(mAdapter);
 
             }catch (NullPointerException e){

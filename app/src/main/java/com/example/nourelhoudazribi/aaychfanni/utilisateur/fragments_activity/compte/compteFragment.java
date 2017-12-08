@@ -125,6 +125,8 @@ public class compteFragment extends Fragment implements View.OnClickListener {
 
 
 
+
+
         Log.d(TAG, "onCreateView: rootView");
         return rootViewtTwO;
     }
@@ -247,11 +249,12 @@ public class compteFragment extends Fragment implements View.OnClickListener {
         Log.d(TAG, "setProfileWidgets: setting widgets with data retrieving from firebase database: " + userSettings.getUser().getEst_createur());
 
         User user = userSettings.getUser();
+        vosSupporteurs =(RelativeLayout) rootView.findViewById(vos_supporteurs_relative_layout);
+        createPost =(RelativeLayout) rootView.findViewById(R.id.create_post);
         //if the user is creator set the visivility of the remaining layout
         if(user.getEst_createur()){
 
-            vosSupporteurs =(RelativeLayout) rootView.findViewById(vos_supporteurs_relative_layout);
-            createPost =(RelativeLayout) rootView.findViewById(R.id.create_post);
+
             vosSupporteurs.setVisibility(View.VISIBLE);
             createPost.setVisibility(View.VISIBLE);
             devenirCreateur.setVisibility(View.GONE);
@@ -263,6 +266,12 @@ public class compteFragment extends Fragment implements View.OnClickListener {
                     startActivity(intent);
                 }
             });
+        }
+        else {
+            devenirCreateur.setVisibility(View.VISIBLE);
+            vosSupporteurs.setVisibility(View.GONE);
+            createPost.setVisibility(View.GONE);
+
         }
 
     }
@@ -281,6 +290,30 @@ public class compteFragment extends Fragment implements View.OnClickListener {
 
         //mDisplayName.setText(settings.getDisplay_name());
         compteLayoutNameField.setText(settings.getUsername());
+
+        if(userSettings.getUser().getEst_createur()){
+            compteLayoutNameField.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), profileActivity.class);
+                    intent.putExtra(getString(R.string.user_id), userID);
+                    intent.putExtra(getString(R.string.calling_activity), "four");
+                    startActivity(intent);
+                }
+            });
+            mProfilePhoto.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), profileActivity.class);
+                    intent.putExtra(getString(R.string.user_id), userID);
+                    intent.putExtra(getString(R.string.calling_activity), "four");
+
+                    startActivity(intent);
+                }
+            });
+        }
+
+
         /*mWebsite.setText(settings.getWebsite());
         mDescription.setText(settings.getDescription());
         mPosts.setText(String.valueOf(settings.getPosts()));

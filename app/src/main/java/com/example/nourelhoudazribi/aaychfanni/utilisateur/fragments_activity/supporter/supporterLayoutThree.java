@@ -194,6 +194,8 @@ public class supporterLayoutThree extends supporterLayoutOne {
             mFirebaseMethods.ajouterNouveauDon(creator_user_id, userID, sumToAdd);
             Intent intent = new Intent(supporterLayoutThree.this , profileActivity.class);
             intent.putExtra(getString(R.string.user_id), creator_user_id);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.putExtra(getString(R.string.calling_activity),"one");
             finish();
             startActivity(intent);
             //intent to the profile activity

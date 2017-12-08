@@ -78,15 +78,12 @@ public class devenir_createur extends AppCompatActivity {
             }
 
         });
-        retour.setOnClickListener(new View.OnClickListener()
-
-                                      @Override
-                                      public void onClick(View view) {
-
-            startActivity(new Intent(devenir_createur.this, theEssentialActivity.class));
-                                      }
-
-        );
+        retour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(devenir_createur.this, theEssentialActivity.class));
+            }
+        });
 
     }
 }

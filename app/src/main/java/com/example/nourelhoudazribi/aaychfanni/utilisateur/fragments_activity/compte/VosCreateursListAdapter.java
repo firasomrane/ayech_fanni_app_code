@@ -104,8 +104,7 @@ public class VosCreateursListAdapter  extends ArrayAdapter<VosCreateurElement> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, profileActivity.class);
-                intent.putExtra(mContext.getString(R.string.calling_activity),
-                        mContext.getString(R.string.home_activity));
+                intent.putExtra(mContext.getString(R.string.calling_activity),"vos_createurs");
                 intent.putExtra(mContext.getString(R.string.user_id), holder.creator_user_id);
                 ((Activity)mContext).finish();
                 mContext.startActivity(intent);
@@ -116,8 +115,7 @@ public class VosCreateursListAdapter  extends ArrayAdapter<VosCreateurElement> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, profileActivity.class);
-                intent.putExtra(mContext.getString(R.string.calling_activity),
-                        mContext.getString(R.string.home_activity));
+                intent.putExtra(mContext.getString(R.string.calling_activity),"vos_createurs");
                 intent.putExtra(mContext.getString(R.string.user_id), holder.creator_user_id);
                 mContext.startActivity(intent);
             }

@@ -2,6 +2,7 @@ package com.example.nourelhoudazribi.aaychfanni;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -147,6 +148,9 @@ public class Signup extends AppCompatActivity {
                             //add new user to the database
 
                             firebaseMethods.addNewUser(email, username, "", "","");
+                            Intent intent = new Intent(Signup.this,demarrer_1.class);
+                            finish();
+                            startActivity(intent);
 
                             /*Toast.makeText(mContext, "Signup successful. Sending verification email.", Toast.LENGTH_SHORT).show();*/
                         }

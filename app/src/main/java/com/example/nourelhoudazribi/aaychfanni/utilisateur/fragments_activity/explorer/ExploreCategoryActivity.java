@@ -38,7 +38,7 @@ import java.util.Map;
  */
 
 public class ExploreCategoryActivity extends AppCompatActivity implements
-        MainfeedListAdapter.OnLoadMoreItemsListener {
+        MainfeedListAdapter.OnLoadMoreItemsListener{
 
     @Override
     public void onLoadMoreItems() {
@@ -46,6 +46,7 @@ public class ExploreCategoryActivity extends AppCompatActivity implements
         displayMorePosts();
 
     }
+
 
 
     private static final String TAG = "ExploreCategoryActivity";
@@ -110,9 +111,8 @@ public class ExploreCategoryActivity extends AppCompatActivity implements
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ExploreCategoryActivity.this , theEssentialActivity.class);
-                Bundle bundleToThree = new Bundle();
-                bundleToThree.putString("frgToLoad", "two");
-                intent.putExtras(bundleToThree);
+                intent.putExtra(getString(R.string.calling_activity), "two");
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 finish();
                 startActivity(intent);
             }
@@ -235,7 +235,7 @@ public class ExploreCategoryActivity extends AppCompatActivity implements
                 }
                 Log.d(TAG, "onDataChange:mFollowing.size the mPaginatedPhotos     " + mPaginatedPosts);
 
-                mAdapter = new MainfeedListAdapter(ExploreCategoryActivity.this, R.layout.accueil_element, mPaginatedPosts);
+                mAdapter = new MainfeedListAdapter(ExploreCategoryActivity.this, R.layout.accueil_element, mPaginatedPosts,"two");
                 mListView.setAdapter(mAdapter);
 
             }catch (NullPointerException e){
