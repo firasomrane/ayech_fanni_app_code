@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.nourelhoudazribi.aaychfanni.R;
@@ -26,7 +27,7 @@ import com.google.firebase.database.ValueEventListener;
  * Created by ASUS on 08/12/2017.
  */
 
-public class RechargerVotreSolde extends AppCompatActivity {  /*android:textIsSelectable="true"*/
+public class RechargerVotreSolde extends AppCompatActivity {
 
     private static final String TAG = "RechargerVotreSolde";
 
@@ -39,6 +40,8 @@ public class RechargerVotreSolde extends AppCompatActivity {  /*android:textIsSe
     private FirebaseMethods mFirebaseMethods;
     private String userID;
 
+
+    private ImageView retour;
     private EditText codeEditText;
     private Button valider;
     private String codeText;
@@ -69,6 +72,14 @@ public class RechargerVotreSolde extends AppCompatActivity {  /*android:textIsSe
         codeExists = false;
         numberOfAttempts = 0;
         codeText = "";
+
+        retour = (ImageView) findViewById(R.id.back_arrow);
+        retour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         valider.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,6 +133,10 @@ public class RechargerVotreSolde extends AppCompatActivity {  /*android:textIsSe
                         deleteCodeAndAddMoney();
                     }
 
+                }
+
+                if(!codeExists){
+                    Toast.makeText(RechargerVotreSolde.this, "code erroné", Toast.LENGTH_SHORT).show();
                 }
 
             }

@@ -3,6 +3,42 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <ImageView
+            android:id="@+id/back_arrow"
+            android:layout_width="30dp"
+            android:layout_weight="10"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_backarrow"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            />
+
+        <TextView
+            android:id="@+id/the_text"
+            android:layout_width="0dp"
+            android:layout_weight="80"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:text="Recharger votre compte"
+            android:textSize="35px"
+            android:paddingLeft="30dp"
+            android:paddingTop="27px"
+            />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="@android:color/darker_gray" />
+
 
     <EditText
         android:id="@+id/code"
