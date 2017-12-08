@@ -43,4 +43,23 @@
         android:layout_marginTop="21dp"
         android:id="@+id/textView6" />
 
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="89dp"
+        android:background="@color/colorAccent"
+        android:layout_below="@+id/textView6"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/ic_demarrer_right"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignTop="@+id/textView15"
+        android:layout_alignEnd="@+id/textView6" />
+
 </RelativeLayout>

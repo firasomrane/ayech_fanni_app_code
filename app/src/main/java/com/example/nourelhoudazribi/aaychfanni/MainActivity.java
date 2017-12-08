@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
         /// Create Intent for SignUpActivity abd Start The Activity
-                Intent intentSignUP = new Intent(getApplicationContext(), Signup.class);
+                Intent intentSignUP = new Intent(getApplicationContext(), demarrer_1.class);
                 startActivity(intentSignUP);
             }
         });
