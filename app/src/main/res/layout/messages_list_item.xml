@@ -12,22 +12,22 @@
     <de.hdodenhof.circleimageview.CircleImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/profile_photo"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
        android:layout_gravity="center"
         android:layout_marginLeft="10dp"
         android:src="@drawable/user_photo"
         app:civ_border_color="@color/black"
-        app:civ_border_width="0.5dp"/>
+        app:civ_border_width="0.5dp"
+        android:layout_marginTop="4dp"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
+        android:paddingLeft="12dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:paddingRight="20dp"
-        android:layout_marginLeft="10dp"
         android:layout_marginRight="0dp"
         android:layout_marginTop="10dp"
         android:id="@+id/individMessageLayout"
@@ -36,15 +36,17 @@
 
         <TextView
             android:background="@drawable/roundedmessages"
-            android:padding="8dp"
+            android:padding="4dp"
             android:id="@+id/messageTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxWidth="200dp"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            tools:text="Message tres long pour tester "
-            android:textSize="18sp"
-            android:textStyle="normal|bold" />
+            android:textSize="15sp"
+            android:textStyle="normal|bold"
+            android:layout_gravity=""
+            android:text="message long pour tester l'apparence"
+            android:textColor="@color/white"/>
 
     </LinearLayout>
 

@@ -203,6 +203,7 @@ public class profileActivity extends AppCompatActivity {
         Long pr;
         pr = creatorUserAccountSettings.getDon_sum() /creatorUserAccountSettings.getTarget_sum();
 
+        Log.d(TAG, "setCreatorProfileWidgets: pr = "+ pr);
         progressBar.setProgress(pr.intValue());
 
         //setTheProfileListView();

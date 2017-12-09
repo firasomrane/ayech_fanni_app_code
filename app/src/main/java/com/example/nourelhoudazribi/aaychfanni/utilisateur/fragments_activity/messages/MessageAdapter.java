@@ -81,13 +81,7 @@ static class ViewHolder{
             holder = (ViewHolder) convertView.getTag();
         }
 
-        //Log.d(TAG, "onDataChange:mFollowing.size the item number " +position + "   is  " + getItem(position));
-
-        Log.d(TAG, "getView: 5démt");
-
-
         holder.messageTextView.setText(holder.messageText);
-
 
         //set the profile image
         final ImageLoader imageLoader = ImageLoader.getInstance();
@@ -96,7 +90,7 @@ static class ViewHolder{
 
         imageLoader.displayImage(image_path, holder.mprofileImage);
 
-        
+
         return convertView;
     }
 

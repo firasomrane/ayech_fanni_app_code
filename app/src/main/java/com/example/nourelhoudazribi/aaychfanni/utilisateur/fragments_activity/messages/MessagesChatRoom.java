@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.nourelhoudazribi.aaychfanni.R;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.Utils.FirebaseMethods;
@@ -26,10 +27,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ASUS on 09/12/2017.
@@ -48,10 +49,16 @@ public class MessagesChatRoom extends AppCompatActivity {
     private ProgressBar mProgressBar;
     private EditText mMessageEditText;
     private ImageView mSendButton;
+    private TextView friendName;
+    private ImageView backArrow;
 
     private UserSettings mCreatorUserSettings,mCurrentUserSettings;
     private String mUsername;
+    public Boolean stop;
     public String creator_user_id;
+
+
+    public  ArrayList<String> keyList;
 
     private ArrayList<Message> mfriendlyMessages ;
     //firebase
@@ -105,6 +112,20 @@ public class MessagesChatRoom extends AppCompatActivity {
             mMessageListView = (ListView) findViewById(R.id.messageListView);
             mMessageEditText = (EditText) findViewById(R.id.messageEditText);
             mSendButton = (ImageView) findViewById(R.id.sendButton);
+            friendName = (TextView) findViewById(R.id.friend_name);
+
+             backArrow = (ImageView) findViewById(R.id.m_icon) ;
+
+             backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MessagesChatRoom.this,Messages.class);
+                finish();
+                startActivity(intent);
+            }
+        });
+
+
 
            /* // Initialize message ListView and its adapter
             List<Message> friendlyMessages = new ArrayList<>();
@@ -152,6 +173,7 @@ public class MessagesChatRoom extends AppCompatActivity {
                     String profile_path = mCurrentUserSettings.getSettings().getProfile_photo();
 
 
+
                     Message friendlyMessage = new Message(profile_path , messageText, userID, creator_user_id);
                     // Clear input box
                     mMessageEditText.setText("");
@@ -175,14 +197,15 @@ public class MessagesChatRoom extends AppCompatActivity {
             });
 
 
-            DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+            //DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 
-            mfriendlyMessages = new ArrayList<>();
+
+           /* mfriendlyMessages = new ArrayList<>();
 
             Query query = reference.child(getString(R.string.dbname_messages))
                     .child(userID)
                     .child(creator_user_id);
-            query.addListenerForSingleValueEvent(new ValueEventListener() {
+            query.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for(DataSnapshot singleSnapshot : dataSnapshot.getChildren()){
@@ -201,9 +224,58 @@ public class MessagesChatRoom extends AppCompatActivity {
                 public void onCancelled(DatabaseError databaseError) {
 
                 }
-            });
+            });*/
+
+           stop = false;
+        keyList = new ArrayList<>();
+        List<Message> mfriendlyMessages = new ArrayList<>();
+        mMessageAdapter = new MessageAdapter(MessagesChatRoom.this, R.layout.messages_list_item, mfriendlyMessages,userID);
+        mMessageListView.setAdapter(mMessageAdapter);
+
+        mChildEventListener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+                friendName.setText(mCreatorUserSettings.getUser().getUsername());
+                String nextkey = dataSnapshot.getKey();
+                Log.d(TAG, "onChildAdded: nextkey is "+nextkey);
+
+                if(!keyList.isEmpty()){
+                    if(nextkey.equals(keyList.get(0))){
+                        stop = true;
+                    }
+                }
+
+                if(!stop){
+                    keyList.add(nextkey);
+                    Message friendlyMessage = dataSnapshot.getValue(Message.class);
+                    Log.d(TAG, "onChildAdded: friendly message = " +friendlyMessage);
+                    mMessageAdapter.add(friendlyMessage);
+                }
+
+
+            }
+
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+            }
+
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+            }
+
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+            }
+
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        };
+
+        myRef.child(getString(R.string.dbname_messages))
+                .child(userID)
+                .child(creator_user_id).addChildEventListener(mChildEventListener);
 
         }
+
+
 
     private void displayMessages(){
 
@@ -211,7 +283,7 @@ public class MessagesChatRoom extends AppCompatActivity {
         if(mfriendlyMessages != null){
             try{
 
-
+                Log.d(TAG, "displayMessages: mfriendlyMessages ="+mfriendlyMessages);
                 mMessageAdapter = new MessageAdapter(MessagesChatRoom.this, R.layout.messages_list_item, mfriendlyMessages,userID);
                 mMessageListView.setAdapter(mMessageAdapter);
 
@@ -223,6 +295,7 @@ public class MessagesChatRoom extends AppCompatActivity {
         }
 
     }
+
 
 
 
@@ -250,6 +323,8 @@ public class MessagesChatRoom extends AppCompatActivity {
         });
 
     }
+
+
 
 
 
