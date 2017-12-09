@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.nourelhoudazribi.aaychfanni.R;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.Utils.FirebaseMethods;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.compte.profileActivity;
+import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.Message;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.UserSettings;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -44,6 +45,7 @@ public class supporterLayoutThree extends supporterLayoutOne {
     public String creator_user_id;
 
     private UserSettings mCreatorUserSettings,mCurrentUserSettings;
+    private Message message;
 
     private Button payer;
     public long newCreatorArgent ,newUserArgent ,currentCreatorArgent , currentUserArgent ,sumToAdd,currentCreatorFollowers,
@@ -166,6 +168,9 @@ public class supporterLayoutThree extends supporterLayoutOne {
         currentCreatorArgent = mCreatorUserSettings.getSettings().getDon_sum();
         currentUserArgent = mCurrentUserSettings.getUser().getArgent();
 
+
+
+
         Log.d(TAG, "setTheNewArgent: money for currentCreatorArgent " +currentCreatorArgent);
         Log.d(TAG, "setTheNewArgent: money for currentUserArgent " +currentUserArgent);
 
@@ -189,7 +194,16 @@ public class supporterLayoutThree extends supporterLayoutOne {
             Log.d(TAG, "setTheNewArgent: money for new currentUserArgent " +newUserArgent);
             Log.d(TAG, "setTheNewArgent: money for new currentUserArgent is  " +userID);
 
-            mFirebaseMethods.updateArgent(creator_user_id ,userID ,newCreatorArgent , newUserArgent ,newCreatorFollowers);
+            message = new Message();
+            message.setProfile_image(mCurrentUserSettings.getSettings().getProfile_photo());
+            String text ="Bonjours ,j'ai vous ai envoyé " +montant;
+            text = text + " Dt";
+            message.setMessage_text(text);
+            message.setSender_id(userID);
+            message.setReciever_id(creator_user_id);
+
+
+            mFirebaseMethods.updateArgent(creator_user_id ,userID ,newCreatorArgent , newUserArgent ,newCreatorFollowers,message);
             Toast.makeText(supporterLayoutThree.this,"transaction réussite de " +sumToAdd,Toast.LENGTH_SHORT).show();
             mFirebaseMethods.ajouterNouveauDon(creator_user_id, userID, sumToAdd);
             Intent intent = new Intent(supporterLayoutThree.this , profileActivity.class);

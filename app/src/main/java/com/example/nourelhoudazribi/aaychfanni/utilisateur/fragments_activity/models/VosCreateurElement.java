@@ -51,6 +51,7 @@ public class VosCreateurElement {
         return "VosCreateurElement{" +
                 "creator_image_path='" + creator_image_path + '\'' +
                 ", creator_name='" + creator_name + '\'' +
+                ", creator_id='" + creator_id + '\'' +
                 '}';
     }
 }

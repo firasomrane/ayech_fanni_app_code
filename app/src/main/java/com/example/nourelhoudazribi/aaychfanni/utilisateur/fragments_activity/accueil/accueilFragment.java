@@ -134,6 +134,7 @@ public class accueilFragment extends Fragment implements View.OnClickListener {
         Log.d(TAG, "getPhotos: getting photos");
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 
+        mPhotos = new ArrayList<>();
         for(int i = 0; i < mFollowing.size(); i++){
 
             final int count = i;

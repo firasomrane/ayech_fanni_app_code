@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.example.nourelhoudazribi.aaychfanni.R;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.Don;
+import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.Message;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.Post;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.User;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.UserAccountSettings;
@@ -33,8 +34,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
-
-import static com.example.nourelhoudazribi.aaychfanni.R.id.website;
 
 /**
  * Created by ASUS on 28/11/2017.
@@ -375,8 +374,14 @@ public class FirebaseMethods {
 
 
     ///update the argent
-    public void updateArgent(String creator_user_id ,String userID , long newCreatorArgent , long newUserArgentLong ,long newCreatorFollowers ){
+    public void updateArgent(String creator_user_id , String userID , long newCreatorArgent , long newUserArgentLong , long newCreatorFollowers, Message message){
         Log.d(TAG, "updateArgent: ");
+
+        String newMessageKey = myRef.child(mContext.getString(R.string.dbname_messages))
+                .child(userID)
+                .child(creator_user_id)
+                .push().getKey();
+
         myRef.child(mContext.getString(R.string.dbname_user_account_settings))
                 .child(creator_user_id)
                 .child("don_sum")
@@ -397,6 +402,32 @@ public class FirebaseMethods {
                 .child(userID)
                 .child("user_id")
                 .setValue(userID);
+        myRef.child(mContext.getString(R.string.dbname_messages))
+                .child(userID)
+                .child(creator_user_id)
+                .child(newMessageKey)
+                .setValue(message);
+
+        myRef.child(mContext.getString(R.string.dbname_messages))
+                .child(creator_user_id)
+                .child(userID)
+                .child(newMessageKey)
+                .setValue(message);
+
+        myRef.child(mContext.getString(R.string.dbname_message_users))
+                .child(creator_user_id)
+                .child(userID)
+                .child("user_id")
+                .setValue(userID);
+
+        myRef.child(mContext.getString(R.string.dbname_message_users))
+                .child(userID)
+                .child(creator_user_id)
+                .child("user_id")
+                .setValue(creator_user_id);
+
+
+
 
     }
 

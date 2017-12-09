@@ -1,4 +1,4 @@
-package com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.compte;
+package com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.messages;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.nourelhoudazribi.aaychfanni.R;
@@ -26,17 +27,17 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
- * Created by ASUS on 07/12/2017.
+ * Created by ASUS on 09/12/2017.
  */
 
-public class VosCreateursListAdapter  extends ArrayAdapter<VosCreateurElement> {
+public class MessagesFriendsListAdapter  extends ArrayAdapter<VosCreateurElement> {
 
     public interface OnLoadMoreItemsListener{
         void onLoadMoreItems();
     }
     OnLoadMoreItemsListener mOnLoadMoreItemsListener;
 
-    private static final String TAG = "MainfeedListAdapter";
+    private static final String TAG = "MessagesFriendsListAdap";
 
     private LayoutInflater mInflater;
     private int mLayoutResource;
@@ -46,8 +47,9 @@ public class VosCreateursListAdapter  extends ArrayAdapter<VosCreateurElement> {
     private FirebaseMethods mFirebaseMethods;
     public UserAccountSettings settings;
 
-    public VosCreateursListAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<VosCreateurElement> objects) {
+    public MessagesFriendsListAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<VosCreateurElement> objects) {
         super(context, resource, objects);
+        Log.d(TAG, "MessagesFriendsListAdapter: created");
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mLayoutResource = resource;
         this.mContext = context;
@@ -57,6 +59,7 @@ public class VosCreateursListAdapter  extends ArrayAdapter<VosCreateurElement> {
     static class ViewHolder{
         CircleImageView mprofileImage;
         String creator_user_id;
+        ImageView messengerIcon;
 
         TextView username;
 
@@ -76,6 +79,7 @@ public class VosCreateursListAdapter  extends ArrayAdapter<VosCreateurElement> {
             holder.username = (TextView) convertView.findViewById(R.id.username);
             holder.mprofileImage = (CircleImageView) convertView.findViewById(R.id.profile_photo);
             holder.creator_user_id = getItem(position).getCreator_id();
+            holder.messengerIcon = (ImageView) convertView.findViewById(R.id.messenger_icon);
 
             convertView.setTag(holder);
 
@@ -83,9 +87,7 @@ public class VosCreateursListAdapter  extends ArrayAdapter<VosCreateurElement> {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        //Log.d(TAG, "onDataChange:mFollowing.size the item number " +position + "   is  " + getItem(position));
-
-        Log.d(TAG, "getView: 5démt");
+        Log.d(TAG, "getView: 5démtMessages");
 
 
         holder.username.setText(getItem(position).getCreator_name());
@@ -96,18 +98,15 @@ public class VosCreateursListAdapter  extends ArrayAdapter<VosCreateurElement> {
 
         final String image_path = getItem(position).getCreator_image_path();
 
-            imageLoader.displayImage(image_path, holder.mprofileImage);
+        imageLoader.displayImage(image_path, holder.mprofileImage);
 
-        if(reachedEndOfList(position)){
-            loadMoreData();
-        }
 
         holder.mprofileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, profileActivity.class);
-                intent.putExtra(mContext.getString(R.string.calling_activity),"vos_createurs");
+                Intent intent = new Intent(mContext, MessagesChatRoom.class);
                 intent.putExtra(mContext.getString(R.string.user_id), holder.creator_user_id);
+               // intent.putExtra(mContext.getString(R.string.profile_photo),image_path);
                 ((Activity)mContext).finish();
                 mContext.startActivity(intent);
             }
@@ -116,17 +115,31 @@ public class VosCreateursListAdapter  extends ArrayAdapter<VosCreateurElement> {
         holder.username.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, profileActivity.class);
-                intent.putExtra(mContext.getString(R.string.calling_activity),"vos_createurs");
+                Intent intent = new Intent(mContext, MessagesChatRoom.class);
                 intent.putExtra(mContext.getString(R.string.user_id), holder.creator_user_id);
+               // intent.putExtra(mContext.getString(R.string.profile_photo),image_path);
+                ((Activity)mContext).finish();
+                mContext.startActivity(intent);
+            }
+        });
+        holder.messengerIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, MessagesChatRoom.class);
+                intent.putExtra(mContext.getString(R.string.user_id), holder.creator_user_id);
+               // intent.putExtra(mContext.getString(R.string.profile_photo),image_path);
                 ((Activity)mContext).finish();
                 mContext.startActivity(intent);
             }
         });
 
+        if(reachedEndOfList(position)){
+            loadMoreData();
+        }
+
+
         return convertView;
     }
-
 
     private boolean reachedEndOfList(int position){
         return position == getCount() - 1;

@@ -22,6 +22,7 @@ import com.example.nourelhoudazribi.aaychfanni.R;
 import com.example.nourelhoudazribi.aaychfanni.devenir_createur;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.Utils.FirebaseMethods;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.Utils.UniversalImageLoader;
+import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.messages.Messages;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.User;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.UserAccountSettings;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.models.UserSettings;
@@ -34,6 +35,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import static com.example.nourelhoudazribi.aaychfanni.R.id.messages_relative_layout;
 import static com.example.nourelhoudazribi.aaychfanni.R.id.vos_createurs_relative_layout;
 import static com.example.nourelhoudazribi.aaychfanni.R.id.vos_supporteurs_relative_layout;
 
@@ -47,7 +49,7 @@ public class compteFragment extends Fragment implements View.OnClickListener {
 
     private Button devenirCreateur, betterExperience,rechargerVotreSolde;
     private RelativeLayout relativeLayoutForBetterExperience, relativeLayoutMain,modifierVotreProfil,createPost,
-            relativeLayoutParametres,relativeLayoutVosCreateurs;
+            relativeLayoutParametres,relativeLayoutVosCreateurs ,relativeLayoutMessages;
 
     private RelativeLayout vosSupporteurs;
     private TextView compteLayoutNameField;
@@ -113,6 +115,10 @@ public class compteFragment extends Fragment implements View.OnClickListener {
         relativeLayoutVosCreateurs = (RelativeLayout)  rootViewtTwO.findViewById(vos_supporteurs_relative_layout);
         relativeLayoutVosCreateurs.setOnClickListener(this);
 
+        //set the vos supporteurs relative layout
+        relativeLayoutMessages = (RelativeLayout)  rootViewtTwO.findViewById(messages_relative_layout);
+        relativeLayoutMessages.setOnClickListener(this);
+
         //check if the User is logged in or not to choose which layout to show
         setupFirebaseAuth(rootViewtTwO);
 
@@ -176,6 +182,11 @@ public class compteFragment extends Fragment implements View.OnClickListener {
             Intent intent6 = new Intent(getActivity(), VosSupporteurs.class);
             startActivity(intent6);
             break;
+
+            case R.id.messages_relative_layout:
+                Intent intent7 = new Intent(getActivity(), Messages.class);
+                startActivity(intent7);
+                break;
 
 
             default:

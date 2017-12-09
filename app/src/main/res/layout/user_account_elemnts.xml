@@ -94,7 +94,7 @@
             <include
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                layout="@layout/account_message" />/
+                layout="@layout/account_message_text" />/
         </RelativeLayout>
 
         <RelativeLayout

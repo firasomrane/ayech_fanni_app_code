@@ -1,4 +1,4 @@
-package com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.compte;
+package com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.messages;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -28,10 +28,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by ASUS on 07/12/2017.
+ * Created by ASUS on 08/12/2017.
  */
 
-public class VosCreateurs extends AppCompatActivity implements
+public class Messages extends AppCompatActivity implements
         MainfeedListAdapter.OnLoadMoreItemsListener {
 
     @Override
@@ -41,7 +41,7 @@ public class VosCreateurs extends AppCompatActivity implements
 
     }
 
-    private static final String TAG = "VosCreateurs";
+    private static final String TAG = "Messages";
 
     private ListView mListView;
     private ImageView backArrow;
@@ -54,21 +54,21 @@ public class VosCreateurs extends AppCompatActivity implements
     private  String userID;
     private FirebaseMethods mFirebaseMethods;
 
-    private ArrayList<String> mVosCreators;
-    private ArrayList<VosCreateurElement> mPaginatedPhotos;
-    private ArrayList<VosCreateurElement> mCreateursElements;
+    private ArrayList<String> mMessagesFriends;
+    private ArrayList<VosCreateurElement> mMessagesFriendsElements;
+    private ArrayList<VosCreateurElement> mPaginatedFriends;
     public String lastUserId;
     private int mResults;
-    private VosCreateursListAdapter mAdapter;
+    private MessagesFriendsListAdapter mAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.account_vos_createurs);
+        setContentView(R.layout.account_messages);
 
-        mListView = (ListView) findViewById(R.id.vos_createurs_list_view);
-        mVosCreators = new ArrayList<>();
-        mCreateursElements = new ArrayList<>();
+        mListView = (ListView) findViewById(R.id.messages_list_view);
+        mMessagesFriends = new ArrayList<>();
+        mMessagesFriendsElements = new ArrayList<>();
 
         //set the user
         mAuth = FirebaseAuth.getInstance();
@@ -77,7 +77,7 @@ public class VosCreateurs extends AppCompatActivity implements
         /*if(mAuth.getCurrentUser() != null){
 
         }*/
-        mFirebaseMethods = new FirebaseMethods(VosCreateurs.this);
+        mFirebaseMethods = new FirebaseMethods(Messages.this);
         backArrow = (ImageView) findViewById(R.id.m_icon) ;
 
         backArrow.setOnClickListener(new View.OnClickListener() {
@@ -91,17 +91,15 @@ public class VosCreateurs extends AppCompatActivity implements
     }
 
 
-
-    ///get the posts that have the chosen category
-    private void getUserCreators(){
-        Log.d(TAG, "getUserCreators: created");
+    public void getUserMessagesFriends(){
+        Log.d(TAG, "getUserMessagesFriends: created");
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 
-        mVosCreators = new ArrayList<>();
+        mMessagesFriends = new ArrayList<>();
 
         Query query = reference
-                .child(getString(R.string.dbname_following))
+                .child(getString(R.string.dbname_message_users))
                 .child(userID);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -110,12 +108,13 @@ public class VosCreateurs extends AppCompatActivity implements
                     Log.d(TAG, "onDataChange: found user: " +singleSnapshot.child("user_id").getValue().toString());
 
                     //mFollowing.add(singleSnapshot.child(getString(R.string.field_user_id)).getValue().toString());
-                    mVosCreators.add(singleSnapshot.child("user_id").getValue().toString());
+                    mMessagesFriends.add(singleSnapshot.child("user_id").getValue().toString());
 
                 }
 
                 //get the photos
-                getCreatorCaracteristics();
+                getMessagesFriendsCaracteristics();
+                Log.d(TAG, "onDataChange: mMessagesFriends "+mMessagesFriends);
             }
 
             @Override
@@ -126,21 +125,21 @@ public class VosCreateurs extends AppCompatActivity implements
 
     }
 
-    private void getCreatorCaracteristics(){
+    public void getMessagesFriendsCaracteristics(){
         Log.d(TAG, "getPhotos: getting photos");
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-        Log.d(TAG, "getCreatorCaracteristics: mVosCreateurs "+mVosCreators);
+        Log.d(TAG, "getCreatorCaracteristics: mVosCreateurs "+mMessagesFriends);
 
-        mCreateursElements = new ArrayList<>();
+        mMessagesFriendsElements = new ArrayList<>();
 
-        for(int i = 0; i < mVosCreators.size(); i++){
+        for(int i = 0; i < mMessagesFriends.size(); i++){
 
             final int count = i;
             //Log.d(TAG, "getCreatorCaracteristics: " +mVosCreators.get(i));
             Query query = reference
                     .child(getString(R.string.dbname_user_account_settings))
                     .orderByChild(getString(R.string.field_user_id))
-                    .equalTo(mVosCreators.get(i));
+                    .equalTo(mMessagesFriends.get(i));
             query.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -155,22 +154,24 @@ public class VosCreateurs extends AppCompatActivity implements
 
                         //if the following is deferent from the lastone who is zzzzzzzzzzzzzzzzzz
 
-                            //Log.d(TAG, "onDataChange: count <mFollowing.size()-1  et count =  " + count);
+                        //Log.d(TAG, "onDataChange: count <mFollowing.size()-1  et count =  " + count);
 
-                            creatorElement.setCreator_image_path(objectMap.get(getString(R.string.profile_photo)).toString());
-                            creatorElement.setCreator_name(objectMap.get(getString(R.string.field_username)).toString());
-                            creatorElement.setCreator_id((objectMap.get(getString(R.string.field_user_id)).toString()));
-                            mCreateursElements.add(creatorElement);
-                            Log.d(TAG, "onDataChange:  mCreateursElements " + mCreateursElements);
+                        creatorElement.setCreator_image_path(objectMap.get(getString(R.string.profile_photo)).toString());
+                        creatorElement.setCreator_name(objectMap.get(getString(R.string.field_username)).toString());
+                        creatorElement.setCreator_id((objectMap.get(getString(R.string.field_user_id)).toString()));
+
+                            mMessagesFriendsElements.add(creatorElement);
+                            Log.d(TAG, "onDataChange:  mCreateursElements " + mMessagesFriendsElements);
+
 
                     }
 
 
-                    if(count == mVosCreators.size() -1 ){
+                    if(count == mMessagesFriends.size() -1 ){
                         //display our photos
-                        Log.d(TAG, "onDataChange: mFollowing.size - 1  == count " + (mVosCreators.size()-1));
-                        Log.d(TAG, "onDataChange:mFollowing.size the posts table" + mCreateursElements.size());
-                        displayCreators();
+                        Log.d(TAG, "onDataChange: mFollowing.size - 1  == count " + (mMessagesFriends.size()-1));
+                        Log.d(TAG, "onDataChange:mFollowing.size the posts table" + mMessagesFriendsElements.size());
+                        displayMessagesFriends();
                     }
 
                 }
@@ -183,25 +184,14 @@ public class VosCreateurs extends AppCompatActivity implements
         }
     }
 
-    private void displayCreators(){
+    public void displayMessagesFriends(){
 
-
-        mPaginatedPhotos = new ArrayList<>();
-        if(mCreateursElements != null){
+        Log.d(TAG, "displayMessagesFriends: created with mMessagesFriendsElements= " + mMessagesFriendsElements);
+        mPaginatedFriends = new ArrayList<>();
+        if(mMessagesFriendsElements != null){
             try{
-                /*int iterations = mCreateursElements.size();
 
-                if(iterations > 40){
-                    iterations = 40;
-                }
-
-                mResults = 40;
-                for(int i = 0; i < iterations; i++){
-                    mPaginatedPhotos.add(mCreateursElements.get(i));
-                }
-                Log.d(TAG, "onDataChange:mFollowing.size the mPaginatedPhotos     " + mPaginatedPhotos);*/
-
-                mAdapter = new VosCreateursListAdapter(VosCreateurs.this, R.layout.account_vos_createurs_element, mCreateursElements);
+                mAdapter = new MessagesFriendsListAdapter(Messages.this, R.layout.account_messages_element, mMessagesFriendsElements);
                 mListView.setAdapter(mAdapter);
 
             }catch (NullPointerException e){
@@ -218,20 +208,20 @@ public class VosCreateurs extends AppCompatActivity implements
 
         try{
 
-            if(mCreateursElements.size() > mResults && mCreateursElements.size() > 0){
+            if(mMessagesFriendsElements.size() > mResults && mMessagesFriendsElements.size() > 0){
 
                 int iterations;
-                if(mCreateursElements.size() > (mResults + 10)){
+                if(mMessagesFriendsElements.size() > (mResults + 10)){
                     Log.d(TAG, "displayMorePhotos: there are greater than 10 more photos");
                     iterations = 10;
                 }else{
                     Log.d(TAG, "displayMorePhotos: there is less than 10 more photos");
-                    iterations = mCreateursElements.size() - mResults;
+                    iterations = mMessagesFriendsElements.size() - mResults;
                 }
 
                 //add the new photos to the paginated results
                 for(int i = mResults; i < mResults + iterations; i++){
-                    mPaginatedPhotos.add(mCreateursElements.get(i));
+                    mPaginatedFriends.add(mMessagesFriendsElements.get(i));
                 }
                 mResults = mResults + iterations;
                 mAdapter.notifyDataSetChanged();
@@ -242,19 +232,6 @@ public class VosCreateurs extends AppCompatActivity implements
             Log.e(TAG, "displayPhotos: IndexOutOfBoundsException: " + e.getMessage() );
         }
     }
-
-
-
-
-
-
-
-
-
-    public boolean notEmpty(ArrayList a) {
-        return !a.isEmpty();
-    }
-
 
 
 
@@ -278,8 +255,7 @@ public class VosCreateurs extends AppCompatActivity implements
                 if (user != null) {
                     // User is signed in
                     userID = mAuth.getCurrentUser().getUid();
-                    getUserCreators();
-
+                    getUserMessagesFriends();
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                     //toastMessage("Successfully signed in with: " + user.getEmail());
                 } else {
@@ -307,7 +283,7 @@ public class VosCreateurs extends AppCompatActivity implements
     }
 
     private void toastMessage(String message){
-        Toast.makeText(VosCreateurs.this,message,Toast.LENGTH_SHORT).show();
+        Toast.makeText(Messages.this,message,Toast.LENGTH_SHORT).show();
     }
-    
+
 }

@@ -130,6 +130,7 @@ public class VosSupporteurs extends AppCompatActivity implements
         Log.d(TAG, "getPhotos: getting photos");
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
         Log.d(TAG, "getSupporterName: mVosCreateurs "+ mVosSupporteurs);
+        mCreateursElements = new ArrayList<>();
 
         for(int i = 0; i < mVosSupporteurs.size(); i++){
 
