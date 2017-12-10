@@ -30,6 +30,7 @@
       android:textSize="@dimen/toolbarTextSize"
       android:paddingLeft="30dp"
       android:paddingTop="27px"
+      android:textColor="@color/black"
       />
  </LinearLayout>
 

@@ -34,6 +34,7 @@
             android:textSize="@dimen/toolbarTextSize"
             android:paddingLeft="18dp"
             android:gravity="center_vertical"
+            android:textColor="@color/black"
             />
     </LinearLayout>
 
@@ -45,6 +46,7 @@
         android:layout_height="118dp"
         android:text="Choisir le share_type de don que vous\n voulez supporter avec"
         android:gravity="center"
+        android:textColor="@color/black"
         android:background="@color/cardview_shadow_start_color"
         />
 
@@ -116,7 +118,7 @@
         android:text="Continuer"
         android:textSize="@dimen/buttons_size"
         android:textColor="@color/white"
-        android:background="@color/theMainColor"
+        android:background="@drawable/rounded"
         android:layout_marginTop="@dimen/supporter_button_margin_top"
         />
 

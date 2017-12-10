@@ -43,6 +43,7 @@
                         android:paddingLeft="30dp"
                         android:paddingTop="27px"
                         android:text="Créateur de contenu"
+                        android:textColor="@color/black"
                         android:textAppearance="?android:textAppearanceMedium"
                         android:textSize="35px" />
 
@@ -222,7 +223,8 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="60"
-                            android:text="here are the previleges if a user subscribe LIRE LA SUITE"
+                            android:textColor="@color/black"
+                            android:text="Ceux-ci sont les privilèges si vous  LIRE LA SUITE"
                             android:textSize="@dimen/profil_text_size" />
                     </LinearLayout>
 

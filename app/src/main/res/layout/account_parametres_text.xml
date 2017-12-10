@@ -29,6 +29,7 @@
             android:layout_height="match_parent"
             android:textAppearance="?android:textAppearanceMedium"
             android:text="Solde"
+            android:textColor="@color/black"
             android:textSize="35px"
             android:paddingLeft="30dp"
             android:paddingTop="27px"

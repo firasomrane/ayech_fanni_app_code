@@ -17,7 +17,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="92"
             android:padding="16dp"
-            android:text="Explorer"
+            android:text="EXPLORER"
+            android:textColor="@color/black"
             android:textSize="@dimen/toolbarTextSize"
             />
 

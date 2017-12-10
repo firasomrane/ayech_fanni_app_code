@@ -19,6 +19,7 @@
             android:textAppearance="?android:textAppearanceMedium"
             android:text="tajrib"
             android:textSize="35px"
+            android:textColor="@color/black"
             android:paddingLeft="30dp"
             android:paddingTop="70px"
             />

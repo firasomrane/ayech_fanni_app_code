@@ -9,7 +9,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
             android:padding="20dp">
 
 
@@ -25,11 +24,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Changer Photo"
+                android:text="Changer votre photo"
                 android:id="@+id/changeProfilePhoto"
                 android:layout_below="@+id/profile_photo"
                 android:layout_centerHorizontal="true"
-                android:textColor="@color/theMainColor"
+                android:textColor="@color/black"
                 android:textSize="16sp"/>
 
 
@@ -40,7 +39,6 @@
                 android:layout_height="50dp"
                 android:layout_below="@+id/changeProfilePhoto"
                 android:layout_marginTop="80dp"
-                android:background="@drawable/grey_border_bottom"
                 android:id="@+id/relLayout1">
 
                 <ImageView
@@ -57,7 +55,8 @@
                     android:layout_marginStart="40dp"
                     android:background="@null"
                     android:inputType="textNoSuggestions"
-                    android:hint="username"/>
+                    android:hint="username"
+                    android:textColor="@color/black"/>
 
             </RelativeLayout>
 
@@ -68,7 +67,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_below="@+id/relLayout1"
-                android:background="@drawable/grey_border_bottom"
                 android:id="@+id/relative_lay_website"
                 android:layout_marginTop="15dp"
                 android:visibility="gone">
@@ -85,8 +83,8 @@
                     android:id="@+id/website"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="40dp"
-                    android:background="@null"
                     android:inputType="textNoSuggestions"
+                    android:textColor="@color/black"
                     android:hint="Website"/>
 
             </RelativeLayout>
@@ -97,7 +95,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_below="@+id/relative_lay_website"
-                android:background="@drawable/grey_border_bottom"
                 android:id="@+id/relative_lay_description"
                 android:layout_marginTop="15dp"
                 android:visibility="gone">
@@ -114,8 +111,8 @@
                     android:id="@+id/description"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="40dp"
-                    android:background="@null"
                     android:inputType="textNoSuggestions"
+                    android:textColor="@color/black"
                     android:hint="Description"/>
 
             </RelativeLayout>
@@ -129,7 +126,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_below="@+id/relative_lay_description"
-                android:background="@drawable/grey_border_bottom"
                 android:id="@+id/relative_lay_phone_number"
                 android:layout_marginTop="15dp"
                 android:visibility="gone">
@@ -146,8 +142,8 @@
                     android:id="@+id/phoneNumber"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="40dp"
-                    android:background="@null"
                     android:inputType="textNoSuggestions"
+                    android:textColor="@color/black"
                     android:hint="Phone Number"/>
 
             </RelativeLayout>

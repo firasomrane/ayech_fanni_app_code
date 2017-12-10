@@ -43,6 +43,7 @@
                         android:textAppearance="?android:textAppearanceMedium"
                         android:text=""
                         android:textSize="35px"
+                        android:textColor="@color/black"
                         android:paddingLeft="30dp"
                         android:paddingTop="27px"
                         />

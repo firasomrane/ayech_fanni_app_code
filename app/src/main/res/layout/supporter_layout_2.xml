@@ -33,6 +33,7 @@
             android:textSize="@dimen/toolbarTextSize"
             android:paddingLeft="18dp"
             android:gravity="center_vertical"
+            android:textColor="@color/black"
             />
     </LinearLayout>
 
@@ -45,6 +46,7 @@
         android:text="Choisir le montant que vous  \n voulez supporter avec"
         android:gravity="center"
         android:background="@color/cardview_shadow_start_color"
+        android:textColor="@color/black"
         />
 
     <RelativeLayout
@@ -120,15 +122,15 @@
     <Button
         android:id="@+id/supporter_button_layout_2"
         android:layout_below="@+id/view"
-        android:layout_centerHorizontal="true"
         android:layout_width="194dp"
         android:layout_height="53dp"
         android:text="Continuer"
         android:textSize="@dimen/buttons_size"
         android:textColor="@color/white"
-        android:background="@color/theMainColor"
+        android:background="@drawable/rounded"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/supporter_button_margin_top"
-        />
+         />
 
 
 </RelativeLayout>

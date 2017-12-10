@@ -35,6 +35,7 @@
         android:textSize="35px"
         android:paddingLeft="40dp"
         android:paddingTop="70px"
+        android:textColor="@color/black"
         />
 
     <ImageView

@@ -35,7 +35,8 @@
                 android:layout_weight="80"
                 android:layout_height="match_parent"
                 android:textAppearance="?android:textAppearanceMedium"
-                android:text="Modifier votre profil"
+                android:text="Solde"
+                android:textColor="@color/black"
                 android:textSize="35px"
                 android:paddingLeft="30dp"
                 android:paddingTop="27px"
@@ -79,7 +80,8 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="40dp"
                 android:background="@null"
-                android:text="Votre argent"/>
+                android:text="Votre argent"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -89,6 +91,7 @@
                 android:layout_marginRight="45dp"
                 android:layout_alignParentRight="true"
                 android:background="@null"
+                android:textColor="@color/black"
                 android:text="50"/>
 
             <TextView
@@ -99,6 +102,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_alignParentRight="true"
                 android:background="@null"
+                android:textColor="@color/black"
                 android:text="Dt"/>
 
         </RelativeLayout>
@@ -124,6 +128,7 @@
                 android:id="@+id/vos_dons"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="40dp"
+                android:textColor="@color/black"
                 android:background="@null"
                 android:text="Vos dons"/>
 
@@ -135,6 +140,7 @@
                 android:layout_marginRight="45dp"
                 android:layout_alignParentRight="true"
                 android:background="@null"
+                android:textColor="@color/black"
                 android:text="50"/>
 
             <TextView
@@ -144,6 +150,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="20dp"
                 android:layout_alignParentRight="true"
+                android:textColor="@color/black"
                 android:background="@null"
                 android:text="Dt"/>
 
@@ -157,7 +164,8 @@
             android:layout_below="@+id/relative_lay_vos_dons"
             android:background="@drawable/grey_border_bottom"
             android:id="@+id/relative_lay_log_out"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="15dp"
+            >
 
             <ImageView
                 android:layout_width="35dp"
@@ -172,7 +180,8 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="40dp"
                 android:background="@null"
-                android:text="Déconnecter"/>
+                android:text="Déconnecter"
+                android:textColor="@color/black"/>
 
         </RelativeLayout>
 

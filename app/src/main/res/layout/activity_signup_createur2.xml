@@ -14,6 +14,7 @@
         android:background="@color/grey"
         android:text="Création d'un compte créateur de contenu"
         android:textSize="15dp"
+        android:textColor="@color/black"
         android:textStyle="bold"
         android:gravity="center"
        />
@@ -58,7 +59,7 @@
         android:layout_height="30dp"
         android:layout_marginBottom="67dp"
         android:text="terminé !"
-        android:background="@drawable/mybotton"
+        android:background="@drawable/rounded"
         android:textColor="@color/white"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/editText9" />

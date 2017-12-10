@@ -34,6 +34,7 @@
                 android:textSize="@dimen/toolbarTextSize"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="20dp"
+                android:textColor="@color/black"
                 android:gravity="center_vertical"
                 />
         </RelativeLayout>
@@ -118,6 +119,7 @@
         android:text="Titre de la publication"
         android:textSize="20sp"
         android:layout_margin="16dp"
+        android:textColor="@color/black"
         />
 
     <EditText
@@ -127,6 +129,7 @@
         android:layout_margin="16dp"
         android:hint="Choisir un titre"
         android:maxLines="1"
+        android:textColor="@color/black"
         android:inputType="text"/>
 
     <View
@@ -139,7 +142,8 @@
         android:layout_height="wrap_content"
         android:text="Description"
         android:textSize="20sp"
-        android:layout_margin="16dp"/>
+        android:layout_margin="16dp"
+        android:textColor="@color/black"/>
 
     <EditText
         android:id="@+id/post_description"
@@ -148,6 +152,7 @@
         android:layout_margin="16dp"
         android:hint="Description"
         android:maxLines="1"
-        android:inputType="text"/>
+        android:inputType="text"
+        android:textColor="@color/black"/>
 
 </LinearLayout>

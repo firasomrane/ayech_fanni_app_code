@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/fond6"
-    tools:context="com.example.nourelhoudazribi.aaychfanni.MainActivity">
+    tools:context="com.example.nourelhoudazribi.aaychfanni.MainActivity"
+    >
 
 
     <ImageView
@@ -14,10 +15,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/logo"
+        android:background="@color/trans"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_above="@+id/editText2"
-        android:layout_alignParentStart="true" />
+        android:layout_marginBottom="43dp"
+        android:layout_above="@+id/editText"
+        android:layout_centerHorizontal="true" />
     <EditText
         android:id="@+id/editText"
         android:layout_width="215dp"
@@ -26,10 +29,11 @@
         android:inputType="textEmailAddress"
         android:textAlignment="center"
         android:layout_gravity="center"
-        android:layout_marginEnd="59dp"
-        android:layout_marginTop="220dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignEnd="@+id/imageView" />
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:layout_above="@+id/editText2"
+        android:layout_alignStart="@+id/editText2"
+        android:layout_centerHorizontal="true"/>
     <EditText
         android:id="@+id/editText2"
         android:layout_width="215dp"
@@ -37,30 +41,32 @@
         android:ems="10"
         android:hint="Mot de passe"
         android:inputType="textPassword"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
         android:layout_gravity="center"
         android:textAlignment="center"
-        android:layout_marginTop="23dp"
-        android:layout_below="@+id/editText"
-        android:layout_alignStart="@+id/editText" />
+        android:gravity="center"
+        android:layout_marginBottom="35dp"
+        android:layout_above="@+id/button"
+        android:layout_centerHorizontal="true" />
     <Button
         android:id="@+id/button"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:background="@drawable/mybotton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded"
         android:text="Se connecter"
         android:textColor="@android:color/white"
-        android:layout_below="@+id/editText2"
-        android:layout_alignEnd="@+id/editText2"
-        android:layout_marginEnd="28dp"
-        android:layout_marginTop="11dp"/>
+        android:layout_above="@+id/button2"
+        android:layout_alignStart="@+id/button2"
+        android:layout_marginBottom="12dp" />
     <Button
         android:id="@+id/button2"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:background="@drawable/mybotton2"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded"
         android:text="S'inscrire"
         android:textColor="@android:color/white"
-        android:layout_below="@+id/button"
-        android:layout_alignStart="@+id/button"
-        android:layout_marginTop="11dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="68dp" />
 </RelativeLayout>

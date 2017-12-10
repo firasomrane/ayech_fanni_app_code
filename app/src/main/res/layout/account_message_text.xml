@@ -27,7 +27,7 @@
             android:layout_width="304dp"
             android:layout_weight="60"
             android:layout_height="match_parent"
-            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/black"
             android:text="Messages"
             android:textSize="35px"
             android:paddingLeft="30dp"

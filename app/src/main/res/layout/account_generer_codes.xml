@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/fond6">
     <LinearLayout
         android:id="@+id/edit_profile_top"
         android:layout_height="wrap_content"
@@ -32,6 +33,7 @@
                 android:layout_height="match_parent"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:text="Générer les codes"
+                android:textColor="@color/black"
                 android:textSize="35px"
                 android:paddingLeft="30dp"
                 android:paddingTop="27px"
@@ -55,7 +57,7 @@
         android:textSize="15dp"
         android:textColor="@color/white"
         android:text="Generer"
-        android:background="@color/theMainColor"
+        android:background="@drawable/mybotton"
         android:layout_gravity="center"/>
 
 </LinearLayout>

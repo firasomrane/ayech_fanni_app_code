@@ -27,6 +27,7 @@
             android:layout_height="match_parent"
             android:textAppearance="?android:textAppearanceMedium"
             android:text="Messages"
+            android:textColor="@color/black"
             android:textSize="@dimen/toolbarTextSize"
             android:paddingLeft="30dp"
             android:paddingTop="27px"

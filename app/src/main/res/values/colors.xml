@@ -14,4 +14,7 @@
     <color name="lightGrey">	#E0E0E0 </color>
     <color name="grey">#bfbfbf</color>
     <color name="link_blue">#005ce6</color>
+    <color name="bleu_ciel">#b7d0f5</color>
+    <color name="violet">#783c9c</color>
+    <color name="violet_fonce">#421f59</color>
 </resources>

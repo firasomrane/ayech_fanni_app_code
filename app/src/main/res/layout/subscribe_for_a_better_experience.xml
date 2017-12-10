@@ -13,6 +13,7 @@
         android:layout_height="118dp"
         android:text="Inscrivez vous pour avoir une meilleure \n expérience et exploitez plus de \n fonctionnalités dans notre application"
         android:gravity="center"
+        android:textColor="@color/black"
         android:background="@color/cardview_shadow_start_color"
         />
 
