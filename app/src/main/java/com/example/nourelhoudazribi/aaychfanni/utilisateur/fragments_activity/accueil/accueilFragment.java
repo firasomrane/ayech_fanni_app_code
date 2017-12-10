@@ -103,6 +103,7 @@ public class accueilFragment extends Fragment implements View.OnClickListener {
         Log.d(TAG, "getFollowing: searching for following");
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        mFollowing = new ArrayList<>();
         Query query = reference
                 .child(getString(R.string.dbname_following))
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -282,6 +283,7 @@ public class accueilFragment extends Fragment implements View.OnClickListener {
             case R.id.better_experience_button:
                 // code for button when user clicks devenir createur.
                 Intent intent = new Intent(getActivity(), MainActivity.class);
+                getActivity().finish();
                 startActivity(intent);
 
                 break;
