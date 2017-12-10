@@ -127,32 +127,41 @@ public class ShareOne extends AppCompatActivity {
         selectedTitle = postTitle.getText().toString();
         selectedDescription = postDescription.getText().toString();
 
-
-        Log.d(TAG, "sendBundlesToShareTwo: selectedtitle  "+selectedTitle);
-        Log.d(TAG, "sendBundlesToShareTwo: selectedDescription   "+selectedDescription);
-
-        Intent intent2 = new Intent(ShareOne.this , ShareTwo.class);
-
-        if(intent.hasExtra(getString(R.string.selected_image))) {
-
-            intent2.putExtra(getString(R.string.selected_image), imageUrl);
-            Log.d(TAG, "sendBundlesToShareTwo: selectedimage   " + imageUrl);
+        if(selectedTitle.equals("")){
+            Toast.makeText(ShareOne.this, "Il faut choisir un titre", Toast.LENGTH_SHORT).show();
         }
-        else if(intent.hasExtra(getString(R.string.selected_bitmap))){
-            intent2.putExtra(getString(R.string.selected_bitmap), bitmap);
-            Log.d(TAG, "sendBundlesToShareTwo: selected bitmap   " + bitmap.toString());
+        else if(selectedDescription.equals("")){
+            Toast.makeText(ShareOne.this, "Il faut choisir une description", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Log.d(TAG, "sendBundlesToShareTwo: selectedtitle  "+selectedTitle);
+            Log.d(TAG, "sendBundlesToShareTwo: selectedDescription   "+selectedDescription);
+
+            Intent intent2 = new Intent(ShareOne.this , ShareTwo.class);
+
+            if(intent.hasExtra(getString(R.string.selected_image))) {
+
+                intent2.putExtra(getString(R.string.selected_image), imageUrl);
+                Log.d(TAG, "sendBundlesToShareTwo: selectedimage   " + imageUrl);
+            }
+            else if(intent.hasExtra(getString(R.string.selected_bitmap))){
+                intent2.putExtra(getString(R.string.selected_bitmap), bitmap);
+                Log.d(TAG, "sendBundlesToShareTwo: selected bitmap   " + bitmap.toString());
+            }
+
+            intent2.putExtra(getString(R.string.selected_url) ,urlEntered);
+            Log.d(TAG, "sendBundlesToShareTwo: selectedurl   "+urlEntered);
+
+            intent2.putExtra(getString(R.string.selected_title) ,selectedTitle);
+            Log.d(TAG, "sendBundlesToShareTwo: selectedtitle in bundle  "+selectedTitle);
+
+            intent2.putExtra(getString(R.string.selected_description) ,selectedDescription);
+            Log.d(TAG, "sendBundlesToShareTwo: selectedDescription in bundle  "+selectedDescription);
+
+            startActivity(intent2);
         }
 
-        intent2.putExtra(getString(R.string.selected_url) ,urlEntered);
-        Log.d(TAG, "sendBundlesToShareTwo: selectedurl   "+urlEntered);
 
-        intent2.putExtra(getString(R.string.selected_title) ,selectedTitle);
-        Log.d(TAG, "sendBundlesToShareTwo: selectedtitle in bundle  "+selectedTitle);
-
-        intent2.putExtra(getString(R.string.selected_description) ,selectedDescription);
-        Log.d(TAG, "sendBundlesToShareTwo: selectedDescription in bundle  "+selectedDescription);
-
-        startActivity(intent2);
 
     }
 

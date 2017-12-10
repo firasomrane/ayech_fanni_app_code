@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -61,7 +62,14 @@ public class ShareTwo extends AppCompatActivity {
 
         mFirebaseMethods = new FirebaseMethods(ShareTwo.this);
         setupFirebaseAuth();
-
+        ImageView backArrow = (ImageView) findViewById(R.id.m_icon);
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: closing the activity");
+                finish();
+            }
+        });
 
         //get the radioButtons result and share the new post
         publier = (TextView) findViewById(R.id.publier) ;
