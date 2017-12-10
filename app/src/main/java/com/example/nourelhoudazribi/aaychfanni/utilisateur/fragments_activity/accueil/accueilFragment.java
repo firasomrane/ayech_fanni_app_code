@@ -221,11 +221,11 @@ public class accueilFragment extends Fragment implements View.OnClickListener {
 
                 int iterations = mPhotos.size();
 
-                if(iterations > 10){
-                    iterations = 10;
+                if(iterations > 20){
+                    iterations = 20;
                 }
 
-                mResults = 10;
+                mResults = 20;
                 for(int i = 0; i < iterations; i++){
                     mPaginatedPhotos.add(mPhotos.get(i));
                 }
@@ -251,11 +251,11 @@ public class accueilFragment extends Fragment implements View.OnClickListener {
             if(mPhotos.size() > mResults && mPhotos.size() > 0){
 
                 int iterations;
-                if(mPhotos.size() > (mResults + 10)){
-                    Log.d(TAG, "displayMorePhotos: there are greater than 10 more photos");
-                    iterations = 10;
+                if(mPhotos.size() > (mResults + 20)){
+                    Log.d(TAG, "displayMorePhotos: there are greater than 20 more photos");
+                    iterations = 20;
                 }else{
-                    Log.d(TAG, "displayMorePhotos: there is less than 10 more photos");
+                    Log.d(TAG, "displayMorePhotos: there is less than 20 more photos");
                     iterations = mPhotos.size() - mResults;
                 }
 

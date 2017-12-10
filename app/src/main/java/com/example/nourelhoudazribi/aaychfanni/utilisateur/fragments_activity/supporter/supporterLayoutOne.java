@@ -7,9 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.example.nourelhoudazribi.aaychfanni.R;
 
@@ -23,6 +23,7 @@ public class supporterLayoutOne extends AppCompatActivity {
     private RadioGroup radioGroup;
     private RadioButton radioButton;
     private Button continuerButtonSupporterOne;
+    private ImageView backArrow;
 
     private static final String TAG = "supporterLayoutOne";
     public String creator_user_id;
@@ -38,6 +39,14 @@ public class supporterLayoutOne extends AppCompatActivity {
         Intent intent = getIntent();
         creator_user_id = intent.getStringExtra(getString(R.string.user_id));
         Log.d(TAG, "setDonationDescription: creator user id is  "+creator_user_id);
+
+        backArrow = (ImageView) findViewById(R.id.m_icon);
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
         //handle the selected radio buttons from here https://www.mkyong.com/android/android-radio-buttons-example/
@@ -67,8 +76,6 @@ public class supporterLayoutOne extends AppCompatActivity {
 
                 donationtype = radioButton.getText();
 
-                Toast.makeText(supporterLayoutOne.this,
-                        donationtype, Toast.LENGTH_SHORT).show();
 
                 // do something when the button is clicked
                 // Yes we will handle click here but which button clicked??? We don't know

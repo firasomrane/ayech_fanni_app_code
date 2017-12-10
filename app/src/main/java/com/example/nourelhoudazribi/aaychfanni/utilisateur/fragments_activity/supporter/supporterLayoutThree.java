@@ -7,6 +7,8 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,7 +52,10 @@ public class supporterLayoutThree extends supporterLayoutOne {
     private Button payer;
     public long newCreatorArgent ,newUserArgent ,currentCreatorArgent , currentUserArgent ,sumToAdd,currentCreatorFollowers,
     newCreatorFollowers;
+    private ImageView backArrow;
     public Boolean trasactionDone;
+    private ProgressBar mProgressBar;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -70,8 +75,17 @@ public class supporterLayoutThree extends supporterLayoutOne {
         creator_user_id = intent.getStringExtra(getString(R.string.user_id));
         Log.d(TAG, "setDonationDescription: creator user id is  "+creator_user_id);
 
+
         //set widgets
+        mProgressBar = (ProgressBar) findViewById(R.id.circle_progressBar);
         payer = (Button) findViewById(R.id.payer);
+        backArrow = (ImageView) findViewById(R.id.m_icon);
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         setDonationDescription();
         setupFirebaseAuth();
@@ -89,8 +103,6 @@ public class supporterLayoutThree extends supporterLayoutOne {
 
             //Handle the donation type
             donationtype = bundle.getString("donationType");
-            Toast.makeText(supporterLayoutThree.this,
-                     donationtype, Toast.LENGTH_SHORT).show();
 
             final TextView donation_type_text = (TextView) findViewById(R.id.supporter_donation_type);
             if(donationtype =="Un don par mois"){donation_type_text.setText("par mois");}
@@ -196,8 +208,8 @@ public class supporterLayoutThree extends supporterLayoutOne {
 
             message = new Message();
             message.setProfile_image(mCurrentUserSettings.getSettings().getProfile_photo());
-            String text ="Bonjours ,j'ai vous ai envoyé " +montant;
-            text = text + " Dt";
+            String text ="Bonjour, je vous ai offert " +montant;
+            text = text + " dt comme soutien, bon courage !";
             message.setMessage_text(text);
             message.setSender_id(userID);
             message.setReciever_id(creator_user_id);
@@ -210,6 +222,7 @@ public class supporterLayoutThree extends supporterLayoutOne {
             intent.putExtra(getString(R.string.user_id), creator_user_id);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             intent.putExtra(getString(R.string.calling_activity),"one");
+            mProgressBar.setVisibility(ProgressBar.VISIBLE);
             finish();
             startActivity(intent);
             //intent to the profile activity

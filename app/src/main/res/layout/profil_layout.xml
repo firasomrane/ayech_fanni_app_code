@@ -67,6 +67,14 @@
 
 
     </RelativeLayout>
+    <ProgressBar
+        android:id="@+id/circle_progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="visible"/>
 
 
 </RelativeLayout>

@@ -39,7 +39,7 @@
             android:layout_weight="50"
             android:layout_height="match_parent"
             android:textAppearance="?android:textAppearanceMedium"
-            android:text="supporteurs"
+            android:text="Dons"
             android:textSize="@dimen/profil_text_size"
             android:paddingTop="27px"
             />

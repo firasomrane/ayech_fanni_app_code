@@ -90,7 +90,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:enabled="false"
-            android:src="@drawable/ic_send_message"/>
+            android:src="@drawable/ic_send_message"
+            android:visibility="invisible"/>
 
     </LinearLayout>
 

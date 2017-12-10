@@ -47,7 +47,9 @@ public class exploreFragment extends Fragment {
         explorerElements.add(newElement);
         newElement=new elementExplore("Musique");
         explorerElements.add(newElement);
-        newElement=new elementExplore("Podcasts");
+        newElement=new elementExplore("Peinture");
+        explorerElements.add(newElement);
+        newElement=new elementExplore("Photographie");
         explorerElements.add(newElement);
         return explorerElements;
 

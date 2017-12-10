@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.nourelhoudazribi.aaychfanni.R;
@@ -28,6 +29,7 @@ public class supporterLayoutTwo extends AppCompatActivity {
     private TextView montantText;
     private long montantLong;
     public String creator_user_id;
+    private ImageView backArrow;
 
 
     private static final String TAG = "supporterLayoutTwo";
@@ -44,6 +46,14 @@ public class supporterLayoutTwo extends AppCompatActivity {
         Intent intent = getIntent();
         creator_user_id = intent.getStringExtra(getString(R.string.user_id));
         Log.d(TAG, "setDonationDescription: creator user id is  "+creator_user_id);
+
+        backArrow = (ImageView) findViewById(R.id.m_icon);
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         addListenerOnButton();
 

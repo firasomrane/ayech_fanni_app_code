@@ -25,11 +25,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Change Photo"
+                android:text="Changer Photo"
                 android:id="@+id/changeProfilePhoto"
                 android:layout_below="@+id/profile_photo"
                 android:layout_centerHorizontal="true"
-                android:textColor="@color/link_blue"
+                android:textColor="@color/theMainColor"
                 android:textSize="16sp"/>
 
 

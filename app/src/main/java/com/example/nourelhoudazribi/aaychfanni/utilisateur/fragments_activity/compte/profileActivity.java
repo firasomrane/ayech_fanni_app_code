@@ -55,6 +55,7 @@ public class profileActivity extends AppCompatActivity {
     private String userID;
     public String creator_user_id,commingFragment;
     public Boolean isFollower;
+    private ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -79,6 +80,10 @@ public class profileActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listView);
         mProfilePhoto = (ImageView) findViewById(R.id.profile_photo);
         mBackArrow = (ImageView) findViewById(R.id.back_arrow) ;
+        mProgressBar = (ProgressBar) findViewById(R.id.circle_progressBar);
+
+        mProgressBar.setVisibility(View.GONE);
+
 
         mBackArrow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -200,11 +205,16 @@ public class profileActivity extends AppCompatActivity {
         nbreSupporteurs.setText(Long.toString(creatorUserAccountSettings.getFollowers()));
         targetSum.setText(Long.toString(creatorUserAccountSettings.getTarget_sum()));
         creatorSum.setText(Long.toString(creatorUserAccountSettings.getDon_sum()));
-        Long pr;
-        pr = creatorUserAccountSettings.getDon_sum() /creatorUserAccountSettings.getTarget_sum();
+        int intTargetSum = (int) (long) creatorUserAccountSettings.getTarget_sum();
+        Log.d(TAG, "setCreatorProfileWidgets: intTargetSum "+intTargetSum);
+        int intCreatorSum = (int) (long) creatorUserAccountSettings.getDon_sum()*100;
+        Log.d(TAG, "setCreatorProfileWidgets: intCreatorSum "+intCreatorSum);
+
+        Log.d(TAG, "setCreatorProfileWidgets: division " +intCreatorSum/intTargetSum);
+        int pr = (int) Math.round((float)intCreatorSum/intTargetSum);
 
         Log.d(TAG, "setCreatorProfileWidgets: pr = "+ pr);
-        progressBar.setProgress(pr.intValue());
+        progressBar.setProgress(pr);
 
         //setTheProfileListView();
 
