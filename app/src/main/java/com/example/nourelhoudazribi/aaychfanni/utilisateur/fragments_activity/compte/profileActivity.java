@@ -108,7 +108,7 @@ public class profileActivity extends AppCompatActivity {
 
         setupFirebaseAuth();
 
-        if(userID==null){
+        /*if(userID==null){
             Log.d(TAG, "onCreate: userId =null");
             abonner.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -161,51 +161,74 @@ public class profileActivity extends AppCompatActivity {
                 });
 
             }
-            else{
+            else{*/
 
 
-                abonner.setOnClickListener(new View.OnClickListener() {
+        abonner.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(!userID.equals(creator_user_id)){
-                            Log.d(TAG, "onClick: abonner clicked");
-                            handleTheFollowClick();
-                            myRef.child(getString(R.string.dbname_following))
-                                    .child(userID)
-                                    .child(creator_user_id)
-                                    .child("user_id")
-                                    .setValue(creator_user_id);
+                        if(userID==null){
+                            Intent intent = new Intent(profileActivity.this, MainActivity.class);
+                            startActivity(intent);
+                        }
+                        else{
+                            if(userID.equals("")){
+                                Intent intent = new Intent(profileActivity.this, MainActivity.class);
+                                startActivity(intent);
+                            }
+                            else if(!userID.equals(creator_user_id)){
+                                Log.d(TAG, "onClick: abonner clicked");
+                                handleTheFollowClick();
+                                myRef.child(getString(R.string.dbname_following))
+                                        .child(userID)
+                                        .child(creator_user_id)
+                                        .child("user_id")
+                                        .setValue(creator_user_id);
 
-                            isFollower = true;
-                            setTheFollowButton();
+                                isFollower = true;
+                                setTheFollowButton();
+                            }
                         }
 
 
+
                     }
                 });
 
-                dejaAbonne.setOnClickListener(new View.OnClickListener() {
+        dejaAbonne.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Log.d(TAG, "onClick: dejaAbonnee clicked");
-                        handleTheFollowClick();
-                        myRef.child(getString(R.string.dbname_following))
-                                .child(userID)
-                                .child(creator_user_id)
-                                .removeValue();
+                        if(userID==null){
+                            Intent intent = new Intent(profileActivity.this, MainActivity.class);
+                            startActivity(intent);
+                        }
+                        else {
+                            if (userID.equals("")) {
+                                Intent intent = new Intent(profileActivity.this, MainActivity.class);
+                                startActivity(intent);
+                            } else {
+                                Log.d(TAG, "onClick: dejaAbonnee clicked");
+                                handleTheFollowClick();
+                                myRef.child(getString(R.string.dbname_following))
+                                        .child(userID)
+                                        .child(creator_user_id)
+                                        .removeValue();
 
-                        isFollower = false;
-                        setTheFollowButton();
+                                isFollower = false;
+                                setTheFollowButton();
+                            }
+                        }
                     }
                 });
-            }
 
 
-        }
+    }
+
+
+
 
 
         //progressBar.setProgress(40);
-    }
 
 
 
