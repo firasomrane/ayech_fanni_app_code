@@ -87,7 +87,6 @@ public class accueilFragment extends Fragment implements View.OnClickListener {
         }
         mFirebaseMethods = new FirebaseMethods(getActivity());
 
-
         //set the clickListener when the user is not logged in
 
         betterExperience =(Button) rootView.findViewById(R.id.better_experience_button);

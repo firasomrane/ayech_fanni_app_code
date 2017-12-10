@@ -17,8 +17,12 @@
 
         <!--sign in and sign up activities-->
 
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".Signup" />
+        <activity android:name=".MainActivity">
+
+        </activity>
+        <activity android:name=".Signup">
+
+            </activity>
 
         <activity android:name=".cmc_fan" />
         <activity android:name=".Compte_nour" />
@@ -34,6 +38,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
 
         <!--Compte activities-->
