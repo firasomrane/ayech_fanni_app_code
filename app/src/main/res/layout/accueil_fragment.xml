@@ -3,6 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fond6"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -12,7 +13,6 @@
             android:id="@+id/accueil_toolbar_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
             android:padding="16dp"
             android:text="Accueil"
             android:textSize="@dimen/toolbarTextSize" />
