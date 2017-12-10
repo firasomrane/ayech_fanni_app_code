@@ -1,19 +1,28 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <ProgressBar
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/profileProgressBar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white">
+        android:background="@android:color/transparent">
 
         <RelativeLayout
             android:id="@+id/rel1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent">
 
             <LinearLayout
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
                 android:orientation="vertical"
                 android:weightSum="1">
 
@@ -23,29 +32,26 @@
                     android:orientation="horizontal"
                     android:weightSum="100">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/profile_photo"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        app:civ_border_width="2dp"
-                        app:civ_border_color="#FF000000"
                         android:layout_centerVertical="true"
-                        android:layout_weight="15"
-                        android:layout_marginTop="10dp"
                         android:layout_marginLeft="10dp"
-                        />
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="15"
+                        app:civ_border_color="#FF000000"
+                        app:civ_border_width="2dp" />
 
                     <TextView
                         android:id="@+id/compte_layout_name_field"
                         android:layout_width="304dp"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:textAppearanceMedium"
-                        android:text=""
-                        android:textSize="35px"
                         android:paddingLeft="30dp"
                         android:paddingTop="27px"
-                        />
+                        android:text=""
+                        android:textAppearance="?android:textAppearanceMedium"
+                        android:textSize="35px" />
 
                 </LinearLayout>
 
@@ -61,67 +67,67 @@
 
 
         <RelativeLayout
+            android:id="@+id/modifier_votre_profil_relative_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/modifier_votre_profil_relative_layout"
-            android:layout_below="@+id/rel1"
-            android:layout_alignParentStart="true">
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/rel1">
 
             <include
+                layout="@layout/account_modifier_votre_profil_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                layout="@layout/account_modifier_votre_profil_text" />/
+                android:layout_height="wrap_content" />/
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/vos_createurs_relative_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/vos_createurs_relative_layout"
             android:layout_below="@+id/modifier_votre_profil_relative_layout">
 
             <include
+                layout="@layout/account_vos_createurs_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                layout="@layout/account_vos_createurs_text" />/
+                android:layout_height="wrap_content" />/
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/messages_relative_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/messages_relative_layout"
             android:layout_below="@+id/vos_createurs_relative_layout">
 
             <include
+                layout="@layout/account_message_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                layout="@layout/account_message_text" />/
+                android:layout_height="wrap_content" />/
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/parametres_relative_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/parametres_relative_layout"
             android:layout_below="@+id/messages_relative_layout">
 
             <include
+                layout="@layout/account_parametres_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                layout="@layout/account_parametres_text" />
+                android:layout_height="wrap_content" />
 
 
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/vos_supporteurs_relative_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/vos_supporteurs_relative_layout"
             android:layout_below="@+id/parametres_relative_layout"
             android:visibility="gone">
 
             <include
+                layout="@layout/account_vos_supporteurs_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                layout="@layout/account_vos_supporteurs_text" />
+                android:layout_height="wrap_content" />
 
 
         </RelativeLayout>
@@ -129,34 +135,27 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_below="@+id/parametres_relative_layout">
+            android:layout_below="@+id/parametres_relative_layout"
+            android:gravity="center">
 
             <Button
-            android:id="@+id/become_creator"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="false"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:textSize="15dp"
-            android:textColor="@android:color/white"
+                android:id="@+id/become_creator"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="false"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_centerInParent="true"
                 android:background="@drawable/mybotton"
-            android:text="Je suis créateur de contenu"
-            android:layout_centerInParent="true"
-                android:visibility="gone"/>
+                android:text="Je suis créateur de contenu"
+                android:textColor="@android:color/white"
+                android:textSize="15dp"
+                android:visibility="gone" />
 
         </RelativeLayout>
 
 
-
     </RelativeLayout>
-    <ProgressBar
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:id="@+id/profileProgressBar"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"/>
 
 
 </merge>

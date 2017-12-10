@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fond6"
     tools:context="com.example.nourelhoudazribi.aaychfanni.demarrer_1">
 
     <ImageView
@@ -11,45 +12,40 @@
         android:layout_width="355dp"
         android:layout_height="248dp"
         app:srcCompat="@drawable/demarrer_1"
-        tools:layout_editor_absoluteX="15dp"
-        tools:layout_editor_absoluteY="40dp"
-        android:layout_marginTop="46dp"
+        android:layout_marginTop="47dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_centerHorizontal="true" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="'Ayech Fanni' c'est quoi ?"
         android:textColor="@color/colorAccent"
-        tools:layout_editor_absoluteY="331dp"
-        tools:layout_editor_absoluteX="27dp"
         android:textSize="30dp"
         android:textStyle="bold"
-        android:id="@+id/textView5"
-        android:layout_marginTop="26dp"
+        android:id="@+id/textView17"
         android:layout_below="@+id/imageView4"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignEnd="@+id/imageView4"
+        android:layout_marginTop="36dp" />
+       " />
     <TextView
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Ici, les jeunes passionnés ont l'opportunité de partager leurs contenus en solicitant les dons de leurs fans."
         android:textColor="@color/black"
-        tools:layout_editor_absoluteY="408dp"
-        tools:layout_editor_absoluteX="42dp"
         android:textSize="18dp"
-        android:layout_below="@+id/textView5"
+        android:id="@+id/textView6"
+        android:layout_above="@+id/button7"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="21dp"
-        android:id="@+id/textView6" />
+        android:layout_marginBottom="58dp" />
 
     <TextView
         android:id="@+id/textView15"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginTop="89dp"
-        android:background="@color/colorAccent"
-        android:layout_below="@+id/textView6"
+        android:layout_marginTop="176dp"
+        android:background="@color/violet"
+        android:layout_below="@+id/textView17"
         android:layout_alignParentStart="true" />
 
     <Button

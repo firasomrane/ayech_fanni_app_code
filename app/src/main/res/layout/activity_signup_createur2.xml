@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.nourelhoudazribi.aaychfanni.signup_createur2">
+    android:background="@drawable/fond6">
 
     <TextView
         android:id="@+id/textView12"
@@ -57,7 +57,7 @@
         android:layout_height="30dp"
         android:layout_marginBottom="67dp"
         android:text="terminé !"
-        android:background="@drawable/mybotton"
+        android:background="@drawable/rounded"
         android:textColor="@color/white"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/editText9" />

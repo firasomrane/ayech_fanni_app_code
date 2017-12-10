@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fond6"
     tools:context="com.example.nourelhoudazribi.aaychfanni.devenir_createur">
 
     <EditText
@@ -20,17 +21,23 @@
         android:id="@+id/textView12"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="@color/grey"
+        android:background="@android:color/transparent"
         android:text="Création d'un compte créateur de contenu"
+        android:textColor="@color/black"
         android:textSize="15dp"
         android:textStyle="bold"
         android:gravity="center"
         />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:layout_marginTop="65dp"
+        android:background="@color/black" />
     <Button
         android:id="@+id/arriere_createur"
         android:layout_width="30dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/ic_fleche_arriere"
+        android:background="@drawable/ic_black_left"
         android:layout_alignBaseline="@+id/textView12"
         android:layout_alignBottom="@+id/textView12"
         android:layout_alignStart="@+id/textView13" />
@@ -111,17 +118,16 @@
         android:layout_height="wrap_content"
         android:text="Décrire votre activité"
         android:layout_alignTop="@+id/editText4"
-        android:layout_toStartOf="@+id/editText4" />17d
-        android:layout_alignBottom="@+id/editText3"
-        android:layout_toStartOf="@+id/editText3"/>
+        android:layout_toStartOf="@+id/editText4" />
+
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView3"
         android:layout_width="90dp"
         android:textColor="@color/black"
         android:textSize="15dp"
         android:textStyle="bold"
         android:layout_height="wrap_content"
-        android:text="Vos liens"
+        android:text="Insérer vos liens"
         android:gravity="center"
         android:layout_centerVertical="true"
         android:layout_toStartOf="@+id/editText3" />
@@ -132,10 +138,10 @@
         android:layout_height="30dp"
         android:layout_marginBottom="31dp"
         android:textColor="@android:color/white"
-        android:background="@drawable/mybotton"
+        android:background="@drawable/rounded"
+        android:layout_centerHorizontal="true"
         android:text="Continuer"
-        android:layout_marginEnd="42dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/editText8" />
+         />
 
 </RelativeLayout>

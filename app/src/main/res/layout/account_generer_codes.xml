@@ -51,11 +51,11 @@
         android:id="@+id/generer_code"
         android:layout_width="200dp"
         android:layout_marginTop="40dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:textSize="15dp"
         android:textColor="@color/white"
         android:text="Generer"
-        android:background="@color/theMainColor"
+        android:background="@drawable/mybotton"
         android:layout_gravity="center"/>
 
 </LinearLayout>

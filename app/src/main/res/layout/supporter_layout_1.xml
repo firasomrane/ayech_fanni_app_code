@@ -4,6 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
+    android:background="@drawable/fond6"
     android:layout_width="wrap_content">
 
     <LinearLayout
@@ -11,8 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal"
-        android:background="@color/white"
-        android:weightSum="100">
+        android:background="@android:color/transparent"
+        android:weightSum="100"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <ImageView
             android:id="@+id/m_icon"
@@ -28,6 +31,7 @@
             android:id="@+id/supporter_nom_createur"
             android:layout_width="304dp"
             android:layout_height="match_parent"
+            android:background="@android:color/transparent"
             android:textAppearance="?android:textAppearanceMedium"
             android:text="Supporter Nom du créateur"
             android:textSize="@dimen/toolbarTextSize"
@@ -115,7 +119,7 @@
         android:text="Continuer"
         android:textSize="@dimen/buttons_size"
         android:textColor="@color/white"
-        android:background="@color/theMainColor"
+        android:background="@drawable/rounded"
         android:layout_marginTop="@dimen/supporter_button_margin_top"
         />
 

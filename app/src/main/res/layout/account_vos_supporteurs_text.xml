@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:layout_width="wrap_content"
     android:orientation="vertical"
+    android:background="@drawable/fond6"
     android:weightSum="1">
 
     <LinearLayout

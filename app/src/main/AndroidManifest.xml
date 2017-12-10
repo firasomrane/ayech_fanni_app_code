@@ -17,23 +17,25 @@
 
         <!--sign in and sign up activities-->
 
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity">
+
+        </activity>
         <activity android:name=".Signup" />
 
         <activity android:name=".cmc_fan" />
         <activity android:name=".Compte_nour" />
         <activity android:name=".devenir_createur">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".profil_createur"></activity>
 
 
 
         <activity android:name=".utilisateur.fragments_activity.fragments_activity.theEssentialActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <!--Compte activities-->
@@ -76,7 +78,9 @@
 
         <!--Demarrer-->
 
-        <activity android:name=".demarrer_1"></activity>
+        <activity android:name=".demarrer_1">
+
+        </activity>
         <activity android:name=".demarrer_2">
         </activity>
         <activity android:name=".demerrer_3" />

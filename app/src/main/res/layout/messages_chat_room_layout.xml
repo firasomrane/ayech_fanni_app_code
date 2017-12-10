@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fond6"
    >
 
     <LinearLayout
@@ -30,7 +31,8 @@
             android:layout_weight="60"
             android:layout_height="match_parent"
             android:textAppearance="?android:textAppearanceMedium"
-            android:text="friend"
+            android:text="MESSAGERIE"
+            android:textColor="@color/black"
             android:textSize="35px"
             android:paddingLeft="30dp"
             android:paddingTop="27px"
@@ -47,7 +49,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="6dp"
-            android:background="@android:color/darker_gray" />
+            android:background="@color/black" />
 
 
     </RelativeLayout>

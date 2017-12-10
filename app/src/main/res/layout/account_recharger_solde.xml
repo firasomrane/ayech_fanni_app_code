@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@drawable/fond6"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -62,7 +63,7 @@
         android:textSize="15dp"
         android:textColor="@color/white"
         android:text="Valider"
-        android:background="@color/theMainColor"
+        android:background="@drawable/rounded"
         android:layout_gravity="center_horizontal"/>
 
 
