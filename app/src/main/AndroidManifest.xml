@@ -27,7 +27,6 @@
         <activity android:name=".profil_createur"></activity>
 
 
-
         <activity android:name=".utilisateur.fragments_activity.fragments_activity.theEssentialActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
