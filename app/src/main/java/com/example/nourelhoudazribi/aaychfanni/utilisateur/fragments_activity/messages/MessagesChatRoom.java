@@ -27,10 +27,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by ASUS on 09/12/2017.
@@ -61,6 +61,7 @@ public class MessagesChatRoom extends AppCompatActivity {
     public  ArrayList<String> keyList;
 
     private ArrayList<Message> mfriendlyMessages ;
+
     //firebase
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -197,42 +198,84 @@ public class MessagesChatRoom extends AppCompatActivity {
             });
 
 
-            //DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+    }
+
+    public void getMessages(){
+        Log.d(TAG, "getMessages: created");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 
 
-           /* mfriendlyMessages = new ArrayList<>();
+            keyList = new ArrayList<>();
+            keyList.add(creator_user_id);
+            keyList.add(creator_user_id);
+
+            mfriendlyMessages = new ArrayList<>();
+
+        for(int i = 0; i < keyList.size(); i++) {
+
+            final int count = i;
 
             Query query = reference.child(getString(R.string.dbname_messages))
                     .child(userID)
-                    .child(creator_user_id);
+                    .child(keyList.get(i));
             query.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    for(DataSnapshot singleSnapshot : dataSnapshot.getChildren()){
-                        Log.d(TAG, "onDataChange: found user: " +singleSnapshot.getValue(Message.class).toString());
+                    friendName.setText(mCreatorUserSettings.getUser().getUsername());
+
+                    for (DataSnapshot singleSnapshot : dataSnapshot.getChildren()) {
+                        Log.d(TAG, "onDataChange: found message: " + singleSnapshot.getValue(Message.class).toString());
 
                         //mFollowing.add(singleSnapshot.child(getString(R.string.field_user_id)).getValue().toString());
-                        mfriendlyMessages.add(singleSnapshot.getValue(Message.class));
+                        if(count <keyList.size()-1){
+                            mfriendlyMessages.add(singleSnapshot.getValue(Message.class));
+                        }
+
 
                     }
 
                     //get the photos
-                    displayMessages();
+                    if(count == keyList.size() -1){
+                        Log.d(TAG, "onDataChange: count = "+count);
+                        displayMessages();
+                    }
                 }
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
 
                 }
-            });*/
+            });
+        }
 
-           stop = false;
-        keyList = new ArrayList<>();
-        List<Message> mfriendlyMessages = new ArrayList<>();
-        mMessageAdapter = new MessageAdapter(MessagesChatRoom.this, R.layout.messages_list_item, mfriendlyMessages,userID);
-        mMessageListView.setAdapter(mMessageAdapter);
+        /*// stop = false;
+        // keyList = new ArrayList<>();
+        mfriendlyMessages = new ArrayList<>();
 
-        mChildEventListener = new ChildEventListener() {
+        myRef.child(getString(R.string.dbname_messages))
+                .child(userID)
+                .child(creator_user_id).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                Log.d(TAG, "onDataChange: datasnapshot is " +dataSnapshot);
+                friendName.setText(mCreatorUserSettings.getUser().getUsername());
+                Message friendlyMessage = dataSnapshot.getValue(Message.class);
+                mfriendlyMessages.add(friendlyMessage);
+            }
+
+            displayMessages();
+
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });*/
+
+
+
+        /*mChildEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
@@ -267,13 +310,17 @@ public class MessagesChatRoom extends AppCompatActivity {
 
             public void onCancelled(DatabaseError databaseError) {
             }
-        };
+        };*/
 
-        myRef.child(getString(R.string.dbname_messages))
+        /*myRef.child(getString(R.string.dbname_messages))
                 .child(userID)
                 .child(creator_user_id).addChildEventListener(mChildEventListener);
 
-        }
+       */
+
+    }
+
+
 
 
 
@@ -351,6 +398,7 @@ public class MessagesChatRoom extends AppCompatActivity {
 
                 if (user != null) {
                     userID =user.getUid();
+                    getMessages();
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {

@@ -80,10 +80,15 @@
         <EditText
             android:id="@+id/messageEditText"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_gravity="center_vertical"
             android:layout_weight="80"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/rounded"
+            android:hint="Ecrire un message ..."
+            android:textColorHint="@color/white"
+            android:paddingLeft="12dp"
+            android:textColor="@color/white"/>
 
         <ImageView
             android:id="@+id/sendButton"
@@ -92,8 +97,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:enabled="false"
-            android:src="@drawable/ic_send_message"
-            android:visibility="invisible"/>
+            android:src="@drawable/ic_send_white"
+            android:visibility="invisible"
+            />
 
     </LinearLayout>
 

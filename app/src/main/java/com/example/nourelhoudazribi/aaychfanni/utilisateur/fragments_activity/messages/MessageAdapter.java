@@ -53,6 +53,7 @@ public class MessageAdapter extends ArrayAdapter<Message> {
         this.mContext = context;
         mReference = FirebaseDatabase.getInstance().getReference();
         this.userID = userID;
+        Log.d(TAG, "MessageAdapter: Liste des messaged est "+objects);
     }
 
 static class ViewHolder{
@@ -85,25 +86,39 @@ static class ViewHolder{
         }
 
 
-        holder.messageTextView.setText(holder.messageText);
+
+
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         params.gravity = Gravity.END;
 
+        LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        params2.gravity = Gravity.NO_GRAVITY;
+
+        //holder.messageTextView.setText(holder.messageText);
+
+        holder.messageTextView.setText(holder.messageText);
 
         if(userID.equals(getItem(position).getSender_id())){
+            ;
             holder.messageTextView.setLayoutParams(params);
             holder.messageTextView.setBackgroundResource(R.drawable.rounded_white_messages);
             holder.messageTextView.setTextColor(Color.BLACK);
             holder.mprofileImage.setVisibility(View.INVISIBLE);
         }
         else{
-            //set the profile image
+           // set the profile image
+            holder.messageTextView.setLayoutParams(params2);
+            holder.messageTextView.setBackgroundResource(R.drawable.roundedmessages);
+            holder.messageTextView.setTextColor(Color.WHITE);
+
             final ImageLoader imageLoader = ImageLoader.getInstance();
 
             final String image_path = getItem(position).getProfile_image();
 
             imageLoader.displayImage(image_path, holder.mprofileImage);
+            holder.mprofileImage.setVisibility(View.VISIBLE);
         }
 
 
@@ -112,6 +127,16 @@ static class ViewHolder{
     }
 
 
+    @Override
+    public int getViewTypeCount() {
 
+        return getCount();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+
+        return position;
+    }
 
 }
