@@ -61,6 +61,7 @@ public class MessagesFriendsListAdapter  extends ArrayAdapter<VosCreateurElement
         String creator_user_id;
         ImageView messengerIcon;
 
+
         TextView username;
 
     }
@@ -80,6 +81,7 @@ public class MessagesFriendsListAdapter  extends ArrayAdapter<VosCreateurElement
             holder.mprofileImage = (CircleImageView) convertView.findViewById(R.id.profile_photo);
             holder.creator_user_id = getItem(position).getCreator_id();
             holder.messengerIcon = (ImageView) convertView.findViewById(R.id.messenger_icon);
+
 
             convertView.setTag(holder);
 

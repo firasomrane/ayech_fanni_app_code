@@ -22,7 +22,7 @@
         android:layout_marginTop="4dp"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="12dp"
         android:paddingTop="10dp"
@@ -44,9 +44,10 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textSize="15sp"
             android:textStyle="normal|bold"
-            android:layout_gravity=""
             android:text="message long pour tester l'apparence"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+
+            />
 
     </LinearLayout>
 

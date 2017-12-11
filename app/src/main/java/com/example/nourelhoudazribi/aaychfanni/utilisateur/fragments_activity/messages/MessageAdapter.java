@@ -1,14 +1,17 @@
 package com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.messages;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.nourelhoudazribi.aaychfanni.R;
@@ -81,14 +84,28 @@ static class ViewHolder{
             holder = (ViewHolder) convertView.getTag();
         }
 
+
         holder.messageTextView.setText(holder.messageText);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.gravity = Gravity.END;
 
-        //set the profile image
-        final ImageLoader imageLoader = ImageLoader.getInstance();
 
-        final String image_path = getItem(position).getProfile_image();
+        if(userID.equals(getItem(position).getSender_id())){
+            holder.messageTextView.setLayoutParams(params);
+            holder.messageTextView.setBackgroundResource(R.drawable.rounded_white_messages);
+            holder.messageTextView.setTextColor(Color.BLACK);
+            holder.mprofileImage.setVisibility(View.INVISIBLE);
+        }
+        else{
+            //set the profile image
+            final ImageLoader imageLoader = ImageLoader.getInstance();
 
-        imageLoader.displayImage(image_path, holder.mprofileImage);
+            final String image_path = getItem(position).getProfile_image();
+
+            imageLoader.displayImage(image_path, holder.mprofileImage);
+        }
+
 
 
         return convertView;
