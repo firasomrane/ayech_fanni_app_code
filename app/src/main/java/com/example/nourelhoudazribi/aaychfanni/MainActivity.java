@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(!task.isSuccessful())
                 {
-                    Toast.makeText(MainActivity.this, "failure", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Vérifiez les données entrées", Toast.LENGTH_LONG).show();
                 }
             }
         });    }}

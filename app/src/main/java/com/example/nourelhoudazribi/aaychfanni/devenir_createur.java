@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.compte.compteFragment;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.fragments_activity.theEssentialActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -81,7 +82,7 @@ public class devenir_createur extends AppCompatActivity {
         retour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(devenir_createur.this, theEssentialActivity.class));
+                finish();
             }
         });
 

@@ -65,7 +65,7 @@
         android:textSize="15dp"
         android:textColor="@color/white"
         android:text="Valider"
-        android:background="@drawable/rounded"
+        android:background="@drawable/mybotton"
         android:layout_gravity="center_horizontal"/>
 
 

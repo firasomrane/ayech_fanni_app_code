@@ -69,8 +69,8 @@
         android:gravity="center"
         android:hint="Lien URL Facebook"
         android:inputType="textPersonName"
-        android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/textView2" />
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_alignStart="@+id/editText3" />
 
     <EditText
         android:id="@+id/editText3"
@@ -89,7 +89,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:layout_marginBottom="43dp"
-        android:layout_marginEnd="53dp"
+        android:layout_marginEnd="30dp"
         android:layout_above="@+id/editText3"
         android:layout_alignParentEnd="true" />
 
@@ -101,9 +101,9 @@
         android:text="Emplacement"
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:layout_alignBaseline="@+id/editText3"
-        android:layout_alignBottom="@+id/editText3"
-        android:layout_toStartOf="@+id/editText3" />
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="20dp"
+         />
 
     <TextView
         android:id="@+id/textView"
@@ -113,8 +113,8 @@
         android:textStyle="bold"
         android:layout_height="wrap_content"
         android:text="Décrire votre activité"
-        android:layout_alignTop="@+id/editText4"
-        android:layout_toStartOf="@+id/editText4" />17d
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="100dp" />17d
         android:layout_alignBottom="@+id/editText3"
         android:layout_toStartOf="@+id/editText3"/>
     <TextView
@@ -124,10 +124,10 @@
         android:textSize="15dp"
         android:textStyle="bold"
         android:layout_height="wrap_content"
-        android:text="Vos liens"
-        android:gravity="center"
-        android:layout_centerVertical="true"
-        android:layout_toStartOf="@+id/editText3" />
+        android:text="Insérez vos liens"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="275dp"
+         />
 
     <Button
         android:id="@+id/button4"

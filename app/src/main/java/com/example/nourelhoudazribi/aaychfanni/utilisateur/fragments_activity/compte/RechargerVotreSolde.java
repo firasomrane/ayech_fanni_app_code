@@ -23,6 +23,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * Created by ASUS on 08/12/2017.
  */
@@ -99,7 +101,7 @@ public class RechargerVotreSolde extends AppCompatActivity {
                 }
 
                 else{
-                    Toast.makeText(RechargerVotreSolde.this, "pour raison de sécuriter", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RechargerVotreSolde.this, "Vous avez usé les 3 tentatives permises. Veuillez attendre 90s pour une nouvelle", Toast.LENGTH_SHORT).show();
                     finish();
                 }
 
@@ -165,7 +167,7 @@ public class RechargerVotreSolde extends AppCompatActivity {
                 .child(codeText)
                 .removeValue();
 
-        Toast.makeText(RechargerVotreSolde.this, "vous avez recu 10 dinars", Toast.LENGTH_SHORT).show();
+        Toast.makeText(RechargerVotreSolde.this, "vous avez reçu 10 dinars", Toast.LENGTH_SHORT).show();
 
         finish();
 
