@@ -72,7 +72,7 @@ public class Parametres extends AppCompatActivity {
 
         argentRelativeLayout = (RelativeLayout) findViewById(R.id.relLayout_argent) ;
         vosDonsRelativeLayout = (RelativeLayout) findViewById(R.id.relative_lay_vos_dons) ;
-        signOutRelativeLayout = (RelativeLayout) findViewById(R.id.relative_lay_log_out) ;
+        /*signOutRelativeLayout = (RelativeLayout) findViewById(R.id.relative_lay_log_out) ;*/
         argentSumTextView = (TextView) findViewById(R.id.argent_sum);
         donSumTextView = (TextView) findViewById(R.id.dons_sum);
         backArrow = (ImageView) findViewById(R.id.back_arrow) ;
@@ -121,13 +121,13 @@ public class Parametres extends AppCompatActivity {
 
         }
 
-        signOutRelativeLayout.setOnClickListener(new View.OnClickListener() {
+       /* signOutRelativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mAuth.signOut();
                 finish();
             }
-        });
+        });*/
 
 
     }

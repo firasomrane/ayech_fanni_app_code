@@ -46,7 +46,8 @@ public class modifierVotreProfil extends AppCompatActivity {
     private TextView mChangeProfilePhoto;
     private CircleImageView mProfilePhoto;
     private Boolean toastAppered ;
-    private RelativeLayout relativeLayoutWebsite ,relativeLayoutDescription ,relativeLayoutPhoneNumber;
+    private RelativeLayout relativeLayoutWebsite ,relativeLayoutDescription ,relativeLayoutPhoneNumber,
+            signOutRelativeLayout;
 
     //vars
     private UserSettings mUserSettings;
@@ -78,6 +79,7 @@ public class modifierVotreProfil extends AppCompatActivity {
         relativeLayoutDescription = (RelativeLayout) findViewById(R.id.relative_lay_description);
         relativeLayoutPhoneNumber = (RelativeLayout) findViewById(R.id.relative_lay_phone_number);
         relativeLayoutWebsite = (RelativeLayout) findViewById(R.id.relative_lay_website);
+        signOutRelativeLayout = (RelativeLayout) findViewById(R.id.relative_lay_log_out) ;
 
         setupFirebaseAuth();
         getIncomingIntent();
@@ -259,6 +261,14 @@ public class modifierVotreProfil extends AppCompatActivity {
         Log.d(TAG, "setProfileWidgets: setting widgets with data retrieving from firebase database: " + userSettings.getUser().getEmail());
         Log.d(TAG, "setProfileWidgets: setting widgets with data retrieving from firebase database: " + userSettings.getUser().getPhone_number());
 
+
+        signOutRelativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signOut();
+                finish();
+            }
+        });
 
         mUserSettings = userSettings;
         User user = userSettings.getUser();

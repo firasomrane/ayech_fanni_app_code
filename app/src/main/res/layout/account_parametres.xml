@@ -158,32 +158,7 @@
 
 
         <!-- description section -->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_below="@+id/relative_lay_vos_dons"
-            android:background="@drawable/grey_border_bottom"
-            android:id="@+id/relative_lay_log_out"
-            android:layout_marginTop="15dp"
-            >
 
-            <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:src="@drawable/ic_sgn_out"
-                android:layout_centerVertical="true"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/description"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="40dp"
-                android:background="@null"
-                android:text="Déconnecter"
-                android:textColor="@color/black"/>
-
-        </RelativeLayout>
 
     </RelativeLayout>
 

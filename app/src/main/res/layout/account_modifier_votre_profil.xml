@@ -60,8 +60,9 @@
 </LinearLayout>
 
 <RelativeLayout
+    android:id="@+id/donnes"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_below="@+id/edit_profile_top">
 
     <include
@@ -70,4 +71,6 @@
         layout="@layout/snippet_center_editprofile"/>
 
 </RelativeLayout>
+
+
 </RelativeLayout>
