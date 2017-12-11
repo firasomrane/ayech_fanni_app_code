@@ -185,7 +185,7 @@ public class modifierVotreProfil extends AppCompatActivity {
                         //update website
                         mFirebaseMethods.updateUserAccountSettings(null, website, null, 0);
                         if (!toastAppered) {
-                            Toast.makeText(modifierVotreProfil.this, "saved change.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(modifierVotreProfil.this, "changement enregistré.", Toast.LENGTH_SHORT).show();
                             toastAppered = true;
                         }
                     }
@@ -193,7 +193,7 @@ public class modifierVotreProfil extends AppCompatActivity {
                         //update description
                         mFirebaseMethods.updateUserAccountSettings(null, null, description, 0);
                         if (!toastAppered) {
-                            Toast.makeText(modifierVotreProfil.this, "saved change.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(modifierVotreProfil.this, "changement enregistré..", Toast.LENGTH_SHORT).show();
                             toastAppered = true;
                         }
                     }
@@ -201,7 +201,7 @@ public class modifierVotreProfil extends AppCompatActivity {
                         //update phoneNumber
                         mFirebaseMethods.updateUserAccountSettings(null, null, null, phoneNumber);
                         if (!toastAppered) {
-                            Toast.makeText(modifierVotreProfil.this, "saved change.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(modifierVotreProfil.this, "changement enregistré.", Toast.LENGTH_SHORT).show();
                             toastAppered = true;
                         }
                     }
@@ -237,13 +237,13 @@ public class modifierVotreProfil extends AppCompatActivity {
                 if(!dataSnapshot.exists()){
                     //add the username
                     mFirebaseMethods.updateUsername(username);
-                    Toast.makeText(modifierVotreProfil.this, "saved username.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(modifierVotreProfil.this, "nom enregistré.", Toast.LENGTH_SHORT).show();
 
                 }
                 for(DataSnapshot singleSnapshot: dataSnapshot.getChildren()){
                     if (singleSnapshot.exists()){
                         Log.d(TAG, "checkIfUsernameExists: FOUND A MATCH: " + singleSnapshot.getValue(User.class).getUsername());
-                        Toast.makeText(modifierVotreProfil.this, "That username already exists.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(modifierVotreProfil.this, "Le nom est déja pris.", Toast.LENGTH_SHORT).show();
                     }
                 }
             }

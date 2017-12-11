@@ -55,7 +55,7 @@
                     android:layout_marginStart="40dp"
                     android:background="@null"
                     android:inputType="textNoSuggestions"
-                    android:hint="username"
+                    android:hint="Nom utilisateur"
                     android:textColor="@color/black"/>
 
             </RelativeLayout>
@@ -85,7 +85,7 @@
                     android:layout_marginStart="40dp"
                     android:inputType="textNoSuggestions"
                     android:textColor="@color/black"
-                    android:hint="Website"/>
+                    android:hint="Lien Youtube"/>
 
             </RelativeLayout>
 
@@ -144,7 +144,7 @@
                     android:layout_marginStart="40dp"
                     android:inputType="textNoSuggestions"
                     android:textColor="@color/black"
-                    android:hint="Phone Number"/>
+                    android:hint="Numéro téléphone"/>
 
             </RelativeLayout>
 
@@ -166,11 +166,11 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/description"
+                    android:id="@+id/description2"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="40dp"
                     android:background="@null"
-                    android:text="Déconnecter"
+                    android:text="Se déconnecter"
                     android:textColor="@color/black"/>
 
             </RelativeLayout>
