@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         String p = pswd.getText().toString();
         if((TextUtils.isEmpty(e))||(TextUtils.isEmpty(p)))
         {
-            Toast.makeText(MainActivity.this, "failure", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "Veuillez saisir vos données", Toast.LENGTH_LONG).show();
         }
         else
         {

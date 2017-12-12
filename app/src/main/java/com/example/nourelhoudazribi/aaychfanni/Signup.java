@@ -100,7 +100,7 @@ public class Signup extends AppCompatActivity {
     private boolean checkInputs(String email, String username, String password) {
         Log.d(TAG, "checkInputs: checking inputs for null values.");
         if (email.equals("") || username.equals("") || password.equals("")) {
-            Toast.makeText(mContext, "All fields must be filled out.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "Tous les champs doivent être remplis !", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;

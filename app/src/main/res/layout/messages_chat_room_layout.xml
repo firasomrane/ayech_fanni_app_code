@@ -31,7 +31,7 @@
             android:layout_weight="60"
             android:layout_height="match_parent"
             android:textAppearance="?android:textAppearanceMedium"
-            android:text="friend"
+            android:text="MESSAGERIE"
             android:textSize="35px"
             android:textColor="@color/black"
             android:paddingLeft="30dp"

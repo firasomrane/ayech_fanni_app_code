@@ -91,7 +91,7 @@
         android:id="@+id/button11"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="17dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/ic_demarrer_right"
         android:layout_below="@+id/textView7"

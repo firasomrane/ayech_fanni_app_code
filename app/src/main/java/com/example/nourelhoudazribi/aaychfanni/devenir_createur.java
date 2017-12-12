@@ -83,6 +83,7 @@ public class devenir_createur extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+                startActivity(new Intent(devenir_createur.this, theEssentialActivity.class));
             }
         });
 
