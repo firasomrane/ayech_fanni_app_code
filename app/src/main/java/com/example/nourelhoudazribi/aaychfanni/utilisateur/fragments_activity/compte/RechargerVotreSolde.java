@@ -1,6 +1,7 @@
 package com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.compte;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -100,9 +101,27 @@ public class RechargerVotreSolde extends AppCompatActivity {
 
                 }
 
-                else{
+                else
+                {
                     Toast.makeText(RechargerVotreSolde.this, "Vous avez usé les 3 tentatives permises. Veuillez attendre 90s pour une nouvelle", Toast.LENGTH_SHORT).show();
-                    finish();
+                    final long l = System.currentTimeMillis();
+                        valider.setVisibility(View.INVISIBLE);
+                       // finish();
+                    /* final Handler handler = new Handler();
+                    final Runnable r= new Runnable(){
+                        @Override
+                        public void run(){
+
+
+                                codeEditText.setFocusable(true);
+                            Toast.makeText(RechargerVotreSolde.this, "Nour", Toast.LENGTH_SHORT).show();
+                            handler.postDelayed(this, 10); //This runs the code again
+                        }
+                    };
+                    handler.postDelayed(r, 1);
+                    codeEditText.setFocusable(false);*/
+                   // numberOfAttempts=0;
+                    //finish();
                 }
 
             }
@@ -167,7 +186,7 @@ public class RechargerVotreSolde extends AppCompatActivity {
                 .child(codeText)
                 .removeValue();
 
-        Toast.makeText(RechargerVotreSolde.this, "vous avez reçu 10 dinars", Toast.LENGTH_SHORT).show();
+        Toast.makeText(RechargerVotreSolde.this, "votre recharge de 10 DT est réussie !", Toast.LENGTH_SHORT).show();
 
         finish();
 

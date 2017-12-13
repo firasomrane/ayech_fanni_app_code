@@ -48,10 +48,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"
-        android:hint="entrer le code "
+        android:inputType="number"
+        android:hint="Entrez le code "
         android:textColor="@color/black"
         android:gravity="center"
-        android:inputType="text"
         android:maxLines="1"
         />
     <Button

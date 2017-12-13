@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@drawable/fond6"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Notre équipe"
+        android:textColor="@color/theMainColor"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:layout_above="@+id/textView21"
+        android:layout_alignStart="@+id/textView17"
+        android:layout_marginBottom="12dp" />
+    <TextView
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:text="Nous sommes Firas Omrane, Nour El Houda Zribi et Siwar Abbes 3 trois jeunes élèves
+ingénieurs, âgés de 22 ans chacun. Nous aurons notre « Diplôme National d’Ingénieur en
+Télécommunications » l’année prochaine de l’école supérieure des communications de Tunis,
+SUP’COM"
+        android:textColor="@color/black"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/textView20"
+        android:id="@+id/textView21" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/logo" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Notre application"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:textColor="@color/theMainColor"
+        android:layout_marginTop="26dp"
+        android:layout_below="@+id/imageView8"
+        android:layout_alignStart="@+id/textView17"
+        android:id="@+id/textView19" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:text="Notre idée consiste à encourager les passionnés et les jeunes créateurs de contenu
+(vlogueurs, youtubeur, auteur de strip BD, podcaster, éditeur de fanzine, bloggeur, artiste,
+comédiens, écrivains…) à être à la disposition de la volonté de leurs fans en dépit des
+difficultés financières qu’ils peuvent rencontrer et ce en investissant chaque grain d’amour
+que leur ressentent leurs fans. Ainsi, ces derniers pourront aider leur créateur préféré en le
+finançant par des montants réduits leur permettant de s’approcher de lui et d’avoir un contact
+fréquent avec lui."
+        android:textColor="@android:color/black"
+        android:layout_below="@+id/textView19"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="13dp" />
+
+</RelativeLayout>

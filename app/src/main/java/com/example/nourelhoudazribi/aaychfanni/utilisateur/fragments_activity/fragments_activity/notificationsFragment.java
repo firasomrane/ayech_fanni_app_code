@@ -63,7 +63,7 @@ public class notificationsFragment extends Fragment implements View.OnClickListe
         mFirebaseMethods = new FirebaseMethods(getActivity());
 
         //CustomAdapter adapter=new CustomAdapter(this.getActivity(),getExploreElements());
-       // lv.setAdapter(adapter);
+        // lv.setAdapter(adapter);
 
         //set the clickListener when the user is not logged in
 
