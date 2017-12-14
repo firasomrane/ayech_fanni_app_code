@@ -86,6 +86,7 @@ public class Signup extends AppCompatActivity {
                     //loadingPleaseWait.setVisibility(View.VISIBLE);
                     if (rpswr.equals(pswr)) {
                         firebaseMethods.registerNewEmail(email, pswr, username);
+                        //termine.isEnabled(false);
 
                     } else {
                         Toast.makeText(mContext, "la confirmation du mot de passe est erroné.", Toast.LENGTH_SHORT).show();

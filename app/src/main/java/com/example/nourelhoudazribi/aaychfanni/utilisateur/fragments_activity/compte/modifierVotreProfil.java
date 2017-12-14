@@ -47,7 +47,7 @@ public class modifierVotreProfil extends AppCompatActivity {
     private CircleImageView mProfilePhoto;
     private Boolean toastAppered ;
     private RelativeLayout relativeLayoutWebsite ,relativeLayoutDescription ,relativeLayoutPhoneNumber,
-            signOutRelativeLayout;
+            signOutRelativeLayout, relativeVerified;
 
     //vars
     private UserSettings mUserSettings;
@@ -80,6 +80,7 @@ public class modifierVotreProfil extends AppCompatActivity {
         relativeLayoutPhoneNumber = (RelativeLayout) findViewById(R.id.relative_lay_phone_number);
         relativeLayoutWebsite = (RelativeLayout) findViewById(R.id.relative_lay_website);
         signOutRelativeLayout = (RelativeLayout) findViewById(R.id.relative_lay_log_out) ;
+        relativeVerified = (RelativeLayout) findViewById(R.id.button_layout);
 
         setupFirebaseAuth();
         getIncomingIntent();
@@ -289,6 +290,7 @@ public class modifierVotreProfil extends AppCompatActivity {
             relativeLayoutWebsite.setVisibility(VISIBLE);
             relativeLayoutDescription.setVisibility(VISIBLE);
             relativeLayoutPhoneNumber.setVisibility(VISIBLE);
+            relativeVerified.setVisibility(VISIBLE);
 
         }
         /*else{

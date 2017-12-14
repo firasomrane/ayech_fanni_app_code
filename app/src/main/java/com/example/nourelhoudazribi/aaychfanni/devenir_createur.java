@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.compte.compteFragment;
@@ -14,19 +17,20 @@ import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.fr
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 
-public class devenir_createur extends AppCompatActivity {
+public class devenir_createur extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     private static final String TAG = "devenir_createur";
 
     Button continuer;
     Button retour;
     private EditText descri;
-    private EditText empl;
+   // private EditText empl;
     private EditText faceb;
     private EditText youtube;
     private EditText twitter;
     private EditText twitcher;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
+    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,18 +39,25 @@ public class devenir_createur extends AppCompatActivity {
         continuer = (Button) findViewById(R.id.button4);
         retour = (Button) findViewById(R.id.arriere_createur);
         descri = (EditText) findViewById(R.id.editText4);
-        empl = (EditText) findViewById(R.id.editText3);
+        spinner = (Spinner) findViewById(R.id.editText3);
         faceb = (EditText) findViewById(R.id.editText6);
         youtube = (EditText) findViewById(R.id.editText5);
         twitter = (EditText) findViewById(R.id.editText7);
         twitcher = (EditText) findViewById(R.id.editText8);
         firebaseAuth=FirebaseAuth.getInstance();
+
+        ArrayAdapter<String> myadappter = new ArrayAdapter<String>(devenir_createur.this,
+                android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.localisation));
+        myadappter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(myadappter);
+        spinner.setOnItemSelectedListener(this);
+
         continuer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
         /// Create Intent for SignUpActivity abd Start The Activity
                 String descriptionText=descri.getText().toString();
-                String emplacementText=empl.getText().toString();
+                String emplacementText=spinner.getSelectedItem().toString();
                 String facebookText=faceb.getText().toString();
                 String youtubeText=youtube.getText().toString();
                 String twitterText=twitter.getText().toString();
@@ -86,6 +97,16 @@ public class devenir_createur extends AppCompatActivity {
                 startActivity(new Intent(devenir_createur.this, theEssentialActivity.class));
             }
         });
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int pos , long l) {
+        String selected = parent.getItemAtPosition(pos).toString();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
 }
