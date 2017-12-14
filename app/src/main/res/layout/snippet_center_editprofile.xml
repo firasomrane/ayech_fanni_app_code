@@ -150,16 +150,17 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_below="@+id/relative_lay_description"
             android:id="@+id/button_layout"
-            android:layout_marginTop="40dp"
+            android:layout_below="@+id/changeProfilePhoto"
+            android:layout_alignParentStart="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="23dp"
             android:visibility="gone">
             <Button
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:text="Demander d'être vérifié"
                 android:background="@drawable/mybotton"
-                android:visibility="gone"
                 android:textColor="@color/white"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true" />
