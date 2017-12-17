@@ -11,6 +11,7 @@
         android:id="@+id/editText8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:ems="10"
         android:inputType="textPersonName"
         android:layout_below="@+id/editText7"
@@ -44,6 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/editText6"
         android:layout_below="@+id/editText6"
+        android:visibility="gone"
         android:layout_marginTop="46dp"
         android:ems="10"
         android:hint="Lien URL Twitter"
@@ -56,15 +58,17 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:layout_below="@+id/editText6"
-        android:layout_alignStart="@+id/editText6"
         android:hint="Lien URL Youtube"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:layout_alignTop="@+id/textView3"
+        android:layout_alignEnd="@+id/editText3"
+        android:layout_marginTop="16dp" />
 
     <EditText
         android:id="@+id/editText6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:ems="10"
         android:gravity="center"
         android:hint="Lien URL Facebook"

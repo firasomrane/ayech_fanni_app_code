@@ -8,12 +8,14 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nourelhoudazribi.aaychfanni.Demande_de_verification;
 import com.example.nourelhoudazribi.aaychfanni.R;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.Utils.FirebaseMethods;
 import com.example.nourelhoudazribi.aaychfanni.utilisateur.fragments_activity.Utils.UniversalImageLoader;
@@ -59,6 +61,7 @@ public class modifierVotreProfil extends AppCompatActivity {
     private DatabaseReference myRef;
     private FirebaseMethods mFirebaseMethods;
     private String userID;
+    private Button demander;
 
     private static final String TAG = "modifierVotreProfil";
 
@@ -68,6 +71,7 @@ public class modifierVotreProfil extends AppCompatActivity {
         setContentView(R.layout.account_modifier_votre_profil);
 
         mProfilePhoto = (CircleImageView) findViewById(R.id.profile_photo);
+        demander=(Button) findViewById(R.id.demande);
        // mDisplayName = (EditText) findViewById(R.id.display_name);
         mUsername = (EditText) findViewById(R.id.username);
         mWebsite = (EditText) findViewById(website);
@@ -291,6 +295,13 @@ public class modifierVotreProfil extends AppCompatActivity {
             relativeLayoutDescription.setVisibility(VISIBLE);
             relativeLayoutPhoneNumber.setVisibility(VISIBLE);
             relativeVerified.setVisibility(VISIBLE);
+            demander.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    /// Create Intent for SignUpActivity abd Start The Activity
+                    Intent intentSignUP = new Intent(getApplicationContext(), Demande_de_verification.class);
+                    startActivity(intentSignUP);
+                }
+            });
 
         }
         /*else{
