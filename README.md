@@ -1,5 +1,28 @@
-# the-app-code
-# This is the code for our android app "ayech fanni": An app that gives a solution for fans to help Tunisian artists, bloggers, youtubers.. continue creating content.
-## Technologies used:
-  # -Java
-  # -Firebase
+# Ayech Fanni
+
+An app that gives a solution for fans to help Tunisian artists, bloggers, youtubers.
+
+### Installing
+
+Just clone the repository and run it with [android studio](https://developer.android.com/studio/
+
+```
+git clone https://github.com/firou1925/the-app-code.git
+```
+
+## Built With
+
+* Java
+* [Firebase](https://firebase.google.com/) 
+
+## Authors
+
+See the list of [contributors](https://github.com/firou1925/the-app-code/graphs/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Inspiration: [Mitch Tabian](https://www.youtube.com/channel/UCoNZZLhPuuRteu02rh7bzsw)
