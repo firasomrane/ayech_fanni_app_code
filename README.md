@@ -4,7 +4,7 @@ An app that gives a solution for fans to help Tunisian artists, bloggers, youtub
 
 ### Installing
 
-Just clone the repository and run it with [android studio](https://developer.android.com/studio/
+Just clone the repository and run it with [android studio](https://developer.android.com/studio/)
 
 ```
 git clone https://github.com/firou1925/the-app-code.git
