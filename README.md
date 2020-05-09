@@ -12,11 +12,11 @@ Content feed, Account, Messages(premium), Notifications, Content creation (posts
   - Communicate with real time messages with his fans.
   
 * A usual user:
- - Have an account but can't create posts on the app.
- - Can search for all the creators subscribed in the app to find his best ones.
- - Can follow the content creators he appreciate to get their news in his home feed.
- - Can choose a content creator to send him money through the app and help him keeping creating content.
- - When sending money, the user gets premium messaging functionality to communicate with the content creator he funded (to suggest topics to cover, to show appreciation, to get scoops)
+  - Have an account but can't create posts on the app.
+  - Can search for all the creators subscribed in the app to find his best ones.
+  - Can follow the content creators he appreciate to get their news in his home feed.
+  - Can choose a content creator to send him money through the app and help him keeping creating content.
+  - When sending money, the user gets premium messaging functionality to communicate with the content creator he funded (to suggest topics to cover, to show appreciation, to get scoops)
 
   
 ## Classes design
