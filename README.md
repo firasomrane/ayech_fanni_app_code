@@ -19,7 +19,7 @@ Content feed, Account, Messages(premium), Notifications, Content creation (posts
   - When sending money, the user gets premium messaging functionality to communicate with the content creator he funded (to suggest topics to cover, to show appreciation, to get scoops)
 
   
-## Classes design
+## Classes interactions
 Classes and relation between these classes (in french)
 
 <p align="center">
