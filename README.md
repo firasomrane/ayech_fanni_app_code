@@ -3,7 +3,7 @@
 An app that gives a solution for fans to help Tunisian artists, bloggers, youtubers keep creating valuable content for their fans. This is done by offering a way to help them financially and get more engagement.
 
 ## Features available in the app:
-Content feed, Account, Messages(premium), Notifications, Content creation (posts creation), Following best artists ....
+Content feed, Account, Content creation (posts creation), Following best artists ....
 
 * There are two types of users: **usual user** and **content creator** (with more functionalities)
 * A content creator have:
