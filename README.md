@@ -18,14 +18,6 @@ Content feed, Account, Content creation (posts creation), Following best artists
   - Can choose a content creator to send him money through the app and help him keeping creating content.
   - When sending money, the user gets premium messaging functionality to communicate with the content creator he funded (to suggest topics to cover, to show appreciation, to get scoops)
 
-  
-## Classes interactions
-Classes and relation between these classes (in french)
-
-<p align="center">
-  <img src="https://i.ibb.co/FHrdZmX/Screenshot-2020-05-09-at-17-56-17.png"/>
-  <br/>
-</p>
 
 ## Screenshots
 
