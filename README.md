@@ -52,4 +52,4 @@ This project is licensed under the MIT License.
 
 ## Acknowledgments
 
-* Inspiration: [Mitch Tabian](https://www.youtube.com/channel/UCoNZZLhPuuRteu02rh7bzsw)
+* Android + Firebase Basics: [Mitch Tabian](https://www.youtube.com/channel/UCoNZZLhPuuRteu02rh7bzsw)
