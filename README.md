@@ -6,13 +6,13 @@ An app that gives a solution for fans to help Tunisian artists, bloggers, youtub
 Content feed, Account, Content creation (posts creation), Following best artists ....
 
 * There are two types of users: **usual user** and **content creator** (with more functionalities)
-* A content creator have:
-  - An account (With the domain (music, comedy ...). He set his financial goal for each month. 
+* A content creator can:
   - Create a new post with images and text to share with his followers.
   - Communicate with real time messages with his fans.
+  - Has an account (With the domain (music, comedy ...). He sets his financial goal for each month. 
   
 * A usual user:
-  - Have an account but can't create posts on the app.
+  - Has an account but can't create posts on the app.
   - Can search for all the creators subscribed in the app to find his best ones.
   - Can follow the content creators he appreciate to get their news in his home feed.
   - Can choose a content creator to send him money through the app and help him keeping creating content.
